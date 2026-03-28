@@ -1,0 +1,52 @@
+# Rubyのバージョン指定
+FROM ruby:3.3.11-slim
+
+# 文字コードをUTF-8に設定
+ENV LANG C.UTF-8
+# 時刻を日本時間に設定
+ENV TZ Asia/Tokyo
+
+# Node.js リポジトリの追加と必要なパッケージのインストールを1つのRUNで実行
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y \
+      ca-certificates \
+      curl \
+      gnupg \
+      build-essential \
+      git \
+      libpq-dev \
+      libyaml-dev \
+      pkg-config \
+      postgresql-client \
+      vim \
+    && mkdir -p /etc/apt/keyrings \
+    && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key \
+       | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
+    && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" \
+       | tee /etc/apt/sources.list.d/nodesource.list \
+    && apt-get update -qq \
+    && apt-get install --no-install-recommends -y nodejs \
+    && npm install -g yarn \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg \
+| gpg --dearmor -o /usr/share/keyrings/yarn-archive-keyring.gpg \
+&& echo "deb [signed-by=/usr/share/keyrings/yarn-archive-keyring.gpg] \
+https://dl.yarnpkg.com/debian/ stable main" \
+| tee /etc/apt/sources.list.d/yarn.list
+
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs yarn vim
+
+# 以降は/appディレクトリ内で作業
+WORKDIR /app
+COPY Gemfile Gemfile.lock ./
+# Bundler（バンドラー）gemをインストール
+RUN gem install bundler
+COPY package.json yarn.lock ./
+RUN yarn install
+# 現在のディレクトリにある全てをDockerコンテナの/appディレクトリにコピー
+COPY . /app
+
+EXPOSE 3000
+
+CMD ["rails", "server", "-b", "0.0.0.0"]
