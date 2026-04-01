@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :users
+  # これで以下のようなルーティングが自動生成される
+  # /users/sign_up（新規登録）
+  # /users/sign_in（ログイン）
+  # /users/sign_out（ログアウト）
+
   root "top#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

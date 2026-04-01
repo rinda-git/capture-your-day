@@ -9,6 +9,7 @@ gem "pg", "~> 1.1"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
+# JS読み込み管理
 gem "importmap-rails"
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
@@ -35,6 +36,10 @@ gem "bootsnap", require: false
 
 # 該当ビューの日本語部分をi18n対応するために追加
 gem "rails-i18n", "~> 7.0.0"
+# ユーザー認証(ログイン・登録機能)
+gem "devise"
+# i18n日本語化設定 devise専用のgem
+gem "devise-i18n"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
