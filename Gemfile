@@ -39,7 +39,7 @@ gem "rails-i18n", "~> 7.0.0"
 # ユーザー認証(ログイン・登録機能)
 gem "devise"
 # i18n日本語化設定 devise専用のgem
-gem 'devise-i18n'
+gem "devise-i18n"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
