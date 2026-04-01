@@ -34,6 +34,7 @@ services:
       LINE_CHANNEL_SECRET: ${LINE_CHANNEL_SECRET}
       LINE_CHANNEL_TOKEN: ${LINE_CHANNEL_TOKEN}
     ports:
+      # - "3001:3000"
       - "3000:3000"
     depends_on:
       db:
