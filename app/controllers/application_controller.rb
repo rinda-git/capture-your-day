@@ -13,4 +13,11 @@ class ApplicationController < ActionController::Base
   #   # アカウント更新（編集）時に :username カラムを許可する場合
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:username])
   # end
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+  end
 end

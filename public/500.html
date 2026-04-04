@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>We're sorry, but something went wrong (500)</title>
   <style>
   .rails-default-error-page {
     background-color: #EFEFEF;
@@ -58,9 +59,16 @@
   <!-- This file lives in public/500.html -->
   <div class="dialog">
     <div>
-      <h1>We're sorry, but something went wrong.</h1>
+      <h1>サーバーエラーが発生しました</h1>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
+    <p>I 申し訳ありません。しばらく時間をおいてから<br>
+        再度アクセスしてください。
+    </p>
+    <a href="/"
+        class="inline-block px-6 py-3 rounded-full text-white font-medium text-sm"
+        style="background-color: #d97706;">
+        ホームへ戻る
+    </a>
   </div>
 </body>
 </html>

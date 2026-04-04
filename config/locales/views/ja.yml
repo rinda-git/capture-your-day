@@ -10,3 +10,6 @@ ja:
   # user_sessions:
   #   new:
   #     title: ログイン
+    registrations:
+      new:
+        title: 新規登録

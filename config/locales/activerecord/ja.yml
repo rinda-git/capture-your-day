@@ -1,7 +1,10 @@
+# モデルの属性（カラム）の日本語化
 ja:
   activerecord:
     models:
     #   user: ユーザー
-    # attributes:
-    #   user:
-    #     email: メールアドレス
+    attributes:
+      user:
+        name: ユーザー名
+        password_confirmation: パスワード（確認用）
+        # email: メールアドレス
