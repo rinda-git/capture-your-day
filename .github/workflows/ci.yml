@@ -84,6 +84,8 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
+      - name: Install npm packages
+        run: npm install
 
       - name: Run tests
         env:
