@@ -1,0 +1,23 @@
+<%# ログイン後のヘッダー %>
+<header class="navbar bg-white border-b border-sage-100 fixed top-0 left-0 right-0 z-50">
+  <div class="navbar-start">
+    <%# link_to "Home", root_path, class: "btn btn-ghost normal-case text-xl" %>
+  </div>
+
+<div class="navbar-center">
+      <span class="font-title text-xl font-bold text-ink">Capture Your Day</span>
+</div>
+      <!-- navbar-end -->
+<div class="navbar-end">
+      <% if user_signed_in? %>
+        <%= link_to t('.logout'), destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" }, class: "btn btn-primary btn-md hover:opacity-70" %>
+      <% else %>
+        <div class = "flex gap-4">
+        <%= link_to t('.register'), new_user_registration_path, class: "btn btn-primary btn-md hover:opacity-70" %>
+        <%= link_to t('.login'), new_user_session_path, class: "btn btn-outline btn-md hover:opacity-70" %>
+        </div>      
+      <% end %>
+
+</div>
+
+</header>

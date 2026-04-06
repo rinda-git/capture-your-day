@@ -13,3 +13,9 @@ ja:
     registrations:
       new:
         title: 新規登録
+  shared:
+    header:
+      login: ログイン
+      logout: ログアウト
+      register: 新規登録
+
