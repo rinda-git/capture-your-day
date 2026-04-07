@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  reminder_enabled: false
+  notification_time: 2026-04-07 20:14:51
+  scene_type: 1
+
+two:
+  user: two
+  reminder_enabled: false
+  notification_time: 2026-04-07 20:14:51
+  scene_type: 1
