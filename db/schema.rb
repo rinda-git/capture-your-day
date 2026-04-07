@@ -10,9 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_04_01_071700) do
+ActiveRecord::Schema[7.2].define(version: 2026_04_07_111450) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "journals", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "posted_date", null: false
+    t.integer "mood"
+    t.string "title"
+    t.text "body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_journals_on_user_id"
+  end
+
+  create_table "mistakes", force: :cascade do |t|
+    t.bigint "journal_id", null: false
+    t.bigint "user_id", null: false
+    t.text "original_text", null: false
+    t.text "corrected_text"
+    t.text "explanation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["journal_id"], name: "index_mistakes_on_journal_id"
+    t.index ["user_id"], name: "index_mistakes_on_user_id"
+  end
+
+  create_table "notification_settings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.boolean "reminder_enabled", default: false
+    t.time "notification_time"
+    t.integer "scene_type", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notification_settings_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,7 +56,13 @@ ActiveRecord::Schema[7.2].define(version: 2026_04_01_071700) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "journals", "users"
+  add_foreign_key "mistakes", "journals"
+  add_foreign_key "mistakes", "users"
+  add_foreign_key "notification_settings", "users"
 end
