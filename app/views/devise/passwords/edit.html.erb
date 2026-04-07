@@ -1,27 +1,33 @@
-<h2>Change your password</h2>
+
+<%= render "devise/shared/auth_wrapper" do %>
+<h2 class="text-2xl font-bold mb-6 text-center">
+<%= t('devise.passwords.edit.change_your_password') %>
+</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
   <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <p><%= f.label :password, "New password" %></p>
+  <div class="mb-4">
+    <p><%= f.label :password, t('devise.passwords.edit.new_password') %></p>
     <% if @minimum_password_length %>
       <!-- <p><em>(<%= t('devise.shared.minimum_password_length', count: @minimum_password_length)  %> characters minimum)</em></p> -->
-      <p><em>(<%= t('devise.shared.minimum_password_length', count: @minimum_password_length)  %> 文字以内)</em></p>
+    <%= t('devise.shared.minimum_password_length', count: @minimum_password_length)  %>
     <% end %>    
 
-    <p><%= f.password_field :password, autofocus: true, autocomplete: "new-password" %></p>
+    <p><%= f.password_field :password, autofocus: true, autocomplete: "new-password", class:"input input-bordered w-full bg-base-200 focus:bg-base-100 rounded-xl" %></p>
   </div>
 
-  <div class="field">
-    <p><%= f.label :password_confirmation, "Confirm new password" %></p>
-    <p><%= f.password_field :password_confirmation, autocomplete: "new-password" %></p>
+  <div class="mb-4">
+    <p><%= f.label :password_confirmation, t('devise.passwords.edit.confirm_new_password') %></p>
+    <p><%= f.password_field :password_confirmation, autocomplete: "new-password", class:"input input-bordered w-full bg-base-200 focus:bg-base-100 rounded-xl" %></p>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
+  <div class="mt-6">
+    <%= f.submit t('devise.passwords.edit.change_my_password'), class: "btn btn-primary w-full rounded-xl" %>
   </div>
 <% end %>
 
+<div class="divider text-sm text-base-content/50"></div>
 <%= render "devise/shared/links" %>
+<% end %>

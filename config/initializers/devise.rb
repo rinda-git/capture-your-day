@@ -29,7 +29,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
+  config.mailer_sender = "noreply@capture-your-day.com"
   # パスワードの最小文字数
   config.password_length = 6..128  # 最小6文字、最大128文字
 
