@@ -5,7 +5,7 @@ class CreateJournals < ActiveRecord::Migration[7.2]
       t.datetime :posted_date, null: false
       t.integer :mood
       t.string :title, null: true
-      t.text :body, null:false
+      t.text :body, null: false
 
       t.timestamps
     end
