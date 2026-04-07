@@ -1,15 +1,16 @@
-<%# ログインリンク（登録ページにいるとき表示） %>
+<%# ログインリンク（ログインページ以外の全ページでLoginリンクを表示） %>
+<div class="flex justify-center gap-2 mt-2 flex-wrap">
 <%- if controller_name != 'sessions' %>
-  <p><%= link_to "Log in", new_session_path(resource_name) %></p>
+  <p><%= link_to t('devise.sessions.new.sign_in'), new_session_path(resource_name) %></p>
 <% end %>
 
-<div class="flex justify-between mt-2">
-<%# 新規登録リンク（ログインページにいるとき表示） %>
+
+<%# 新規登録リンク 登録機能が有効and登録ページ以外のときに表示%>
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
   <p><%= link_to t('devise.registrations.new.sign_up'), new_registration_path(resource_name), class: "text-primary hover:underline" %></p>
 <% end %>
 
-<%# パスワードリセットリンク %>
+<%# パスワードリセットリンク パスワードリセット機能が有効andパスワード・登録ページ以外で表示%>
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
   <p><%= link_to t('devise.passwords.new.forgot_your_password'), new_password_path(resource_name), class: "text-ink-muted hover:underline" %></p>
 <% end %>
@@ -23,6 +24,7 @@
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
   <p><%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %></p>
 <% end %>
+</div>
 
 <%# OmniAuth（LINE等） %>
 <%- if devise_mapping.omniauthable? %>

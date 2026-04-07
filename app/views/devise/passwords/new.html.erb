@@ -1,16 +1,25 @@
-<h2>Forgot your password?</h2>
+
+<%= render "devise/shared/auth_wrapper" do %>
+
+<h2 class="text-2xl font-bold mb-6 text-center">
+<%= t('devise.passwords.new.forgot_your_password') %>
+</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <p><%= f.label :email %></p>
-    <p><%= f.email_field :email, autofocus: true, autocomplete: "email" %></p>
+  <div class="mb-4">
+    <p><%= f.label :email, class:"block text-sm font-medium text-ink-sub mb-1"%></p>
+    <p><%= f.email_field :email, autofocus: true, autocomplete: "email", 
+    class:"input input-bordered w-full bg-base-200 focus:bg-base-100 rounded-xl" %></p>
   </div>
 
   <div class="actions">
-    <%= f.submit "Send me password reset instructions" %>
+    <%= f.submit t('devise.passwords.new.send_me_reset_password_instructions'),
+        class: "btn btn-primary w-full rounded-xl" %>
   </div>
 <% end %>
 
+<div class="divider text-sm text-base-content/50"></div>
 <%= render "devise/shared/links" %>
+<% end %>

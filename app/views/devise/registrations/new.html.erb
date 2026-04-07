@@ -19,7 +19,7 @@
 
     <%# ── バリデーションエラー ── %>
     <% if resource.errors.any? %>
-      <div class="auth-error">
+      <div role="alert" class="alert alert-error mb-4">
         <p class="font-bold mb-1">入力内容を確認してください</p>
         <ul>
           <% resource.errors.full_messages.each do |msg| %>
