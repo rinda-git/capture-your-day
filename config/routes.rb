@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   # /users/sign_out（ログアウト）
 
   root "top#index"
-  resources :journals, only: [:index, :show, :new, :create, :edit, :update, :destroy] 
-  resources :mistakes, only: [:index, :show, :new, :create, :destroy]
-  resources :users, only: [:show, :edit, :update, :destroy]
+  resources :journals, only: [ :index, :show, :new, :create, :edit, :update, :destroy ]
+  resources :mistakes, only: [ :index, :show, :new, :create, :destroy ]
+  resources :users, only: [ :show, :edit, :update, :destroy ]
 
   # ヘルスチェック
   get "up" => "rails/health#show", as: :rails_health_check
