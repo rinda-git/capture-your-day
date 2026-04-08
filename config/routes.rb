@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root "top#index"
   resources :journals, only: [ :index, :show, :new, :create, :edit, :update, :destroy ]
   resources :mistakes, only: [ :index, :show, :new, :create, :destroy ]
-  resources :users, only: [ :show, :edit, :update, :destroy ]
+  resource :user, only: [ :show, :edit, :update, :destroy ]
 
   # ヘルスチェック
   get "up" => "rails/health#show", as: :rails_health_check
