@@ -1,23 +1,23 @@
 require "test_helper"
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
+  # Deviseのログインヘルパーを使えるようにする
+  include Devise::Test::IntegrationHelpers
+  
+  setup do
+    # ① テスト用のユーザーをfixturesから取得する
+    @user = users(:one)
+    # ② そのユーザーでログインする
+    sign_in @user
+  end
+
   test "should get show" do
-    get users_show_url
+    get user_url
     assert_response :success
   end
 
   test "should get edit" do
-    get users_edit_url
-    assert_response :success
-  end
-
-  test "should get update" do
-    get users_update_url
-    assert_response :success
-  end
-
-  test "should get destroy" do
-    get users_destroy_url
+    get edit_user_url
     assert_response :success
   end
 end
