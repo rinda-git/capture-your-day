@@ -7,3 +7,12 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+# 10.timesブロックで10人のユーザーを生成
+# 各ユーザーはランダムな姓、名、ユニークなメールアドレス、固定のパスワードが設定されます
+10.times do
+  User.create!(name: Faker::Name.name,
+               email: Faker::Internet.unique.email,
+               password: "password",
+               password_confirmation: "password")
+end
