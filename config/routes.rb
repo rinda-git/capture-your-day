@@ -6,10 +6,11 @@ Rails.application.routes.draw do
   # /users/sign_out（ログアウト）
 
   root "top#index"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :journals, only: [ :index, :show, :new, :create, :edit, :update, :destroy ]
+  resources :mistakes, only: [ :index, :show, :new, :create, :destroy ]
+  resource :user, only: [ :show, :edit, :update, :destroy ]
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  # ヘルスチェック
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Render dynamic PWA files from app/views/pwa/*
@@ -18,5 +19,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  # 開発環境のみメール確認ツール
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

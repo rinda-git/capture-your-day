@@ -5,5 +5,5 @@ class Journal < ApplicationRecord
   validates :posted_date, presence: true
   validates :body, presence: true
 
-  enum mood: { great: 0, good: 1, neutral: 2, bad: 3 }
+  enum :mood, { great: 0, good: 1, neutral: 2, bad: 3 }
 end
