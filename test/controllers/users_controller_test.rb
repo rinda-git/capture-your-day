@@ -3,7 +3,7 @@ require "test_helper"
 class UsersControllerTest < ActionDispatch::IntegrationTest
   # Deviseのログインヘルパーを使えるようにする
   include Devise::Test::IntegrationHelpers
-  
+
   setup do
     # ① テスト用のユーザーをfixturesから取得する
     @user = users(:one)
