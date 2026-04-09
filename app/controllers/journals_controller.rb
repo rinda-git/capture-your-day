@@ -1,5 +1,4 @@
 class JournalsController < ApplicationController
-
   def index
     @journals =current_user.journals.order(created_at: :desc).limit(3)
   end
@@ -44,6 +43,6 @@ class JournalsController < ApplicationController
 
   private
   def journal_params
-    params.require(:journal).permit(:title, :posted_date, :mood,:body)
+    params.require(:journal).permit(:title, :posted_date, :mood, :body)
   end
 end
