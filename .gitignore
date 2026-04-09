@@ -36,3 +36,8 @@
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+# Agent instructions are local-only.
+/AGENTS.md
+
+.codex
