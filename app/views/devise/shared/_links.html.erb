@@ -7,12 +7,12 @@
 
 <%# 新規登録リンク 登録機能が有効and登録ページ以外のときに表示%>
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <p><%= link_to t('devise.registrations.new.sign_up'), new_registration_path(resource_name), class: "text-primary hover:underline" %></p>
+  <p><%= link_to t('devise.registrations.new.sign_up'), new_registration_path(resource_name), class: "text-primary underline hover:opacity-80" %></p>
 <% end %>
 
 <%# パスワードリセットリンク パスワードリセット機能が有効andパスワード・登録ページ以外で表示%>
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <p><%= link_to t('devise.passwords.new.forgot_your_password'), new_password_path(resource_name), class: "text-ink-muted hover:underline" %></p>
+  <p><%= link_to t('devise.passwords.new.forgot_your_password'), new_password_path(resource_name), class: "text-ink-muted underline hover:opacity-80" %></p>
 <% end %>
 
 <%# メール確認リンク %>

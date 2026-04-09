@@ -1,4 +1,4 @@
-class JounalsController < ApplicationController
+class JournalsController < ApplicationController
   def index
   end
 
