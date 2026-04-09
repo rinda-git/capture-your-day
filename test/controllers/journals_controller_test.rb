@@ -28,9 +28,18 @@ end
     assert_response :success
   end
 
-  test "should get create" do
-    get journals_url
-    assert_response :success
+  test "should create journal" do
+    assert_difference("Journal.count", 1) do
+      post journals_url, params: {
+        journal: {
+          posted_date: Date.today,
+          mood: "great",
+          title: "test",
+          body: "test"
+        }
+      }
+    end
+    assert_response :redirect
   end
 
   test "should get edit" do
@@ -38,13 +47,15 @@ end
     assert_response :success
   end
 
-  test "should get update" do
-    get journal_url(@journal)
-    assert_response :success
+  test "should update journal" do
+    patch journal_url(@journal), params: { journal: { title: "updated" } }
+    assert_response :redirect
   end
 
-  test "should get destroy" do
-    get journal_url(@journal)
-    assert_response :success
-  end
+  test "should destroy journal" do
+    assert_difference("Journal.count", -1) do
+      delete journal_url(@journal)
+    end
+    assert_response :redirect
+    end
 end
