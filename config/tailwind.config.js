@@ -12,7 +12,10 @@ module.exports = {
     extend: {
     fontFamily: {
       sans:  ['"Noto Sans JP"', 'sans-serif'],
-      title: ['"Libre Baskerville"', 'serif'],
+      // title2: ['"Libre Baskerville"', 'serif'],
+      title:  ['"Playfair Display"',   'serif'], //1
+      english: ['"DM Serif Display"', 'serif'], //2
+      cormorant: ['"Cormorant Garamond"', 'serif'], //3
     },
       colors: {
         sage: {

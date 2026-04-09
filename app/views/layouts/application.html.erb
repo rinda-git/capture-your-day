@@ -26,7 +26,7 @@
   </head>
 
   <body class="flex flex-col min-h-screen">
-    <%= render "shared/header" %>
+    <%= render "shared/header" unless content_for?(:hide_header) %>
     <!-- <main class="container mx-auto mt-28 px-5 flex"> -->
     <main>
       <%= yield %>
