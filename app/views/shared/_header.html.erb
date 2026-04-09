@@ -1,11 +1,13 @@
 <%# ログイン後のヘッダー %>
 <header class="navbar bg-white border-b border-sage-100 fixed top-0 left-0 right-0 z-50">
   <div class="navbar-start">
+    <span class="font-title text-2xl font-bold text-ink">Capture Your Day</span>
     <%# link_to "Home", root_path, class: "btn btn-ghost normal-case text-xl" %>
   </div>
 
-<div class="navbar-center">
-      <span class="font-title text-xl font-bold text-ink">Capture Your Day</span>
+<div class="navbar-center">    
+      <!-- <span class="font-english text-xl text-ink">Capture Your Day</span> -->
+      <!--<h1 class="font-cormorant text-2xl font-bold text-ink">Capture Your Day</h1> -->
 </div>
       <!-- navbar-end -->
 <div class="navbar-end">
@@ -13,11 +15,15 @@
         <%= link_to t('.logout'), destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" }, class: "btn btn-primary btn-md hover:opacity-70" %>
       <% else %>
         <div class = "flex gap-4">
-        <%= link_to t('.register'), new_user_registration_path, class: "btn btn-primary btn-md hover:opacity-70" %>
-        <%= link_to t('.login'), new_user_session_path, class: "btn btn-outline btn-md hover:opacity-70" %>
-        </div>      
+        <%= link_to t('.register'), new_user_registration_path, class: "btn btn-primary btn-md px-6 text-sm  sm:text-base min-h-11 h-11 hover:opacity-70" %>
+      
+        <% if current_page?(new_user_session_path) %>
+          <%= link_to t('.login'), new_user_session_path, class: "btn btn-outline btn-md px-6 text-sm sm:text-base h-11 min-h-11 opacity-60 pointer-events-none" %>
+        <% else %>
+          <%= link_to t('.login'), new_user_session_path, class: "btn btn-outline btn-md px-6 text-sm sm:text-base h-11 min-h-11 hover:opacity-70" %>
+        <% end %>
       <% end %>
-
+        </div>    
 </div>
 
 </header>
