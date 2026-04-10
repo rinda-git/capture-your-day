@@ -1,0 +1,17 @@
+<%# flash の種類ごとに DaisyUI の alert クラスを切り替える %>
+<% flash.each do |type, message| %>
+  <% next if message.blank? %>
+
+  <% alert_class = case type.to_sym
+    when :notice then "alert alert-success"
+    when :alert  then "alert alert-error"
+    else              "alert alert-info"
+    end
+  %>
+
+  <div class="mx-auto w-full max-w-3xl px-4">
+    <div role="alert" class="<%= alert_class %> shadow-sm">
+      <span><%= message %></span>
+    </div>
+  </div>
+<% end %>

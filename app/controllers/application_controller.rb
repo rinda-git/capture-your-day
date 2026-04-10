@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [ :name ])
   end
+  # ログアウト後はログイン画面へ
+  def after_sign_out_path_for(_resource_or_scope)
+    new_user_session_path
+  end
   # protected
   #   # アカウント更新（編集）時に :username カラムを許可する場合
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:username])

@@ -15,7 +15,7 @@
     <!-- <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet"> -->
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Serif+Display:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="/maanifest.json">
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
@@ -25,10 +25,13 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body class="flex flex-col min-h-screen">
+  <body class="flex flex-col min-h-screen bg-sage-50">
     <%= render "shared/header" unless content_for?(:hide_header) %>
     <!-- <main class="container mx-auto mt-28 px-5 flex"> -->
-    <main>
+    <!-- フラッシュメッセージ -->
+
+    <main class="pt-20 ">
+      <%= render "shared/flash_message" %>
       <%= yield %>
     </main>
      <%# render "shared/footer" %>
