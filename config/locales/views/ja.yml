@@ -13,6 +13,7 @@ ja:
     registrations:
       new:
         title: 新規登録
+    sessions:
   shared:
     header:
       login: ログイン
