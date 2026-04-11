@@ -30,10 +30,10 @@
     <!-- <main class="container mx-auto mt-28 px-5 flex"> -->
     <!-- フラッシュメッセージ -->
 
-    <main class="pt-20 ">
+    <main class="pt-20 flex-1">
       <%= render "shared/flash_message" %>
       <%= yield %>
     </main>
-     <%# render "shared/footer" %>
+     <%= render "shared/footer" unless content_for?(:hide_footer) %>
   </body>
 </html>
