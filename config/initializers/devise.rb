@@ -29,7 +29,8 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = "noreply@capture-your-day.com"
+  # config.mailer_sender = "noreply@capture-your-day.com"
+  config.mailer_sender = ENV.fetch("MAIL-FROM")
   # パスワードの最小文字数
   config.password_length = 6..128  # 最小6文字、最大128文字
 
@@ -97,7 +98,8 @@ Devise.setup do |config|
   # It will change confirmation, password recovery and other workflows
   # to behave the same regardless if the e-mail provided was right or wrong.
   # Does not affect registerable.
-  # config.paranoid = true
+  # メールアドレスが存在する場合、存在しない場合どちらでもメッセージを返す
+  config.paranoid = true
 
   # By default Devise will store the user in session. You can skip storage for
   # particular strategies by setting this option.

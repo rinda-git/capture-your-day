@@ -5,6 +5,9 @@ class User < ApplicationRecord
   has_many :mistakes, dependent: :destroy
   has_one :notification_setting, dependent: :destroy
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  devise :database_authenticatable,
+         :registerable,
+         :recoverable,
+         :rememberable,
+         :validatable
 end
