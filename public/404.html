@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
+  <title>ページが見つかりません (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   .rails-default-error-page {
@@ -26,13 +26,15 @@
     border-top: #B00100 solid 4px;
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
     background-color: white;
-    padding: 7px 12% 0;
+    padding: 16px 12% 24px;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
 
   .rails-default-error-page h1 {
-    font-size: 100%;
+    font-size: 1.4rem;
     color: #730E15;
     line-height: 1.5em;
   }
@@ -51,6 +53,18 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+
+  /* ホームに戻るリンク */
+  .rails-default-error-page a {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 8px 20px;
+    background-color: #730E15;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
   </style>
 </head>
 
@@ -58,10 +72,15 @@
   <!-- This file lives in public/404.html -->
   <div class="dialog">
     <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+      <h1>404 File Not Found</h1>
+      <h2>ページが見つかりませんでした。</h2>
+      <p>アクセスしようとしたページは、
+      <br> 移動あるいは削除された可能性があります。</br> </p>
+      <a href="/">ホーム画面に戻る</a>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
+    <!-- </div>
+    <p><a href="/">ホーム画面に戻る</a></p>
+  </div> -->
 </body>
 </html>

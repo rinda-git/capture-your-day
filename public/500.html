@@ -27,13 +27,15 @@
     border-top: #B00100 solid 4px;
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
     background-color: white;
-    padding: 7px 12% 0;
+    padding: 7px 12% 24px;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
 
   .rails-default-error-page h1 {
-    font-size: 100%;
+    font-size: 1.4rem;
     color: #730E15;
     line-height: 1.5em;
   }
@@ -52,6 +54,19 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+
+    /* ホームに戻るリンク */
+  .rails-default-error-page a {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 8px 20px;
+    background-color: #730E15;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+  
   </style>
 </head>
 
@@ -60,15 +75,16 @@
   <div class="dialog">
     <div>
       <h1>サーバーエラーが発生しました</h1>
-    </div>
-    <p>I 申し訳ありません。しばらく時間をおいてから<br>
-        再度アクセスしてください。
+    
+    <p>申し訳ありません。<br>
+        しばらく時間をおいてから、再度アクセスしてください。
     </p>
-    <a href="/"
+    <!--<a href="/"
         class="inline-block px-6 py-3 rounded-full text-white font-medium text-sm"
-        style="background-color: #d97706;">
-        ホームへ戻る
+        style="background-color: #d97706;"> -->
+        <a href="/">ホームへ戻る</a>
     </a>
+    </div>
   </div>
 </body>
 </html>

@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   resources :mistakes, only: [ :index, :show, :new, :create, :destroy ]
   resource :user, only: [ :show, :edit, :update, :destroy ]
 
+  # テスト用ルーティング　あとで削除する
+  # get '/test500', to: 'application#test500'
+
   # ヘルスチェック
   get "up" => "rails/health#show", as: :rails_health_check
 
