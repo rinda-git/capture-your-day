@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
   # ログアウト後はログイン画面へ
   def after_sign_out_path_for(_resource_or_scope)
-    new_user_session_path
+    unauthenticated_root_path
   end
   # protected
   #   # アカウント更新（編集）時に :username カラムを許可する場合

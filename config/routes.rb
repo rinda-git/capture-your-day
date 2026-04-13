@@ -1,11 +1,21 @@
 Rails.application.routes.draw do
+  get "home/index"
   devise_for :users
   # これで以下のようなルーティングが自動生成される
   # /users/sign_up（新規登録）
   # /users/sign_in（ログイン）
   # /users/sign_out（ログアウト）
 
-  root "top#index"
+  authenticated :user do
+    root to: "home#index", as: :authenticated_root
+  end
+
+  unauthenticated do
+    root to: "top#index", as: :unauthenticated_root
+  end
+
+  # root "top#index"
+  # root to "home#index"
   resources :journals, only: [ :index, :show, :new, :create, :edit, :update, :destroy ]
   resources :mistakes, only: [ :index, :show, :new, :create, :destroy ]
   resource :user, only: [ :show, :edit, :update, :destroy ]

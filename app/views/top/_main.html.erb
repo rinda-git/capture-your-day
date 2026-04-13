@@ -1,0 +1,166 @@
+<section class="relative overflow-hidden bg-sage-50 min-h-screen
+flex items-center justify-center py-16 px-10">
+   <%# ── 背景アイコン：星と本を薄く散らす ── %>
+  <svg class="absolute inset-0 w-full h-full pointer-events-none"
+       viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg"
+       preserveAspectRatio="xMidYMid slice">
+
+    <%# ===== 本アイコン（viewBox 512x512 → scaleで縮小）===== %>
+
+    <%# 本（右上・大きめ） %>
+    <g transform="translate(650, 20) scale(0.12)" opacity="0.12" fill="#0F6E56">
+      <path d="M256 141.3l0 309.3 .5-.2C311.1 427.7 369.7 416 428.8 416l19.2 0 0-320-19.2 0c-42.2 0-84.1 8.4-123.1 24.6-16.8 7-33.4 13.9-49.7 20.7zM230.9 61.5L256 72 281.1 61.5C327.9 42 378.1 32 428.8 32L464 32c26.5 0 48 21.5 48 48l0 352c0 26.5-21.5 48-48 48l-35.2 0c-50.7 0-100.9 10-147.7 29.5l-12.8 5.3c-7.9 3.3-16.7 3.3-24.6 0l-12.8-5.3C184.1 490 133.9 480 83.2 480L48 480c-26.5 0-48-21.5-48-48L0 80C0 53.5 21.5 32 48 32l35.2 0c50.7 0 100.9 10 147.7 29.5z"/>
+    </g>
+
+    <%# 本（右下・小さめ・少し回転） %>
+    <g transform="translate(110, 310) scale(0.09) rotate(10, 256, 256)" opacity="0.09" fill="#0F6E56">
+      <path d="M256 141.3l0 309.3 .5-.2C311.1 427.7 369.7 416 428.8 416l19.2 0 0-320-19.2 0c-42.2 0-84.1 8.4-123.1 24.6-16.8 7-33.4 13.9-49.7 20.7zM230.9 61.5L256 72 281.1 61.5C327.9 42 378.1 32 428.8 32L464 32c26.5 0 48 21.5 48 48l0 352c0 26.5-21.5 48-48 48l-35.2 0c-50.7 0-100.9 10-147.7 29.5l-12.8 5.3c-7.9 3.3-16.7 3.3-24.6 0l-12.8-5.3C184.1 490 133.9 480 83.2 480L48 480c-26.5 0-48-21.5-48-48L0 80C0 53.5 21.5 32 48 32l35.2 0c50.7 0 100.9 10 147.7 29.5z"/>
+    </g>
+
+    <%# 本（中央上・大きめ） %>
+    <g transform="translate(200, 90) scale(0.15) rotate(-5, 256, 256)" opacity="0.07" fill="#0F6E56">
+      <path d="M256 141.3l0 309.3 .5-.2C311.1 427.7 369.7 416 428.8 416l19.2 0 0-320-19.2 0c-42.2 0-84.1 8.4-123.1 24.6-16.8 7-33.4 13.9-49.7 20.7zM230.9 61.5L256 72 281.1 61.5C327.9 42 378.1 32 428.8 32L464 32c26.5 0 48 21.5 48 48l0 352c0 26.5-21.5 48-48 48l-35.2 0c-50.7 0-100.9 10-147.7 29.5l-12.8 5.3c-7.9 3.3-16.7 3.3-24.6 0l-12.8-5.3C184.1 490 133.9 480 83.2 480L48 480c-26.5 0-48-21.5-48-48L0 80C0 53.5 21.5 32 48 32l35.2 0c50.7 0 100.9 10 147.7 29.5z"/>
+    </g>
+    <%# 本（右下・小さい） %>
+    <g transform="translate(650, 250) scale(0.07) rotate(-5, 256, 256)" opacity="0.07" fill="#0F6E56">
+      <path d="M256 141.3l0 309.3 .5-.2C311.1 427.7 369.7 416 428.8 416l19.2 0 0-320-19.2 0c-42.2 0-84.1 8.4-123.1 24.6-16.8 7-33.4 13.9-49.7 20.7zM230.9 61.5L256 72 281.1 61.5C327.9 42 378.1 32 428.8 32L464 32c26.5 0 48 21.5 48 48l0 352c0 26.5-21.5 48-48 48l-35.2 0c-50.7 0-100.9 10-147.7 29.5l-12.8 5.3c-7.9 3.3-16.7 3.3-24.6 0l-12.8-5.3C184.1 490 133.9 480 83.2 480L48 480c-26.5 0-48-21.5-48-48L0 80C0 53.5 21.5 32 48 32l35.2 0c50.7 0 100.9 10 147.7 29.5z"/>
+    </g>
+    <%# ===== ペンアイコン（viewBox 24x24 → scaleで拡大）===== %>
+
+    <%# ペン（右上・大きめ） %>
+    <g transform="translate(100, 20) scale(0.11) rotate(-105, 288, 256)" opacity="0.11" fill="#0F6E56">
+      <path d="M36.4 353.2c4.1-14.6 11.8-27.9 22.6-38.7l181.2-181.2 33.9-33.9c16.6 16.6 51.3 51.3 104 104l33.9 33.9-33.9 33.9-181.2 181.2c-10.7 10.7-24.1 18.5-38.7 22.6L30.4 510.6c-8.3 2.3-17.3 0-23.4-6.2S-1.4 489.3 .9 481L36.4 353.2zm55.6-3.7c-4.4 4.7-7.6 10.4-9.3 16.6l-24.1 86.9 86.9-24.1c6.4-1.8 12.2-5.1 17-9.7L91.9 349.5zm354-146.1c-16.6-16.6-51.3-51.3-104-104L308 65.5C334.5 39 349.4 24.1 352.9 20.6 366.4 7 384.8-.6 404-.6S441.6 7 455.1 20.6l35.7 35.7C504.4 69.9 512 88.3 512 107.4s-7.6 37.6-21.2 51.1c-3.5 3.5-18.4 18.4-44.9 44.9z"/>    </g>
+    </g>
+    <%# ペン（左下・中くらい・逆回転） %>
+    <g transform="translate(430, 75) scale(0.07) rotate(-15, 288, 256)" opacity="0.09" fill="#0F6E56">
+      <path d="M36.4 353.2c4.1-14.6 11.8-27.9 22.6-38.7l181.2-181.2 33.9-33.9c16.6 16.6 51.3 51.3 104 104l33.9 33.9-33.9 33.9-181.2 181.2c-10.7 10.7-24.1 18.5-38.7 22.6L30.4 510.6c-8.3 2.3-17.3 0-23.4-6.2S-1.4 489.3 .9 481L36.4 353.2zm55.6-3.7c-4.4 4.7-7.6 10.4-9.3 16.6l-24.1 86.9 86.9-24.1c6.4-1.8 12.2-5.1 17-9.7L91.9 349.5zm354-146.1c-16.6-16.6-51.3-51.3-104-104L308 65.5C334.5 39 349.4 24.1 352.9 20.6 366.4 7 384.8-.6 404-.6S441.6 7 455.1 20.6l35.7 35.7C504.4 69.9 512 88.3 512 107.4s-7.6 37.6-21.2 51.1c-3.5 3.5-18.4 18.4-44.9 44.9z"/>    </g>
+    </g>
+    <%# ペン（中央上・薄く） %>
+    <g transform="translate(710, 170) scale(0.08)" opacity="0.07" fill="#0F6E56">
+      <path d="M36.4 353.2c4.1-14.6 11.8-27.9 22.6-38.7l181.2-181.2 33.9-33.9c16.6 16.6 51.3 51.3 104 104l33.9 33.9-33.9 33.9-181.2 181.2c-10.7 10.7-24.1 18.5-38.7 22.6L30.4 510.6c-8.3 2.3-17.3 0-23.4-6.2S-1.4 489.3 .9 481L36.4 353.2zm55.6-3.7c-4.4 4.7-7.6 10.4-9.3 16.6l-24.1 86.9 86.9-24.1c6.4-1.8 12.2-5.1 17-9.7L91.9 349.5zm354-146.1c-16.6-16.6-51.3-51.3-104-104L308 65.5C334.5 39 349.4 24.1 352.9 20.6 366.4 7 384.8-.6 404-.6S441.6 7 455.1 20.6l35.7 35.7C504.4 69.9 512 88.3 512 107.4s-7.6 37.6-21.2 51.1c-3.5 3.5-18.4 18.4-44.9 44.9z"/>    </g>
+    </g>
+ 
+  </svg>
+
+  <%# ── メインコンテンツ ── %>
+  <div class="relative z-10 text-center max-w-2xl">
+    <!-- <h1 class="font-title text-5xl mb-4">Capture Your Day</h1> -->
+    <span class="inline-block text-lg font-medium tracking-widest
+                 text-forest-600 bg-white/80 px-4 py-1 rounded-full mb-6">
+      AI English Journal
+    </span>
+    <%# メインキャッチコピー %>
+    <h1 class="font-sans text-5xl font-normal text-forest-800 leading-snug mb-4">
+      英語で、<br>
+      自分の気持ちを表現しよう。
+    </h1>
+
+    <%# サブコピー %>
+    <p class="text-base text-forest-400 leading-relaxed mb-9">
+      完璧な英文より、続ける一文を。<br>
+      毎日の小さな一文が自信につながる。<br>
+    </p>
+    <%# CTAボタン群 %>
+    <div class="flex gap-3 justify-center items-center flex-wrap">
+      <%= link_to "日記を書く →", new_user_registration_path,
+          class: "btn btn-lg bg-forest-500 text-white border-none hover:bg-forest-600 px-8" %>
+
+      <%= link_to "ログインはこちら", new_user_session_path,
+          class: "btn btn-lg bg-white text-center text-forest-600 border-none hover:bg-cream-50" %>
+    </div>
+  </div>
+</section>
+<%# 特徴セクション：続けられる3つの理由 %>
+
+<section class="py-16 px-10 bg-cream-50 border-t border-cream-300">
+
+  <%# セクションラベル＆タイトル %>
+  <p class="text-2xl font-medium tracking-widest text-cream-500 text-center mb-2">FEATURES</p>
+  <h2 class="font-sans text-2xl font-normal text-center text-ink mb-5">
+  Capture Your Dayの3つの特徴
+  </h2>
+
+  <%# 特徴カードグリッド %>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+
+    <%# 特徴1：気軽に書ける %>
+    <div class="bg-white border border-cream-300 rounded-[20px] p-6 py-14 text-center">
+    
+      <div class="w-12 h-12 rounded-full bg-forest-50 flex items-center justify-center mx-auto mb-4">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+             stroke="#1D9E75" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+        </svg>
+      </div>
+      <h3 class="text-lg font-medium text-ink mb-2">気軽に書ける</h3>
+      <p class="text-base text-ink-muted leading-relaxed">
+        文法が完璧じゃなくてOK。<br>
+        今日あったこと、気持ちを思ったままの英語で書きましょう。
+      </p>
+    </div>
+
+    <%# 特徴2：AIが添削 %>
+    <div class="bg-white border border-cream-300 rounded-[20px] p-6 py-14 text-center">
+      <div class="w-12 h-12 rounded-full bg-forest-50 flex items-center
+                  justify-center mx-auto mb-4">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+             stroke="#1D9E75" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+        </svg>
+      </div>
+      <h3 class="text-lg font-medium text-ink mb-2">AIが添削してくれる</h3>
+      <p class="text-base text-ink-muted leading-relaxed">
+        書いた英文をAIが添削。<br>
+        間違いの指摘と自然な言い回しをやさしく教えてくれます。
+      </p>
+    </div>
+
+    <%# 特徴3：記録が積み重なる %>
+    <div class="bg-white border border-cream-300 rounded-[20px] p-6  py-14 text-center">
+      <div class="w-12 h-12 rounded-full bg-forest-50 flex items-center
+                  justify-center mx-auto mb-4">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+             stroke="#1D9E75" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        </svg>
+      </div>
+      <h3 class="text-lg font-medium text-ink mb-2">記録が積み重なる</h3>
+      <p class="text-base text-ink-muted leading-relaxed">
+        自分の間違い傾向が把握できます。<br>
+        日々の積み重ねで、確かな成長を感じられます。
+      </p>
+    </div>
+
+  </div>
+</section>
+<section class="py-16 px-10 bg-forest-500 text-center">
+
+  <h2 class="font-title text-2xl font-normal text-white mb-3">
+    思ったことを、英語にしてみよう。
+  </h2>
+  <p class="text-sm text-forest-300 mb-8"></p> 
+
+  <div class="flex flex-col items-center gap-3">
+    <%= link_to "日記を書く →", new_user_registration_path,
+          class: "btn rounded-full bg-white text-sage-700 border-none
+                  hover:bg-cream-50 px-10 w-60" %>
+
+    <%= link_to "ログインはこちら", new_user_session_path,
+          class: "btn btn-ghost rounded-full text-sage-100
+                  border border-white/40 px-8 hover:bg-white/20" %>
+  </div>
+</section>
+
+<%# フッター %>
+<footer class="py-5 px-10 bg-cream-100 border-t border-cream-300 text-center">
+  <div class="flex items-center justify-center gap-4 mb-1">
+  <%= link_to "利用規約", "#", 
+     class: "link link-hover text-sm text-cream-400 hover:text-cream-600 transition-colors" %>
+  <%= link_to "プライバシーポリシー", "#", 
+     class: "link link-hover text-sm text-cream-400 hover:text-cream-600 transition-colors" %>
+  </div>
+  <p class="text-sm text-cream-400">© 2026 Capture Your Day</p>
+</footer>
