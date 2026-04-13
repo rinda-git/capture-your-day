@@ -47,7 +47,7 @@ class RegistrationLayoutTest < ActionDispatch::IntegrationTest
 
     delete destroy_user_session_path
 
-    assert_redirected_to new_user_session_path
+    assert_redirected_to unauthenticated_root_url
 
     follow_redirect!
 
