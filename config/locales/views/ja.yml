@@ -12,7 +12,7 @@ ja:
   #     title: ログイン
     registrations:
       new:
-        title: 新規登録
+        # title: 新規登録
     sessions:
   shared:
     header:

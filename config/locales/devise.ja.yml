@@ -112,6 +112,7 @@ ja:
         we_need_your_current_password_to_confirm_your_changes: 変更を反映するには現在のパスワードを入力してください
 
       new:
+        title: 新規登録
         sign_up: 新規登録
         sign-up: "新規登録"
         to_log_in: ログイン画面へ
@@ -127,6 +128,7 @@ ja:
     sessions:
       already_signed_out: ログアウト済みです。
       new:
+        title: ログイン
         sign_in: ログイン
       signed_in: ログインしました。
       signed_out: ログアウトしました。
