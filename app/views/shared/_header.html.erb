@@ -5,6 +5,7 @@
     <%# link_to "Home", root_path, class: "btn btn-ghost normal-case text-xl" %>
   </div>
 
+<%# PC用 #%>
 <div class="navbar-center">
   <% if user_signed_in? %>
   <span>
@@ -22,7 +23,9 @@
       <!--<h1 class="font-cormorant text-2xl font-bold text-ink">Capture Your Day</h1> -->
 </div>
       <!-- navbar-end -->
-<div class="navbar-end">
+<%# 右側：ボタン・スマホメニュー %>
+<div class="navbar-end gap-2">
+  <div class="hidden md:flex gap-2">
       <% if user_signed_in? %>
         <%= link_to t('.logout'), destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" }, class: "btn btn-primary font-bold text-white hover:opacity-70" %>
       <% else %>
@@ -35,7 +38,34 @@
           <%= link_to t('.login'), new_user_session_path, class: "btn btn-outline btn-md px-6 text-sm sm:text-base h-11 min-h-11 hover:opacity-70" %>
         <% end %>
       <% end %>
-        </div>    
+        </div>
+  <%# スマホ用ハンバーガーメニュー（md未満で表示） %>
+  <div class="dropdown deopdown-end md:hidden">
+    <label tabondex="0" class="btn btn-ghost">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+    </label>
+    <ul tabindex="0" class="dropdown-content menu p-2 bg-white rounded-box w-52 mt-2 border border-cream-300">
+      <% if user_signed_in? %>
+        <li><%= link_to "ホーム", authenticated_root_path %></li>
+        <li><%= link_to "今日の日記", "#" %></li>
+        <li><%= link_to "ジャーナル一覧", "#" %></li>
+        <li><%= link_to "カレンダー", "#" %></li>
+        <li><%= link_to "学び", "#" %></li>
+        <li><%= link_to "マイページ", "#" %></li>
+        <li>
+          <%= link_to t('.logout'), destroy_user_session_path,
+              data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" } %>
+        </li>
+      <% else %>
+        <li><%= link_to t('.register'), new_user_registration_path %></li>
+        <li><%= link_to t('.login'), new_user_session_path %></li>
+      <% end %>
+      </ul>
+  </div>
 </div>
 
 </header>

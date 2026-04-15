@@ -14,6 +14,16 @@ class JournalsController < ApplicationController
 
   def create
     @journal = current_user.journals.new(journal_params)
+
+    # tone = params[:tone]
+    # result = JournalCorrectionService.new(@journal.body, tone).call
+
+    # #JSONのまま保存
+    # @journal.corrected_body = result["corrected_body"]
+    # @journal.overall_comment = result["overall_comment"]
+    # @journal.correction_points = result["points"] #Jsonbカラム
+    # @journal.tone = tone
+
     if @journal.save
       redirect_to journals_path, success: "ジャーナルが作成されました。"
     else

@@ -1,19 +1,27 @@
 ja:
   helpers:
-  #   submit:
-  #     create: 登録
-  #     submit: 保存
-  #     update: 更新
+    submit:
+      create: 登録
+      submit: 保存
+      update: 更新
+      polite: 丁寧
+      standard: スタンダード
+      casual: カジュアル
+      
   #   label:
   #     email: メールアドレス
   #     password: パスワード
   # user_sessions:
   #   new:
   #     title: ログイン
-    registrations:
-      new:
+  registrations:
+    new:
         # title: 新規登録
-    sessions:
+  sessions:
+    new:
+  journals:
+    new:
+      title: ジャーナリング作成
   shared:
     header:
       login: ログイン

@@ -8,3 +8,15 @@ ja:
         name: ユーザー名
         password_confirmation: パスワード（確認用）
         # email: メールアドレス
+      journal:
+        posted_date: 投稿日
+        title: タイトル
+        body: 本文
+        mood: 気分
+  enums:
+    journal:
+      mood:
+        great: 最高
+        good: 良い
+        neutral: 普通
+        bad: 悪い
