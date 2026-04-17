@@ -22,6 +22,8 @@ ja:
   journals:
     new:
       title: ジャーナリング作成
+    show:
+      title: 添削結果
   shared:
     header:
       login: ログイン
