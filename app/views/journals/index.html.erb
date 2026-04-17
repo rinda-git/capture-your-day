@@ -9,16 +9,18 @@
   <%= link_to "日記を書く", new_journal_path(posted_date:Date.current), class:"btn btn-primary" %>
   </div> -->
 
-   <% @journals.each do |journal| %>
-    <%#　1件ずつ枠で囲む  %>
-    <div class="border border-cream-300 bg-white rounded-lg px-3 py-2 mb-4">
-    <p class="font-bold text-cream-500 mb-3">
-    <%= link_to journal.posted_date.strftime("%Y/%m/%d"), journal_path(journal) %>
-      <p class="mb-3 line-clamp-2">
-        <%= journal.body %>
+    <%# 日記一覧をループ %>
+    <% @journals.each do |journal| %>
+      <%#　1件ずつ枠で囲む  %>
+      <%= link_to journal_path(journal), class:"block border border-cream-300 bg-white rounded-lg px-3 py-2 mb-4" do %>
+      
+      <p class="font-bold text-cream-500 mb-3">
+      <%= journal.posted_date.strftime("%Y/%m/%d") %>
       </p>
-    </p>
-    </div>
-  <% end %>
-
+      
+      <p class="mb-3 line-clamp-2">
+          <%= journal.body %>
+      </p>
+      <% end %>
+    <% end %>
 </div>
