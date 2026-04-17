@@ -1,18 +1,24 @@
 <%= content_for(:title, t('.title', default: APP_NAME)) %>
-<div>
-  <h1 class="font-bold text-4xl">Journals#index</h1>
-  <p>Find me in app/views/journals/index.html.erb</p>
 
-    <div class="actions">
-  <%= link_to "Write today's journal", new_journal_path(posted_date:Date.current), class:"btn btn-primary" %>
-  </div>
-  <div class="container" >
-   <h1 class="font-title font-bold"> My Journal </h1>
+<div class="max-w-3xl mx-auto">
+  <h1 class="font-bold font-title text-3xl text-center font-cream-500 mt-4 mb-5">
+  My Journal
+  </h1>
 
-   <h2 class="font-size font-bold">Recent Journals</h2>
+    <!-- <div class="actions mb-4">
+  <%= link_to "日記を書く", new_journal_path(posted_date:Date.current), class:"btn btn-primary" %>
+  </div> -->
+
    <% @journals.each do |journal| %>
-    <p>
-    <strong><%= journal.posted_date %></strong>
+    <%#　1件ずつ枠で囲む  %>
+    <div class="border border-cream-300 bg-white rounded-lg px-3 py-2 mb-4">
+    <p class="font-bold text-cream-500 mb-3">
+    <%= link_to journal.posted_date.strftime("%Y/%m/%d"), journal_path(journal) %>
+      <p class="mb-3 line-clamp-2">
+        <%= journal.body %>
+      </p>
     </p>
+    </div>
   <% end %>
+
 </div>
