@@ -1,5 +1,49 @@
 <%= content_for(:title, t('.title', default: APP_NAME)) %>
-<div>
-  <h1 class="font-bold text-4xl">Journals#show</h1>
-  <p>Find me in app/views/journals/show.html.erb</p>
+<main class="flex-grow px-10">
+
+<div class="max-w-2xl mx-auto px-4 py-6">
+  
+  <%# ページタイトル %>
+  <h1 class="font-sans font-bold text-4xl text-center mb-5">
+    <%= t('.title') %>
+  </h1>
+
+  <p class="text-2xl font-medium text-cream-500 mb-4">
+  <%= @journal.posted_date.strftime("%Y/%m/%d") %>
+  </p>
+  
+  <div class="card bg-forest-100 mb-4">
+    <div class="card-body">
+      <h2 class="card-title ">Original Sentence</h2>
+      <div class="border border-gray-300 bg-white rounded-2xl p-3">
+      <%= @mistake.original_text %>
+     </div>
+    </div>
+  </div>
+
+  <div class="card bg-forest-100 mb-4">
+    <div class="card-body">
+      <h2 class="card-title">Corrected Sentence</h2>
+      <div class="border border-gray-300 bg-white rounded-2xl p-3">
+      <%= @mistake.corrected_text %>
+      </div>
+    </div>
+  </div>  
+
+  <div class="card bg-forest-100 mb-4">
+    <div class="card-body">
+     <h2 class="card-title">Explanation</h2>
+      <div class="border border-gray-300 bg-white rounded-2xl p-3">
+      <%= @mistake.explanation %>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex mt-5 gap-5">
+  <%= link_to '戻る' , journals_path, class:"btn btn-primary flex-1" %>
+  <%= button_to "このジャーナルを削除",
+      journal_path(@journal), method: :delete, form: { data: { turbo_confirm: "このジャーナルを削除しますか?"}}, class: "btn btn-error" %>
+  </div>
+
 </div>
+</main>

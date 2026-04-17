@@ -7,6 +7,7 @@ class JournalsController < ApplicationController
 
   def show
     @journal = current_user.journals.find(params[:id])
+    @mistake = @journal.mistakes.first
   end
 
   def new
