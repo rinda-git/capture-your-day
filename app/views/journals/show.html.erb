@@ -8,36 +8,61 @@
     <%= t('.title') %>
   </h1>
 
-  <p class="text-2xl font-medium text-cream-500 mb-4">
-  <%= @journal.posted_date.strftime("%Y/%m/%d") %>
-  </p>
-  
+    <%# 元の文章（日本語でもそのまま表示） %>
   <div class="card bg-forest-100 mb-4">
     <div class="card-body">
-      <h2 class="card-title ">Original Sentence</h2>
+      <h2 class="card-title">元の文章</h2>
       <div class="border border-gray-300 bg-white rounded-2xl p-3">
-      <%= @mistake.original_text %>
-     </div>
-    </div>
-  </div>
-
-  <div class="card bg-forest-100 mb-4">
-    <div class="card-body">
-      <h2 class="card-title">Corrected Sentence</h2>
-      <div class="border border-gray-300 bg-white rounded-2xl p-3">
-      <%= @mistake.corrected_text %>
-      </div>
-    </div>
-  </div>  
-
-  <div class="card bg-forest-100 mb-4">
-    <div class="card-body">
-     <h2 class="card-title">Explanation</h2>
-      <div class="border border-gray-300 bg-white rounded-2xl p-3">
-      <%= @mistake.explanation %>
+        <%= @overall&.original_text %>
       </div>
     </div>
   </div>
+
+  <%# 添削後の英文 %>
+  <div class="card bg-forest-100 mb-4">
+    <div class="card-body">
+      <h2 class="card-title">添削後の文章</h2>
+      <div class="border border-gray-300 bg-white rounded-2xl p-3">
+        <%= @overall&.corrected_text %>
+      </div>
+    </div>
+  </div>
+
+  <%# 個別の指摘リストを表示 %>
+  <% if @mistakes.present? %>
+    <div class="card bg-forest-100 mb-4">
+      <div class="card-body">
+        <h2 class="card-title mb-3">今回の学び（<%= @mistakes.size %>件）</h2>
+
+        <% @mistakes.each do |mistake| %>
+          <div class="border border-gray-300 bg-white rounded-2xl p-3 mb-3">
+
+            <%# 間違いの種類バッジ %>
+            <span class="badge badge-outline badge-sm mb-2">
+              <%= mistake.mistake_type %>
+            </span>
+
+            <%# 元の表現 → 修正後 %>
+            <p>
+              <span class="line-through text-error"><%= mistake.original_text %></span>
+              →
+              <span class="font-bold text-success"><%= mistake.corrected_text %></span>
+            </p>
+
+            <%# 日本語説明 %>
+            <p class="text-sm mt-1"><%= mistake.explanation %></p>
+
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  <% else %>
+    <div class="alert alert-success mb-4">
+      <span>🎉 間違いは見つかりませんでした！</span>
+    </div>
+  <% end %>
+
 
   <div class="flex mt-5 gap-5">
   <%= link_to '戻る' , journals_path, class:"btn btn-primary flex-1" %>

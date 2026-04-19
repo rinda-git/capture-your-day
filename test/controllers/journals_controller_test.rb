@@ -29,18 +29,37 @@ end
   end
 
   test "should create journal" do
-    assert_difference("Journal.count", 1) do
+  # OpenAI APIをモック化（実際には呼ばない）
+  mock_result = {
+    "rewritten_text" => "This is a test.",
+    "notes" => []
+  }
+
+  # OpenAI::Clientのchatメソッドを差し替える
+  mock_response = {
+    "choices" => [
+      { "message" => { "content" => mock_result.to_json } }
+    ]
+  }
+
+  mock_client = Minitest::Mock.new
+  mock_client.expect(:chat, mock_response, parameters: Hash)
+
+ OpenAI::Client.stub(:new, mock_client) do
+    assert_difference("Journal.count") do
       post journals_url, params: {
         journal: {
+          body:        "Test body",
+          tone:        "standard",
+          mood:        "good",
           posted_date: Date.today,
-          mood: "great",
-          title: "test",
-          body: "test"
+          title:       "Test title"
         }
       }
     end
-    assert_response :redirect
+    assert_redirected_to journal_url(Journal.last)
   end
+end
 
   test "should get edit" do
     get edit_journal_url(@journal)
@@ -48,7 +67,14 @@ end
   end
 
   test "should update journal" do
-    patch journal_url(@journal), params: { journal: { title: "updated" } }
+    patch journal_url(@journal), params: {
+          journal: {
+            posted_date: @journal.posted_date,
+            mood: @journal.mood,
+            title: "updated",
+            body: @journal.body,
+            tone: "standard"
+            } }
     assert_response :redirect
   end
 
