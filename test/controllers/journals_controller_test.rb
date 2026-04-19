@@ -35,7 +35,8 @@ end
           posted_date: Date.today,
           mood: "great",
           title: "test",
-          body: "test"
+          body: "test",
+          tone: "tone"
         }
       }
     end
@@ -48,7 +49,14 @@ end
   end
 
   test "should update journal" do
-    patch journal_url(@journal), params: { journal: { title: "updated" } }
+    patch journal_url(@journal), params: { 
+          journal: { 
+            posted_date: @journal.posted_date,
+            mood: @journal.nood,
+            title: "updated",
+            body: @journal.body,
+            tone: @journal.tone
+            } }
     assert_response :redirect
   end
 

@@ -6,7 +6,7 @@
   </div>
 
 <%# PC用 #%>
-<div class="navbar-center">
+<div class="navbar-center hidden md:flex">
   <% if user_signed_in? %>
   <span>
     <%= link_to "ホーム", authenticated_root_path, class: "btn btn-ghost normal-case text-md" %>
@@ -40,8 +40,8 @@
       <% end %>
         </div>
   <%# スマホ用ハンバーガーメニュー（md未満で表示） %>
-  <div class="dropdown deopdown-end md:hidden">
-    <label tabondex="0" class="btn btn-ghost">
+  <div class="dropdown dropdown-end md:hidden">
+    <label tabindex="0" class="btn btn-ghost">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
              viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
