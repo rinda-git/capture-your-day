@@ -49,8 +49,8 @@ end
   end
 
   test "should update journal" do
-    patch journal_url(@journal), params: { 
-          journal: { 
+    patch journal_url(@journal), params: {
+          journal: {
             posted_date: @journal.posted_date,
             mood: @journal.nood,
             title: "updated",
