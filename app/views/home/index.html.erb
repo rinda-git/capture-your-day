@@ -39,12 +39,12 @@
             <%= journal.posted_date.strftime("%Y/%m/%d") %>
           </p>
 
-          <h4 class="font-bold text-ink mb-2">
-          <%= link_to journal.title, journal_path(journal) %>
-          </h4>
+          <!-- <h4 class="font-bold text-ink mb-2">
+          <%# link_to journal.title, journal_path(journal) %>
+          </h4> -->
    
           <p class="text-ink mb-3 line-clamp-2">
-            <%= journal.body %>
+            <%= journal.corrected_body %>
           </p>
         
           <%= link_to journal_path(journal), class: "btn btn-sm btn-outline" do %>
