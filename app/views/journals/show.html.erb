@@ -56,12 +56,14 @@
         <% end %> -->
           <ol class="list-decimal list-inside">
           <% @mistakes.each do |mistake| %>
-          <li>
+          
           <div class="mb-4">
-          <p class="font-semibold">### <%= mistake.mistake_type %></p>
-          <p class="text-base">  【元の文章】: <%= mistake.original_text %></p>
-          <p class="text-base">  【添削後】: <%= mistake.corrected_text %></p>
-          <p class="text-sm text-gray-600">  ポイント: <%= mistake.explanation %></p>
+          <li>
+          <span class="font-semibold">
+          <%= mistake_type_label(mistake.mistake_type) %></span>
+          <p class="text-base font-normal">  【元の文章】: <%= mistake.original_text %></p>
+          <p class="text-base font-normal">  【添削後】: <%= mistake.corrected_text %></p>
+          <p class="text-sm text-gray-600 font-normal">  ポイント: <%= mistake.explanation %></p>
         </div>
           </li>
          <% end %>

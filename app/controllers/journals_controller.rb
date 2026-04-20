@@ -1,4 +1,5 @@
 class JournalsController < ApplicationController
+  helper MistakesHelper
   before_action :authenticate_user!
   def index
     @journals =current_user.journals.order(created_at: :desc)
