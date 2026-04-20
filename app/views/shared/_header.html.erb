@@ -1,7 +1,7 @@
 <%# ログイン後のヘッダー %>
-<header class="navbar bg-white border-b border-sage-100 fixed top-0 left-0 right-0 z-50 px-4">
+<header class="navbar bg-white border-b border-sage-100 fixed top-0 left-0 right-0 z-50 px-4 h-16">
   <div class="navbar-start">
-    <%= link_to "Capture Your Day", (user_signed_in? ? authenticated_root_path : unauthenticated_root_path), class:"font-title text-2xl font-bold text-ink"%>
+    <%= link_to "Capture Your Day", (user_signed_in? ? authenticated_root_path : unauthenticated_root_path), class:"font-title text-lg sm:text-xl md:text-2xl font-bold text-ink leading-tight"%>
     <%# link_to "Home", root_path, class: "btn btn-ghost normal-case text-xl" %>
   </div>
 
