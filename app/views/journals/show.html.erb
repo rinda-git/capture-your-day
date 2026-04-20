@@ -1,10 +1,10 @@
 <%= content_for(:title, t('.title', default: APP_NAME)) %>
 <main class="flex-grow px-10">
 
-<div class="max-w-2xl mx-auto px-4 py-6">
+<div class="max-w-3xl mx-auto md:px-0">
   
   <%# ページタイトル %>
-  <h1 class="font-sans font-bold text-4xl text-center mb-5">
+  <h1 class="font-sans font-bold text-4xl text-center py-5">
     <%= t('.title') %>
   </h1>
 
@@ -12,7 +12,7 @@
   <div class="card bg-forest-100 mb-4">
     <div class="card-body">
       <h2 class="card-title">元の文章</h2>
-      <div class="border border-gray-300 bg-white rounded-2xl p-3">
+      <div class="border border-gray-300 bg-white rounded-2xl p-5">
         <%= @overall&.original_text %>
       </div>
     </div>
@@ -23,7 +23,7 @@
   <div class="card bg-forest-100 mb-4">
     <div class="card-body">
       <h2 class="card-title">添削後の文章</h2>
-      <div class="border border-gray-300 bg-white rounded-2xl p-3">
+      <div class="border border-gray-300 bg-white rounded-2xl p-5">
         <%= @overall&.corrected_text %>
       </div>
     </div>
@@ -35,8 +35,8 @@
       <div class="card-body">
         <h2 class="card-title mb-3">今回の学び（<%= @mistakes.size %>件）</h2>
 
-        <% @mistakes.each do |mistake| %>
-          <div class="border border-gray-300 bg-white rounded-2xl p-3 mb-3">
+        <div class="border border-gray-300 bg-white rounded-2xl p-5 mb-4">
+        <!--<% @mistakes.each do |mistake| %>
 
             <%# 間違いの種類バッジ %>
             <span class="badge badge-outline badge-sm mb-2">
@@ -46,16 +46,27 @@
             <%# 元の表現 → 修正後 %>
             <p>
               <span class="line-through text-error"><%= mistake.original_text %></span>
-              →
-              <span class="font-bold text-success"><%= mistake.corrected_text %></span>
             </p>
+              <p>→
+              <span class="font-bold text-success"><%= mistake.corrected_text %></span>
+              </p>
 
             <%# 日本語説明 %>
             <p class="text-sm mt-1"><%= mistake.explanation %></p>
-
-          </div>
-        <% end %>
-
+        <% end %> -->
+          <ol class="list-decimal list-inside">
+          <% @mistakes.each do |mistake| %>
+          <li>
+          <div class="mb-4">
+          <p class="font-semibold">### <%= mistake.mistake_type %></p>
+          <p class="text-base">  【元の文章】: <%= mistake.original_text %></p>
+          <p class="text-base">  【添削後】: <%= mistake.corrected_text %></p>
+          <p class="text-sm text-gray-600">  ポイント: <%= mistake.explanation %></p>
+        </div>
+          </li>
+         <% end %>
+         </ol>
+         </div>
       </div>
     </div>
   <% else %>
