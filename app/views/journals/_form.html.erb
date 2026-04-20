@@ -1,9 +1,8 @@
 <%= form_with model: journal do |f| %>
   <%# render 'shared/error_messages', object: f.object %>
   <div class="mb-3">
+    <p class="text-sans text-base font-medium mb-2">今日の気分</p>
     <div class="border border-gray-300 bg-white rounded-2xl py-3 px-3">
-    <p class="text-sans text-xl font-medium mb-2">今日の気分</p>
-    
     <div class="flex gap-2">
     <% Journal.moods.each do |key, value| %>
       <label for="mood_<%= key %>" class="flex flex-col items-center cursor-pointer gap-1 flex-1">
@@ -12,7 +11,7 @@
         <%= f.radio_button :mood, key, id: "mood_#{key}", class:"hidden peer" %>
         <%= image_tag "moods/#{key}.svg", 
             alt: I18n.t("enums.journal.mood.#{key}"),
-            class: 'mood-icon w-12 h-12 max-w-12 peer-checked:scale-125 transition-transform' %>
+            class: 'mood-icon w-10 h-10 max-w-12 peer-checked:scale-125 transition-transform peer-checked:bg-forest-50' %>
 
         <span>
             <%= I18n.t("enums.journal.mood.#{key}") %>
@@ -24,38 +23,38 @@
   </div>
 
   <div class="mb-3">
-    <%= f.label :posted_date, class: "label label-text text-base" %>
+    <%= f.label :posted_date, class: "label label-text text-base font-medium" %>
     <%= f.date_field :posted_date, class: "input input-bordered w-full" %>
   </div>
-  <div class="mb-3">
+  <!--<div class="mb-3">
     <%= f.label :title, class: "label label-text text-base" %>
     <%= f.text_field :title, class:"input input-bordered w-full" %>
-  </div>
+  </div> -->
   <div class="mb-3">
-    <%= f.label :body, class:"label label-text text-base" %>
-    <%= f.text_area :body, class: "textarea textarea-bordered w-full", rows: "10" %>
+    <%= f.label :body, class:"label label-text text-base font-medium" %>
+    <%= f.text_area :body, class: "textarea textarea-bordered w-full text-base", rows: "10", placeholder:"今日の出来事や気持ちを、英語または日本語で書いてみましょう" %>
   </div>
 
   <div class="mb-4">
-  <div class="font-medium text-lg mb-2">添削トーン</div>
+  <div class="font-medium text-base mb-2">添削トーン</div>
     <div class="flex gap-4">
       <label class="flex-1">
         <%= f.radio_button :"tone", "polite", class: "hidden peer" %>
-        <span class="btn btn-outline btn-primary w-full peer-checked:btn-primary">
+        <span class="btn btn-outline btn-primary w-full peer-checked:bg-forest-500 peer-checked:text-white ">
         丁寧
         </span>
       </label>
 
       <label class="flex-1">
         <%= f.radio_button :"tone", "standard", class: "hidden peer" %>
-        <span class="btn btn-outline btn-primary w-full peer-checked:btn-primary">
+        <span class="btn btn-outline btn-primary w-full peer-checked:bg-forest-500 peer-checked:text-white">
         スタンダード
         </span>
       </label>
 
       <label class="flex-1">
         <%= f.radio_button :"tone", "casual", class:"hidden peer" %>
-        <span class="btn btn-outline btn-primary w-full peer-checked:btn-primary">
+        <span class="btn btn-outline btn-primary w-full peer-checked:bg-forest-500 peer-checked:text-white ">
         カジュアル
         </span>
       </label>

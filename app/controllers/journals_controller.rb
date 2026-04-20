@@ -2,6 +2,7 @@ class JournalsController < ApplicationController
   before_action :authenticate_user!
   def index
     @journals =current_user.journals.order(created_at: :desc)
+    # @journals = current_user.journals.includes(:mistakes).order(created_at: :desc)
   end
 
   def show
@@ -12,11 +13,17 @@ class JournalsController < ApplicationController
   end
 
   def new
-    @journal = current_user.journals.new
+    @journal = current_user.journals.new(posted_date: Date.current)
   end
 
   def create
-    # @journal = current_user.journals.new(journal_params)
+    @journal = current_user.journals.new(journal_params)
+    if @journal.invalid?
+      flash.now[:alert] = "ジャーナルの作成に失敗しました"
+      render :new, status: :unprocessable_entity
+      return
+    end
+
     # Rails.logger.debug "=== journal_params: #{journal_params.inspect}"
     # 1 フォームから本文の文字列を受け取る
     body = params[:journal][:body]
@@ -126,9 +133,9 @@ class JournalsController < ApplicationController
       result = JSON.parse(raw_response)
 
       # 6 DBに保存する
-      @journal = current_user.journals.build(
-        **journal_params  # title, posted_date, mood, body, tone が全部入る
-      )
+      # @journal = current_user.journals.build(
+      #   **journal_params  # title, posted_date, mood, body, tone が全部入る
+      # )
 
       if @journal.save
 
@@ -158,23 +165,6 @@ class JournalsController < ApplicationController
         render :new, status: :unprocessable_entity
       end
     end
-
-  # tone = params[:tone]
-  # result = JournalCorrectionService.new(@journal.body, tone).call
-
-  # #JSONのまま保存
-  # @journal.corrected_body = result["corrected_body"]
-  # @journal.overall_comment = result["overall_comment"]
-  # @journal.correction_points = result["points"] #Jsonbカラム
-  # @journal.tone = tone
-
-  #   if @journal.save
-  #     redirect_to journals_path, success: "ジャーナルが作成されました。"
-  #   else
-  #     flash.now[:alert] = "ジャーナルの作成に失敗しました。"
-  #     render :new, status: :unprocessable_entity
-  #   end
-  # end
 
   def edit
     @journal = current_user.journals.find(params[:id])

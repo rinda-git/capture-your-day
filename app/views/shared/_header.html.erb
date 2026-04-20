@@ -1,7 +1,7 @@
 <%# ログイン後のヘッダー %>
 <header class="navbar bg-white border-b border-sage-100 fixed top-0 left-0 right-0 z-50 px-4">
   <div class="navbar-start">
-    <span class="font-title text-2xl font-bold text-ink">Capture Your Day</span>
+    <%= link_to "Capture Your Day", (user_signed_in? ? authenticated_root_path : unauthenticated_root_path), class:"font-title text-2xl font-bold text-ink"%>
     <%# link_to "Home", root_path, class: "btn btn-ghost normal-case text-xl" %>
   </div>
 
@@ -51,8 +51,8 @@
     <ul tabindex="0" class="dropdown-content menu p-2 bg-white rounded-box w-52 mt-2 border border-cream-300">
       <% if user_signed_in? %>
         <li><%= link_to "ホーム", authenticated_root_path %></li>
-        <li><%= link_to "今日の日記", "#" %></li>
-        <li><%= link_to "ジャーナル一覧", "#" %></li>
+        <li><%= link_to "今日の日記", new_journal_path %></li>
+        <li><%= link_to "ジャーナル一覧", journals_path %></li>
         <li><%= link_to "カレンダー", "#" %></li>
         <li><%= link_to "学び", "#" %></li>
         <li><%= link_to "マイページ", "#" %></li>
