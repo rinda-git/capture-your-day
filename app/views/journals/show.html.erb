@@ -1,67 +1,69 @@
 <%= content_for(:title, t('.title', default: APP_NAME)) %>
-<main class="flex-grow px-4 sm:px-6 md:px-10">
+<div class="flex-grow px-2 sm:px-6 md:px-10">
+   <div class="max-w-3xl mx-auto pt-2 pb-6 sm:pt-6 md:px-0">
+  <!--<div class="max-w-3xl mx-auto md:px-0 pt-6 pb-12"> -->
+    <%# ページタイトル %>
+    <h1 class="font-sans font-bold text-3xl md:text-4xl text-center mb-6">
+      <%= t('.title') %>
+    </h1>
 
-<div class="max-w-3xl mx-auto md:px-0 pt-6 pb-12">
-  
-  <%# ページタイトル %>
-  <h1 class="font-sans font-bold text-3xl md:text-4xl text-center mb-6">
-    <%= t('.title') %>
-  </h1>
-
-<%# 元の文章（日本語でもそのまま表示） %>
-  <div class="border border-cream-300 bg-forest-100 rounded-2xl p-4 mb-4">
-    <h2 class="font-semibold mb-2">元の文章</h2>
-      <div class="border border-cream-300 bg-white rounded-2xl p-4 mb-2">
-      <p>
-        <%= @overall&.original_text %>
-      </p>
-      </div>
-  </div>
-  
-  <%# 添削後の英文 %>
-  <div class="border border-cream-300 bg-forest-100 rounded-2xl p-4 mb-4">
-    <h2 class="font-semibold mb-3">添削後の文章</h2>
-      <div class="border border-cream-300 bg-white rounded-2xl p-4 mb-2">
-        <p>  
-        <%= @overall&.corrected_text %>
-        </p>
-      </div>
-  </div>
-
-  <%# 個別の指摘リストを表示 %>
-  <% if @mistakes.present? %>
+  <%# 元の文章（日本語でもそのまま表示） %>
     <div class="border border-cream-300 bg-forest-100 rounded-2xl p-4 mb-4">
-        <h2 class="font-semibold mb-3">今回の学び（<%= @mistakes.size %>件）</h2>
-
-        <div class="border border-gray-300 bg-white rounded-2xl p-4 mb-2">
-          <ol class="list-decimal list-inside">
-          <% @mistakes.each do |mistake| %>
-          <li class="mb-4">
-          <span class="font-semibold">
-          <%= mistake_type_label(mistake.mistake_type) %></span>
-          <p class="text-base font-normal">  【元の文章】: <%= mistake.original_text %></p>
-          <p class="text-base font-normal">  【添削後】: <%= mistake.corrected_text %></p>
-          <p class="text-sm text-gray-600 font-normal">  ポイント: <%= mistake.explanation %></p>
-
-          </li>
-         <% end %>
-         </ol>
+      <h2 class="font-semibold mb-2">元の文章 </h2>
+        <div class="border border-cream-300 bg-white rounded-2xl p-4 mb-2">
+        <p>
+          <%= @overall&.original_text %>
+        </p>
         </div>
     </div>
-  <% else %>
-    <div class="alert alert-success mb-4">
-      <span>🎉 間違いは見つかりませんでした！</span>
+    
+    <%# 添削後の英文 %>
+    <div class="border border-cream-300 bg-forest-100 rounded-2xl p-4 mb-4">
+      <div class="flex items-center gap-2">
+        <h2 class="font-semibold mb-3">添削後の文章</h2>
+        <span class="badge badge-ghost mb-3 p-3">添削トーン：<%= t("activerecord.attributes.journal.tones.#{@journal.tone}") %></span>
+      </div>
+        <div class="border border-cream-300 bg-white rounded-2xl p-4 mb-2">
+          <p>  
+          <%= @overall&.corrected_text %>
+          </p>
+        </div>
     </div>
-  <% end %>
+
+    <%# 個別の指摘リストを表示 %>
+    <% if @mistakes.present? %>
+      <div class="border border-cream-300 bg-forest-100 rounded-2xl p-4 mb-4">
+          <h2 class="font-semibold mb-3">今回の学び（<%= @mistakes.size %>件）</h2>
+
+          <div class="border border-gray-300 bg-white rounded-2xl p-4 mb-2">
+            <ol class="list-decimal list-inside">
+            <% @mistakes.each do |mistake| %>
+            <li class="mb-4">
+            <span class="font-semibold">
+            <%= mistake_type_label(mistake.mistake_type) %></span>
+            <p class="text-base font-normal">  【元の文章】: <%= mistake.original_text %></p>
+            <p class="text-base font-normal">  【添削後】: <%= mistake.corrected_text %></p>
+            <p class="text-sm text-gray-600 font-normal">  ポイント: <%= mistake.explanation %></p>
+
+            </li>
+          <% end %>
+          </ol>
+          </div>
+      </div>
+    <% else %>
+      <div class="alert alert-success mb-4">
+        <span>🎉 間違いは見つかりませんでした！</span>
+      </div>
+    <% end %>
 
 
 
 
-  <div class="flex mt-5 gap-5">
-  <%= link_to '戻る' , journals_path, class:"btn btn-primary flex-1" %>
-  <%= button_to "このジャーナルを削除",
-      journal_path(@journal), method: :delete, form: { data: { turbo_confirm: "このジャーナルを削除しますか?"}}, class: "btn btn-error" %>
+    <div class="flex mt-5 gap-5">
+    <%= link_to '戻る' , journals_path, class:"btn btn-primary flex-1" %>
+    <%= button_to "このジャーナルを削除",
+        journal_path(@journal), method: :delete, form: { data: { turbo_confirm: "このジャーナルを削除しますか?"}}, class: "btn btn-error" %>
+    </div>
+
   </div>
-
 </div>
-</main>

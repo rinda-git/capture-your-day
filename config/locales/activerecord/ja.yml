@@ -13,6 +13,10 @@ ja:
         title: タイトル
         body: 本文
         mood: 気分
+        tones:
+          polite: 丁寧
+          standard: スタンダード
+          casual: カジュアル
   enums:
     journal:
       mood:
