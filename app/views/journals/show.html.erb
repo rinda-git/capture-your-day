@@ -36,7 +36,7 @@
       </div>
         <div class="border border-cream-300 bg-white rounded-2xl p-4 mb-2">
           <p>  
-          <%= @journal_correction.rewritten_text %>
+          <%= @journal_correction&.rewritten_text %>
           </p>
         </div>
     </div>
@@ -49,16 +49,16 @@
           <div class="border border-gray-300 bg-white rounded-2xl p-4 mb-2">
             <ol class="list-decimal list-inside">
             <% @mistakes.each do |mistake| %>
-            <li class="mb-4">
-            <span class="font-semibold">
-            <%= mistake_type_label(mistake.mistake_type) %></span>
-            <p class="text-base font-normal">  【元の文章】: <%= mistake.original_text %></p>
-            <p class="text-base font-normal">  【添削後】: <%= mistake.corrected_text %></p>
-            <p class="text-sm text-gray-600 font-normal">  ポイント: <%= mistake.explanation %></p>
+              <li class="mb-4">
+              <span class="font-semibold">
+              <%= mistake_type_label(mistake.mistake_type) %></span>
+              <p class="text-base font-normal">  【元の文章】: <%= mistake.original_text %></p>
+              <p class="text-base font-normal">  【添削後】: <%= mistake.corrected_text %></p>
+              <p class="text-sm text-gray-600 font-normal">  ポイント: <%= mistake.explanation %></p>
 
-            </li>
+              </li>
           <% end %>
-          </ol>
+            </ol>
           </div>
       </div>
     <% else %>
@@ -75,30 +75,29 @@
     
       
       <div class="mb-2">  
-      <p class="font-semibold">良い点</p>
-        <% (@journal_correction.strengths || []).each do |strength|  %>
-        <p>【強み】<%= strength["point"] %></p>
-        <p>【元の文章】<%= strength["evidence"] %></p>
-        <p>【何が良かったか】<%= strength["why_it_works"] %></p>
-        <% end %>
+        <p class="font-semibold">良い点</p>
+          <% (@journal_correction.strengths || []).each do |strength|  %>
+          <p>【強み】<%= strength["point"] %></p>
+          <p>【元の文章】<%= strength["evidence"] %></p>
+          <p>【何が良かったか】<%= strength["why_it_works"] %></p>
+          <% end %>
       </div>
         
         <div class="mb-2">  
-        <p class="font-semibold">間違いパターン</p>
-        <% (@journal_correction.mistake_patterns || []).each do |pattern| %>
-          <div class="mb-2">
-          <p>【パターン】<%= pattern["point"] %></p>
-          <p>【元の文章】<%= pattern["evidence"] %></p>
-          <p>【説明】<%= pattern["explanation"] %></p>
-          </div>
-        <% end %>
+          <p class="font-semibold">間違いパターン</p>
+          <% (@journal_correction.mistake_patterns || []).each do |pattern| %>
+            <div class="mb-2">
+            <p>【パターン】<%= pattern["point"] %></p>
+            <p>【元の文章】<%= pattern["evidence"] %></p>
+            <p>【説明】<%= pattern["explanation"] %></p>
+            </div>
+          <% end %>
 
-      <p class="font-semibold">アドバイス</p>
-      <p><%= @journal_correction["advice"] %></p>
+        <p class="font-semibold">アドバイス</p>
+        <p><%= @journal_correction["advice"] %></p>
+        </div>
     </div>
-      </div>
   <% end %>
-  </div>
   </div>
 
     <div class="flex mt-5 gap-5">
