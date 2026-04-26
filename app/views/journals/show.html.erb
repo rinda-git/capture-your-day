@@ -9,17 +9,19 @@
 
   <%# 元の文章（日本語でもそのまま表示） %>
   <%# スマホ：折りたたみ表示 %>
-    <div class="sm:hidden collapse border border-cream-300 bg-forest-100 rounded-2xl p-2 mb-4">
+    <div class="md:hidden collapse collapse-arrow border border-cream-300 bg-forest-100 rounded-2xl mb-4">
       <input type="checkbox" />
-      <h2 class=" collapse-title font-semibold">元の文章 </h2>
-        <div class="collapse-content border border-cream-300 bg-white rounded-2xl p-4">
-        <p>
-          <%= @journal_correction&.original_text %>
-        </p>
+      <h2 class="collapse-title font-semibold pr-10">元の文章を表示</h2>
+      <div class="collapse-content">
+        <div class="border border-cream-300 bg-white rounded-2xl p-4">
+          <p>
+            <%= @journal_correction&.original_text %>
+          </p>
         </div>
+      </div>
     </div>
-  <%# sm以上：通常表示 %>
-      <div class="border border-cream-300 bg-forest-100 rounded-2xl p-4 mb-4">
+  <%# md以上：通常表示 %>
+      <div class="hidden md:block border border-cream-300 bg-forest-100 rounded-2xl p-4 mb-4">
       <h2 class="font-semibold mb-2">元の文章 </h2>
         <div class="border border-cream-300 bg-white rounded-2xl p-4 mb-2">
         <p>

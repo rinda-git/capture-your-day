@@ -45,7 +45,7 @@
             </h4> -->
     
             <p class="text-ink mb-3 line-clamp-2">
-              <%= journal.corrected_body %>
+              <%= journal.journal_correction&.rewritten_text || journal.body %>
             </p>
           
             <%= link_to journal_path(journal), class: "btn btn-sm btn-outline" do %>
