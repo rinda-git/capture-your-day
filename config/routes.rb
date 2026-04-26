@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :journals, only: [ :index, :show, :new, :create, :edit, :update, :destroy ]
   resources :mistakes, only: [ :index, :show, :new, :create, :destroy ]
   resource :user, only: [ :show, :edit, :update, :destroy ]
+  resources :journal_corrections, only: [ :index, :show ]
 
   # テスト用ルーティング　あとで削除する
   # get '/test500', to: 'application#test500'

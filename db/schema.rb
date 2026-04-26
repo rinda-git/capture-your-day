@@ -10,9 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_04_20_081230) do
+ActiveRecord::Schema[7.2].define(version: 2026_04_25_063050) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "journal_corrections", force: :cascade do |t|
+    t.bigint "journal_id", null: false
+    t.bigint "user_id", null: false
+    t.text "original_text", null: false
+    t.text "rewritten_text", null: false
+    t.json "strengths"
+    t.json "mistake_patterns"
+    t.text "advice"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["journal_id"], name: "index_journal_corrections_on_journal_id"
+    t.index ["user_id"], name: "index_journal_corrections_on_user_id"
+  end
 
   create_table "journals", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -35,6 +49,8 @@ ActiveRecord::Schema[7.2].define(version: 2026_04_20_081230) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "mistake_type"
+    t.bigint "journal_correction_id"
+    t.index ["journal_correction_id"], name: "index_mistakes_on_journal_correction_id"
     t.index ["journal_id"], name: "index_mistakes_on_journal_id"
     t.index ["user_id"], name: "index_mistakes_on_user_id"
   end
@@ -63,7 +79,10 @@ ActiveRecord::Schema[7.2].define(version: 2026_04_20_081230) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "journal_corrections", "journals"
+  add_foreign_key "journal_corrections", "users"
   add_foreign_key "journals", "users"
+  add_foreign_key "mistakes", "journal_corrections"
   add_foreign_key "mistakes", "journals"
   add_foreign_key "mistakes", "users"
   add_foreign_key "notification_settings", "users"

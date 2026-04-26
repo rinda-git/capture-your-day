@@ -1,5 +1,6 @@
 class Journal < ApplicationRecord
   belongs_to :user
+  has_one :journal_correction, dependent: :destroy
   has_many :mistakes, dependent: :destroy
 
   validates :posted_date, presence: true
