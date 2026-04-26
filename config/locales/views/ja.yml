@@ -23,10 +23,16 @@ ja:
     new:
       title: ジャーナリング作成
     show:
-      title: 添削結果
+      title: ジャーナル添削結果
+  journal_corrections:
+    index:
+      title: 学び一覧
+    show:
+      title: 学び詳細
   shared:
     header:
       login: ログイン
       logout: ログアウト
       register: 新規登録
+
 
