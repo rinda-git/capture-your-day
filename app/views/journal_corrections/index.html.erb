@@ -1,4 +1,36 @@
-<div>
-  <h1 class="font-bold text-4xl">JournalCorrections#index</h1>
-  <p>Find me in app/views/journal_corrections/index.html.erb</p>
+<%= content_for(:title, t('.title', default: APP_NAME)) %>
+<div class="flex-grow px-2 sm:px-6 md:px-10">
+  <div class="max-w-3xl mx-auto pt-2 pb-6 sm:pt-6 md:px-0">
+    <h1 class="font-semibold font-sans text-lg md:text-4xl sm:text-2xl text-center mb-6">
+    学び一覧
+    </h1>
+
+    <% if @journal_corrections.any? %>
+      <div class="space-y-2">
+      <%# journal_correctionsをループ %>
+      <% @journal_corrections.each do |journal_correction| %>
+
+        <%# 1件ずつ枠で囲む %>
+        <%= link_to journal_correction_path(journal_correction),
+            class:"block border border-cream-300 bg-white rounded-lg px-2 py-1 sm:px-4 py-3" do %>
+        <p class="font-bold text-cream-500 mb-3">
+        <%= journal_correction.journal.posted_date.strftime("%Y/%m/%d") %>
+        </p>
+
+        <p class="mb-3 line-clamp-2">
+          <%= journal_correction.rewritten_text %>
+
+        </p>
+        <% end %>
+      <% end %>
+      </div>
+    <% else %>
+      <div role="alert" class="alert alert-info alert-soft">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-6 w-6 shrink-0 stroke-current">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span>まだジャーナリングがありません。最初のジャーナリングを書いてみましょう！</span>
+      </div>
+    <% end %>
+  </div>
 </div>
