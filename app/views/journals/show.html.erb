@@ -3,21 +3,32 @@
    <div class="max-w-3xl mx-auto pt-2 pb-6 sm:pt-6 md:px-0">
   <!--<div class="max-w-3xl mx-auto md:px-0 pt-6 pb-12"> -->
     <%# ページタイトル %>
-    <h1 class="font-sans font-bold text-3xl md:text-4xl text-center mb-6">
+    <h1 class="font-sans font-bold text-lg md:text-4xl sm:text-2xl text-center mb-6">
       <%= t('.title') %>
     </h1>
 
   <%# 元の文章（日本語でもそのまま表示） %>
-    <div class="border border-cream-300 bg-forest-100 rounded-2xl p-4 mb-4">
-      <h2 class="font-semibold mb-2">元の文章 </h2>
-        <div class="border border-cream-300 bg-white rounded-2xl p-4 mb-2">
+  <%# スマホ：折りたたみ表示 %>
+    <div class="sm:hidden collapse border border-cream-300 bg-forest-100 rounded-2xl p-2 mb-4">
+      <input type="checkbox" />
+      <h2 class=" collapse-title font-semibold">元の文章 </h2>
+        <div class="collapse-content border border-cream-300 bg-white rounded-2xl p-4">
         <p>
-          <%= @overall&.original_text %>
+          <%= @journal_correction&.original_text %>
         </p>
         </div>
     </div>
-    
-    <%# 添削後の英文 %>
+  <%# sm以上：通常表示 %>
+      <div class="border border-cream-300 bg-forest-100 rounded-2xl p-4 mb-4">
+      <h2 class="font-semibold mb-2">元の文章 </h2>
+        <div class="border border-cream-300 bg-white rounded-2xl p-4 mb-2">
+        <p>
+          <%= @journal_correction&.original_text %>
+        </p>
+        </div>
+    </div>
+
+    <%# 添削後の英文(全文) %>
     <div class="border border-cream-300 bg-forest-100 rounded-2xl p-4 mb-4">
       <div class="flex items-center gap-2">
         <h2 class="font-semibold mb-3">添削後の文章</h2>
@@ -25,7 +36,7 @@
       </div>
         <div class="border border-cream-300 bg-white rounded-2xl p-4 mb-2">
           <p>  
-          <%= @overall&.corrected_text %>
+          <%= @journal_correction.rewritten_text %>
           </p>
         </div>
     </div>
@@ -56,8 +67,39 @@
       </div>
     <% end %>
 
+    <div class="border border-cream-300 bg-forest-100 rounded-2xl p-4 mb-4">
+    <%# a %>
+      <h3 class="font-semibold text-base mb-2">英文の傾向</h3>
+    <% if @journal_correction.present? %>
+      <div class="border border-gray-300 bg-white rounded-2xl p-4 mb-2">
+    
+      
+      <div class="mb-2">  
+      <p class="font-semibold">良い点</p>
+        <% (@journal_correction.strengths || []).each do |strength|  %>
+        <p>【強み】<%= strength["point"] %></p>
+        <p>【元の文章】<%= strength["evidence"] %></p>
+        <p>【何が良かったか】<%= strength["why_it_works"] %></p>
+        <% end %>
+      </div>
+        
+        <div class="mb-2">  
+        <p class="font-semibold">間違いパターン</p>
+        <% (@journal_correction.mistake_patterns || []).each do |pattern| %>
+          <div class="mb-2">
+          <p>【パターン】<%= pattern["point"] %></p>
+          <p>【元の文章】<%= pattern["evidence"] %></p>
+          <p>【説明】<%= pattern["explanation"] %></p>
+          </div>
+        <% end %>
 
-
+      <p class="font-semibold">アドバイス</p>
+      <p><%= @journal_correction["advice"] %></p>
+    </div>
+      </div>
+  <% end %>
+  </div>
+  </div>
 
     <div class="flex mt-5 gap-5">
     <%= link_to '戻る' , journals_path, class:"btn btn-primary flex-1" %>

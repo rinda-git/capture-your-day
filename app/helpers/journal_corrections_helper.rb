@@ -1,0 +1,2 @@
+module JournalCorrectionsHelper
+end
