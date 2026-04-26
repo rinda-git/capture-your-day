@@ -6,7 +6,7 @@ class JournalCorrectionsController < ApplicationController
                            .journal_corrections
                            .includes(:journal, :mistakes)
                            .joins(:journal)
-                           .where(journals: {posted_date: Date.current.all_month })
+                           .where(journals: { posted_date: Date.current.all_month })
                            .order("journals.posted_date DESC")
   end
 
