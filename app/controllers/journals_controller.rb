@@ -137,7 +137,13 @@ class JournalsController < ApplicationController
       Return:
       - strengths = what the user does well in English
       - mistake_patterns = repeated English mistakes or weak areas
-      - native_phrases = provide expressions native speakers often use, and phrases commonly used related to the user's topic and emotions.
+     - native_phrases:
+        -provide 2 to 3 practical expressions native speakers naturally useto express the same feeling or situation in this journal.Do not return generic motivational phrases.
+        - native_phrases must be based ONLY on meanings explicitly written in the journal.
+        - Return at least 2 native_phrases, and give basic grammar rule.
+        - Return no more than 3 native_phrases.
+        - Each phrase must be useful in a different situation or nuance.
+        - Do not return duplicate or very similar phrases.
         Do not return generic comfort phrases such as:
         take it easy
         no worries
@@ -220,11 +226,11 @@ class JournalsController < ApplicationController
          ],
         "native_phrases": [
             {
-              "phrase": "ネイティブがよく使うフレーズ",
+              "phrase": "native phrase and basic grammar rule",
               "meaning": "日本語の意味",
-              "when_to_use": "使用する場面",
+              "corrected_text": "添削後の文",
               "example": "よく使う例文",
-              "why_it_matches": "なぜこの文脈に合うのか"
+              "example2": "よく使う例文"
             }
           ]
         }
