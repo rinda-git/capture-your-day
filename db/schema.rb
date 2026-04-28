@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_04_25_063050) do
+ActiveRecord::Schema[7.2].define(version: 2026_04_28_115420) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_04_25_063050) do
     t.text "advice"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "native_phrases"
     t.index ["journal_id"], name: "index_journal_corrections_on_journal_id"
     t.index ["user_id"], name: "index_journal_corrections_on_user_id"
   end
