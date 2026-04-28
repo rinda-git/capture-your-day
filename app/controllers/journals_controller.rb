@@ -223,7 +223,7 @@ class JournalsController < ApplicationController
               "phrase": "ネイティブがよく使うフレーズ",
               "meaning": "日本語の意味",
               "when_to_use": "使用する場面",
-              "example": "I want to change, but I'm not sure what's holding me back.",
+              "example": "よく使う例文",
               "why_it_matches": "なぜこの文脈に合うのか"
             }
           ]
