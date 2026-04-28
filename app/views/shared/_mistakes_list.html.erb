@@ -87,12 +87,19 @@
           <hr class="border-forest-300 mb-2">
 
           <div class="mb-2">
-            <p class="badge badge-warning p-3 mb-2">アドバイス</p>
+            <p class="badge badge-warning p-3 mb-2">ネイティブがよく使う表現</p>
+            
+            <% @journal_correction.native_phrases.each do |phrase| %>
             <div class="bg-white rounded-2xl p-3 mb-2">
-              <%= @journal_correction["advice"] %>
+              <p>【表現】<%= phrase["phrase"] %></p>
+              <p>【意味】<%= phrase["meaning"] %></p>
+              <p>【使う場面】<%= phrase["when_to_use"] %></p>
+              <p>【例文】<%= phrase["example"] %></p>
+              <p>【なぜこの表現】<%= phrase["why_it_matches"] %></p>
             </div>
+            <% end %>
           </div>
-     
+
       </div>
     <% end %>
 
