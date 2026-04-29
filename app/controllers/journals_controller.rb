@@ -13,6 +13,8 @@ class JournalsController < ApplicationController
     # @mistakes = @journal.mistakes.where.not(mistake_type: "overall")
     @journal_correction = @journal.journal_correction
     @mistakes = @journal_correction&.mistakes || []
+    @previous_journal = current_user.journals.where("id < ?", @journal.id).order(id: :desc).first
+    @next_journal = current_user.journals.where("id > ?", @journal.id).order(id: :asc).first
   end
 
   def new
@@ -96,6 +98,12 @@ class JournalsController < ApplicationController
     ====================
     CORRECTION RULES
     ====================
+    - Return 3 to 5 notes for short input.
+    - Return 5 to 10 notes for longer input when there are enough useful learning points.
+    Do not only return the most serious mistakes.
+    Include useful learning points from grammar, word choice, spelling, sentence structure, and natural expression.
+    Each note should cover one specific learning point.
+    Do not combine multiple unrelated issues into one note
     For each mistake, provide:
     - original_text
     - corrected_text
@@ -118,6 +126,7 @@ class JournalsController < ApplicationController
     - Common mistake patterns
     - Vocabulary usage
     - Sentence structure
+    - naturalness of English
 
     Be specific to THIS text. Avoid generic comments.
     ✓ Good: 「前置詞が抜けやすいです」「動名詞：'come to + 名詞 / 動名詞' の場合、'to' の後には動詞の原形ではなく、動名詞を使います。」
@@ -126,22 +135,12 @@ class JournalsController < ApplicationController
      Analyze the user's ENGLISH usage only.
       Do NOT comment on emotions, story content, personality, or life situation.
       Focus only on English writing.
-      Focus only on:
-      - grammar tendencies
-      - common mistake patterns
-      - vocabulary usage
-      - sentence structure
-      - naturalness of English
-      - If the original input is primarily Japanese, return "strengths": [].
 
       Return:
-      - strengths = what the user does well in English
       - mistake_patterns = repeated English mistakes or weak areas
-     - native_phrases:
-        -provide 2 to 3 practical expressions native speakers naturally useto express the same feeling or situation in this journal.Do not return generic motivational phrases.
-        - native_phrases must be based ONLY on meanings explicitly written in the journal.
+      - native_phrases:
+        - provide 2 to 4 practical expressions native speakers naturally use to express the same feeling or situation in this journal.Do not return generic motivational phrases.
         - Return at least 2 native_phrases, and give basic grammar rule.
-        - Return no more than 3 native_phrases.
         - Each phrase must be useful in a different situation or nuance.
         - Do not return duplicate or very similar phrases.
         Do not return generic comfort phrases such as:
@@ -153,12 +152,7 @@ class JournalsController < ApplicationController
       - If there is not enough evidence, return an empty array.
       - Do not make the feedback overly short.
       - Each explanation should be concrete and specific to this text.
-      - Strengths must describe specific English skills shown in THIS text.
       - Avoid generic comments.
-
-      Examples of good strengths:
-      - 状況説明の語順が自然です
-      - 会話で使える自然な表現を選べています
 
       Examples of good mistake_patterns:
       - 前置詞が抜けやすいです
@@ -166,22 +160,13 @@ class JournalsController < ApplicationController
       - 冠詞 a / the を忘れやすいです
       - 日本語直訳の語順になりやすいです
 
-      Bad examples:
-      - 気持ちがよく伝わります
-      - 内容が具体的です
-      - 感情表現が豊かです
-      - 出来事をよく振り返れています
-      - 感情を英語で表現できています
-      - 文の流れが自然です
-
       Examples of native_phrases:
       provide practical native expressions related to the exact situation and meaning described in the journal.
     #{' '}
       1. The meaning in Japanese
       2. When native speakers use it (context / situation)
       3. Short nuance explanation
-      4. One natural example sentence
-      5. Why it matches the user's journal topic
+      4. natural example sentence
 
       Teach phrases in a practical learning style.
 
@@ -210,13 +195,6 @@ class JournalsController < ApplicationController
           }
         ],
       "english_feedback": {
-        "strengths": [
-         {
-        "point": "英語表現上のよかった点",
-        "evidence": "元の文の具体例",
-        "why_it_works": "なぜよいのかを日本語で1文"
-         }
-        ],
         "mistake_patterns": [
           {#{' '}
           "point": "この文で見られた英語の傾向や弱点を分かりやすく。",
@@ -276,7 +254,6 @@ class JournalsController < ApplicationController
           user_id: current_user.id,
           original_text: body,
           rewritten_text: result["rewritten_text"],
-          strengths: result.dig("english_feedback", "strengths"),
           mistake_patterns: result.dig("english_feedback", "mistake_patterns"),
           native_phrases: result.dig("english_feedback", "native_phrases")
         )

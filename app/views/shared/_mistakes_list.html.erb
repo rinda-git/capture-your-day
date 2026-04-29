@@ -32,7 +32,7 @@
                 <span class="font-semibold">
                   <%= mistake_type_label(mistake.mistake_type) %>
                 </span>
-                <p class="text-base bg-gray-100 px-3 py-2 text-gray-600 mb-1">  【元の文章】: <%= mistake.original_text %></p>
+                <p class="text-base bg-gray-100 px-3 py-2 text-gray-600 mb-1">  【添削前】: <%= mistake.original_text %></p>
                 <p class="text-base bg-sage-50 border-l-2 border-forest-200 px-3 py-2">【添削後】：<%= mistake.corrected_text %></p>
                 <p class="text-base">ポイント： <%= mistake.explanation %></p>
               </li>
@@ -47,28 +47,15 @@
     <% end %>
 
     <%# 外側のカード %>
-    <% if @journal_correction&.strengths.present? %>
+    <% if @journal_correction&.present? %>
       <div class="border border-cream-300 bg-forest-100 rounded-2xl p-4 mb-2">
-        <h3 class="font-semibold text-base mb-2">英文の傾向</h3>
-       
+        <h3 class="font-semibold text-base mb-2">英語表現のポイント</h3>   
 
         <%# 内側の白部分 %>
         <!--<div class="border border-gray-100 bg-white rounded-2xl p-4 mb-2"> -->
           <div class="mb-2">
-          <p class="badge badge-success text-white p-3 mb-2">良い点</p>
-            
-            <% (@journal_correction.strengths || []).each do |strength| %>
-              <div class="bg-white rounded-2xl p-4 mb-2">
-                <p class="font-semibold"><%= strength["point"] %></p>
-                <p class="bg-sage-50 border-l-2 border-forest-200 px-3 py-2">【元の文章】<%= strength["evidence"] %></p>
-                <p>【良かった点】<%= strength["why_it_works"] %></p>
-              </div>
-            <% end %>
-            
-          </div>
 
          <% if @journal_correction&.mistake_patterns.present? %>
-          <hr class="border-forest-300 mb-2">
           
           <div class="mb-2">
           <p class="badge badge-error p-3 mb-2">間違いパターン</p>
@@ -76,7 +63,7 @@
             <% (@journal_correction.mistake_patterns || []).each do |pattern| %> 
               <div class="bg-white rounded-2xl p-3 mb-2">
                 <p class="font-semibold"><%= pattern["point"] %></p>
-                <p class="bg-gray-100 px-3 py-2 text-gray-600">【元の文章】<%= pattern["evidence"] %></p>
+                <p class="bg-gray-100 px-3 py-2 text-gray-600">【添削前】<%= pattern["evidence"] %></p>
                 <p>【説明】<%= pattern["explanation"] %></p>
               </div>
             <% end %>
@@ -84,24 +71,26 @@
           <% end %>
           <!--</div> -->
           
+          <% if @journal_correction&.native_phrases.present? %>
           <hr class="border-forest-300 mb-2">
 
           <div class="mb-2">
             <p class="badge badge-warning p-3 mb-2">ネイティブがよく使う表現</p>
             
-            <% @journal_correction.native_phrases.each do |phrase| %>
+            <% @journal_correction.native_phrases&.each do |phrase| %>
             <div class="bg-white rounded-2xl p-3 mb-2">
-              <p>【表現】<%= phrase["phrase"] %></p>
               <p>【意味】<%= phrase["meaning"] %></p>
+              <p>【ネイティブがよく使う表現】<%= phrase["phrase"] %></p>
               <p>【今回の文】<%= phrase["corrected_text"] %></p>
-              <p>【例文】<%= phrase["example"] %></p>
-              <p>【例文2】<%= phrase["example2"] %></p>
+              <p>【例文】</p>
+              <p><%= phrase["example"] %></p>
+              <p><%= phrase["example2"] %></p>
             </div>
             <% end %>
           </div>
-
+          <% end %>
       </div>
     <% end %>
-
+  </div>
  <!-- </div>
 </div> -->

@@ -23,3 +23,7 @@ body {
 .font-title {
   font-family: 'Libre Baskerville', serif;
 }
+
+  [popover]:not(:popover-open) {
+    display: none;
+  }

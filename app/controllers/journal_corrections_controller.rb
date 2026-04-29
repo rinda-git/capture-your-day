@@ -15,5 +15,9 @@ class JournalCorrectionsController < ApplicationController
                           .journal_corrections
                           .includes(:mistakes, :journal)
                           .find(params[:id])
+
+    current_journal_id = @journal_correction.journal_id
+    @previous_journal_correction = current_user.journal_corrections.where("journal_id < ?", current_journal_id).order(journal_id: :desc).first
+    @next_journal_correction = current_user.journal_corrections.where("journal_id > ?", current_journal_id).order(journal_id: :asc).first
   end
 end

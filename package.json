@@ -4,5 +4,8 @@
     "daisyui": "^4.12.14",
     "postcss": "^8.5.8",
     "postcss-cli": "^11.0.1"
+  },
+  "dependencies": {
+    "cally": "^0.9.2"
   }
 }

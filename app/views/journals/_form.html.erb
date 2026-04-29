@@ -21,11 +21,47 @@
     </div>
   </div>
   </div>
-
+  
+  <%# 日付 %>
   <div class="mb-3">
     <%= f.label :posted_date, class: "label label-text text-base font-medium" %>
-    <%= f.date_field :posted_date, class: "input input-bordered w-full" %>
+
+    <button type="button"
+            popovertarget="cally-popover1"
+            class="input input-bordered w-full text-left bg-white rounded-2xl border-gray-300"
+            id="cally-trigger"
+            style="anchor-name:--cally1">
+      <span id="cally-text"><%= (@journal.posted_date || Date.current).strftime("%Y/%m/%d") %></span>
+    </button>
+
+    <%= f.hidden_field :posted_date,
+        value: @journal.posted_date || Date.current,
+        id: "posted-date-field" %>
   </div>
+
+  <div popover
+       id="cally-popover1"
+       class="dropdown bg-base-100 rounded-2xl shadow-xl border border-forest-100 p-4"
+       style="position-anchor:--cally1">
+    <calendar-date class="cally"
+      value="<%= @journal.posted_date || Date.current %>"
+      onchange="
+        document.getElementById('posted-date-field').value = this.value;
+        document.getElementById('cally-text').innerText = this.value;
+        document.getElementById('cally-popover1').hidePopover();
+      ">
+      <svg aria-label="Previous" class="fill-current size-4 text-forest-500" slot="previous" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M15.75 19.5 8.25 12l7.5-7.5"></path>
+      </svg>
+
+      <svg aria-label="Next" class="fill-current size-4 text-forest-500" slot="next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+      </svg>
+
+      <calendar-month></calendar-month>
+    </calendar-date>
+  </div>
+
   <!--<div class="mb-3">
     <%= f.label :title, class: "label label-text text-base" %>
     <%= f.text_field :title, class:"input input-bordered w-full" %>
