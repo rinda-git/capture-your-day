@@ -10,7 +10,7 @@
   <% if user_signed_in? %>
   <span>
     <%= link_to "ホーム", authenticated_root_path, class: "btn btn-ghost normal-case text-md" %>
-    <%= link_to "今日の日記", new_journal_path, class: "btn btn-ghost normal-case text-md" %>
+    <%= link_to "日記を書く", new_journal_path, class: "btn btn-ghost normal-case text-md" %>
     <%= link_to "ジャーナル一覧", journals_path, class: "btn btn-ghost normal-case text-md" %>
     <%= link_to "カレンダー", "#", class: "btn btn-ghost normal-case text-md" %>
     <%= link_to "学び", journal_corrections_path, class: "btn btn-ghost normal-case text-md" %>
@@ -51,10 +51,10 @@
     <ul tabindex="0" class="dropdown-content menu p-2 bg-white rounded-box w-52 mt-2 border border-cream-300">
       <% if user_signed_in? %>
         <li><%= link_to "ホーム", authenticated_root_path %></li>
-        <li><%= link_to "今日の日記", new_journal_path %></li>
+        <li><%= link_to "日記を書く", new_journal_path %></li>
         <li><%= link_to "ジャーナル一覧", journals_path %></li>
         <li><%= link_to "カレンダー", "#" %></li>
-        <li><%= link_to "学び", mistakes_path %></li>
+        <li><%= link_to "学び", journal_corrections_path %></li>
         <li><%= link_to "マイページ", "#" %></li>
         <li>
           <%= link_to t('.logout'), destroy_user_session_path,

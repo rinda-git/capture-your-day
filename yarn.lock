@@ -22,6 +22,11 @@ anymatch@~3.1.2:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
+atomico@^1.79.2:
+  version "1.79.2"
+  resolved "https://registry.yarnpkg.com/atomico/-/atomico-1.79.2.tgz#eebff0e65fe12fdf2d751f57ec66e8057e923ddc"
+  integrity sha512-mshhLRMeIltNYbnQnqgnrvJ/uDa8XDfTQcjw3ymOygQqwHIQ4Sp0LcNYMCbACkV3DtV+eDXb9szwU4qMUuGwYQ==
+
 autoprefixer@^10.4.27:
   version "10.4.27"
   resolved "https://registry.npmjs.org/autoprefixer/-/autoprefixer-10.4.27.tgz"
@@ -50,7 +55,7 @@ braces@~3.0.2:
   dependencies:
     fill-range "^7.1.1"
 
-browserslist@^4.28.1, "browserslist@>= 4.21.0":
+browserslist@^4.28.1:
   version "4.28.2"
   resolved "https://registry.npmjs.org/browserslist/-/browserslist-4.28.2.tgz"
   integrity sha512-48xSriZYYg+8qXna9kwqjIVzuQxi+KYWp2+5nCYnYKPTr0LvD89Jqk2Or5ogxz0NUMfIjhh2lIUX/LyX9B4oIg==
@@ -60,6 +65,13 @@ browserslist@^4.28.1, "browserslist@>= 4.21.0":
     electron-to-chromium "^1.5.328"
     node-releases "^2.0.36"
     update-browserslist-db "^1.2.3"
+
+cally@^0.9.2:
+  version "0.9.2"
+  resolved "https://registry.yarnpkg.com/cally/-/cally-0.9.2.tgz#41e725570ebc1d5eadeefa6a81e29563c4f0a182"
+  integrity sha512-zY/Ueh+p6O+LKPYqNB13dATgNuazAHS0n3JbtKyUmMoQfRq5mC2/zFI3UV2X3g+2lZn2BBwr1Z+HxyG9Dt/6lw==
+  dependencies:
+    atomico "^1.79.2"
 
 camelcase-css@^2.0.1:
   version "2.0.1"
@@ -186,6 +198,11 @@ fs-extra@^11.0.0:
     jsonfile "^6.0.1"
     universalify "^2.0.0"
 
+fsevents@~2.3.2:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.3.tgz#cac6407785d03675a2a5e1a5305c697b347d90d6"
+  integrity sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==
+
 get-caller-file@^2.0.5:
   version "2.0.5"
   resolved "https://registry.npmjs.org/get-caller-file/-/get-caller-file-2.0.5.tgz"
@@ -271,7 +288,7 @@ picomatch@^2.0.4, picomatch@^2.2.1:
   resolved "https://registry.npmjs.org/picomatch/-/picomatch-2.3.2.tgz"
   integrity sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA==
 
-"picomatch@^3 || ^4", picomatch@^4.0.3:
+picomatch@^4.0.3:
   version "4.0.4"
   resolved "https://registry.npmjs.org/picomatch/-/picomatch-4.0.4.tgz"
   integrity sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A==
@@ -326,10 +343,10 @@ postcss-value-parser@^4.2.0:
   resolved "https://registry.npmjs.org/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz"
   integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
 
-postcss@^8.0.0, postcss@^8.1.0, postcss@^8.4.21, postcss@^8.5.8, postcss@>=8.0.9:
-  version "8.5.8"
-  resolved "https://registry.npmjs.org/postcss/-/postcss-8.5.8.tgz"
-  integrity sha512-OW/rX8O/jXnm82Ey1k44pObPtdblfiuWnrd8X7GJ7emImCOstunGbXUpp7HdBrFQX6rJzn3sPT397Wp5aCwCHg==
+postcss@^8.5.8:
+  version "8.5.12"
+  resolved "https://registry.npmjs.org/postcss/-/postcss-8.5.12.tgz"
+  integrity sha512-W62t/Se6rA0Az3DfCL0AqJwXuKwBeYg6nOaIgzP+xZ7N5BFCI7DYi1qs6ygUYT6rvfi6t9k65UMLJC+PHZpDAA==
   dependencies:
     nanoid "^3.3.11"
     picocolors "^1.1.1"
