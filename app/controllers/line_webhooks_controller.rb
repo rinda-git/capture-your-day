@@ -35,7 +35,7 @@ class LineWebhooksController < ApplicationController
       Rails.logger.info "message_text: #{message_text}"
       Rails.logger.info "line_user_id: #{line_user_id}"
 
-      #line_link_code一致ユーザー検索
+      # line_link_code一致ユーザー検索
       user = User.find_by(
         line_link_code: message_text
       )

@@ -27,8 +27,8 @@ Rails.application.routes.draw do
   resources :mistakes, only: [ :index, :show, :new, :create, :destroy ]
   resource :user, only: [ :show, :edit, :update, :destroy ]
   resources :journal_corrections, only: [ :index, :show ]
-  resource :mypage, only: [:show]
-  resource :line_connection, only: [:show, :create, :destroy]
+  resource :mypage, only: [ :show ]
+  resource :line_connection, only: [ :show, :create, :destroy ]
 
 
   # テスト用ルーティング　あとで削除する
@@ -43,11 +43,11 @@ Rails.application.routes.draw do
 
   # LINE Messaging API(Webhook受信口)
   post "line/webhook", to: "line_webhooks#create"
-  
+
   # LINE連携開始
-  get "/line_login", to:"line_logins#new", as: :line_login
+  get "/line_login", to: "line_logins#new", as: :line_login
   # LINE認証・許可後に戻ってくるURL
-  get "/line_login/callback", to:"line_logins#callback"
+  get "/line_login/callback", to: "line_logins#callback"
   # Defines the root path route ("/")
   # root "posts#index"
   # 開発環境のみメール確認ツール

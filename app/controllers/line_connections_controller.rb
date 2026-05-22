@@ -8,7 +8,7 @@ class LineConnectionsController < ApplicationController
     current_user.update!(
       line_link_code: SecureRandom.hex(3)
     )
-    redirect_to line_connection_path, notice:"連携コードを発行しました"
+    redirect_to line_connection_path, notice: "連携コードを発行しました"
   end
 
   def destroy

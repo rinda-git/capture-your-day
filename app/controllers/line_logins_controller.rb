@@ -36,7 +36,7 @@ before_action :authenticate_user!
     unless params[:state] == session.delete(:line_login_state)
         redirect_to root_path, alert: "LINE連携に失敗しました。もう一度お試しください。"
         return
-  end
+    end
 
   # LINEから返ってきた認可コード
   code = params[:code]
@@ -61,7 +61,7 @@ before_action :authenticate_user!
     line_notifications_enabled: line_friend
   )
 
-  redirect_to line_connection_path, notice:"LINE連携が完了しました"
+  redirect_to line_connection_path, notice: "LINE連携が完了しました"
   rescue => e
     Rails.logger.error("[LINE Login Error] #{e.class}: #{e.message}")
     redirect_to line_connection_path, alert: "LINE連携に失敗しました"
@@ -80,7 +80,7 @@ before_action :authenticate_user!
         redirect_uri: ENV.fetch("LINE_LOGIN_CALLBACK_URL"),
         client_id: ENV.fetch("LINE_LOGIN_CHANNEL_ID"),
         client_secret: ENV.fetch("LINE_LOGIN_CHANNEL_SECRET")
-      }    
+      }
     )
     JSON.parse(response.body)
   end
