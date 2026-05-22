@@ -39,5 +39,12 @@ ja:
       login: ログイン
       logout: ログアウト
       register: 新規登録
+  mypages:
+    show:
+      title: マイページ
+  line_connections:
+    show:
+      title: LINEアカウント連携
+  
 
 
