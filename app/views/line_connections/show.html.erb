@@ -1,0 +1,29 @@
+<%= content_for(:title, t('.title', default: APP_NAME)) %>
+<div class="flex-grow px-2 sm:px-6 md:px-10">
+  <div class="max-w-4xl mx-auto pt-2 pb-6 sm:pt-6 md:px-0">
+    <h1 class="font-sans font-semibold text-lg sm:text-2xl md:text-4xl text-center mb-6">
+      <%= t('.title') %>
+    </h1>
+
+  <p class="mb-6 text-gray-600 text-center">
+    LINEアカウントを連携すると、週ごとの振り返りレポートや学習のヒントをLINEで受け取れます。
+  </p>
+
+    <div class="card bg-base-200 shadow mb-6 p-5">
+      <% if current_user.line_user_id.present? %>
+        <div class="alert alert-success mb-4">LINEアカウント連携しました!</div>
+        <%= link_to "LINEアカウントを連携する",
+                  line_login_path,
+                  class: "btn w-full bg-gray-400 text-white mb-5" %>  
+        <%= link_to "もう一度LINE連携を確認する", line_login_path, class: "btn w-full bg-[#06C755] text-white" %>
+      <% else %>
+        <%= link_to "LINEアカウントを連携する",
+                  line_login_path,
+                  class: "btn w-full bg-[#06C755] text-white border-[#06C755] mb-5" %>
+        <p class="text-sm text-gray-600">
+        LINEアカウント連携完了しています。<br>LINE通知を受け取るには、公式LINEを友だち追加し、ブロックしている場合は解除してください。
+        </p>
+          <%= link_to "もう一度LINE連携を確認する", line_login_path, class: "btn w-full bg-[#06C755] text-white" %>
+      <% end %>
+</div>
+

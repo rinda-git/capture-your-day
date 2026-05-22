@@ -14,7 +14,7 @@
     <%= link_to "ジャーナル一覧", journals_path, class: "btn btn-ghost normal-case text-sm md:text-lg" %>
     <%= link_to "カレンダー", calendar_journals_path, class: "btn btn-ghost normal-case text-sm md:text-lg" %>
     <%= link_to "表現一覧", journal_corrections_path, class: "btn btn-ghost normal-case text-sm md:text-lg" %>
-    <%= link_to "マイページ", "#", class: "btn btn-ghost normal-case text-md md:text-lg" %>
+    <%= link_to "マイページ", mypage_path, class: "btn btn-ghost normal-case text-md md:text-lg" %>
   </span>
   <% else %>
     <%# 未ログイン時は何も表示しない %>
@@ -55,7 +55,7 @@
         <li><%= link_to "ジャーナル一覧", journals_path %></li>
         <li><%= link_to "カレンダー", calendar_journals_path %></li>
         <li><%= link_to "表現一覧", journal_corrections_path %></li>
-        <li><%= link_to "マイページ", "#" %></li>
+        <li><%= link_to "マイページ", mypages_show_path %></li>
         <li>
           <%= link_to t('.logout'), destroy_user_session_path,
               data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" } %>
