@@ -6,7 +6,7 @@
     </h1>
 
     <% if @journal_corrections.any? %>
-      <div class="space-y-2">
+      <div class="space-y-2 mb-2">
       <%# journal_correctionsをループ %>
         <%# 1件ずつ枠で囲む %>
         <% @journal_corrections.each do |journal_correction| %>
@@ -39,7 +39,7 @@
           <% end %>
         <% end %>
       </div>
-    
+    <%= paginate @journal_corrections, window: 3 %>
     <% else %>
       <div role="alert" class="alert alert-info alert-soft">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-6 w-6 shrink-0 stroke-current">
