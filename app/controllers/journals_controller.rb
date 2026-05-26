@@ -7,7 +7,7 @@ class JournalsController < ApplicationController
       if params[:posted_date].present?
         @journals = @journals.where(posted_date: params[:posted_date])
       end
-    @journals = @journals.order(posted_date: :desc, id: :desc)
+    @journals = @journals.order(posted_date: :desc, id: :desc).page(params[:page]).per(20)
   end
 
   def show
