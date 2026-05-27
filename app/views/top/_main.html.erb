@@ -46,7 +46,7 @@ flex items-center justify-center py-16 px-5 md:px-10">
   <div class="relative z-10 text-center max-w-4xl">
     <!-- <h1 class="font-title text-5xl mb-4">Capture Your Day</h1> -->
     <span class="inline-block text-lg md:text-2xl font-medium tracking-widest
-                 text-forest-600 bg-white/80 px-4 py-1 rounded-full mb-6">
+                 text-primary bg-base-100/80 px-4 py-1 rounded-full mb-6">
       AI English Journal
     </span>
     <%# メインキャッチコピー %>
@@ -63,20 +63,20 @@ flex items-center justify-center py-16 px-5 md:px-10">
     <%# CTAボタン群 %>
     <div class="flex gap-3 justify-center items-center flex-wrap">
       <%= link_to "日記を書く →", new_user_registration_path,
-          class: "btn btn-md md:btn-lg  md:text-lg bg-forest-500 text-white border-none hover:bg-forest-600 px-8" %>
+          class: "btn btn-md md:btn-lg  md:text-lg bg-primary text-white border-none hover:bg-forest-600 px-8" %>
 
       <%= link_to "ログインはこちら", new_user_session_path,
-          class: "btn btn-md md:btn-lg md:text-lg bg-white text-center text-forest-600 border-none hover:bg-cream-50" %>
+          class: "btn btn-md md:btn-lg md:text-lg bg-base-100 text-center text-primary border-none hover:bg-cream-50" %>
     </div>
   </div>
 </section>
 <%# 特徴セクション：続けられる3つの理由 %>
 
-<section class="py-16 px-10 bg-cream-50 border-t border-cream-300">
+<section class="py-16 px-10 bg-base-200 border border-base-300">
 
   <%# セクションラベル＆タイトル %>
   <p class="text-2xl font-medium tracking-widest text-cream-500 text-center mb-2">FEATURES</p>
-  <h2 class="font-sans text-2xl font-normal text-center text-ink mb-5">
+  <h2 class="font-sans text-2xl font-normal text-center text-base-content mb-5">
   Capture Your Dayの3つの特徴
   </h2>
 
@@ -84,25 +84,25 @@ flex items-center justify-center py-16 px-5 md:px-10">
   <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
 
     <%# 特徴1：気軽に書ける %>
-    <div class="bg-white border border-cream-300 rounded-[20px] p-6 py-14 text-center">
+    <div class="bg-base-100 border border-base-300 rounded-[20px] p-6 py-14 text-center">
     
-      <div class="w-12 h-12 rounded-full bg-forest-50 flex items-center justify-center mx-auto mb-4">
+      <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center mx-auto mb-4">
         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
              stroke="#1D9E75" stroke-width="1.8"
              stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
         </svg>
       </div>
-      <h3 class="text-lg font-medium text-ink mb-2">気軽に書ける</h3>
-      <p class="text-base text-ink-muted leading-relaxed">
+      <h3 class="text-lg font-medium text-base-content mb-2">気軽に書ける</h3>
+      <p class="text-base text-base-content-muted leading-relaxed">
         文法が完璧じゃなくてOK。<br>
         今日あったこと、気持ちを思ったままの英語で書きましょう。
       </p>
     </div>
 
     <%# 特徴2：AIが添削 %>
-    <div class="bg-white border border-cream-300 rounded-[20px] p-6 py-14 text-center">
-      <div class="w-12 h-12 rounded-full bg-forest-50 flex items-center
+    <div class="bg-base-100 border border-base-300 rounded-[20px] p-6 py-14 text-center">
+      <div class="w-12 h-12 rounded-full bg-primary flex items-center
                   justify-center mx-auto mb-4">
         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
              stroke="#1D9E75" stroke-width="1.8"
@@ -110,16 +110,16 @@ flex items-center justify-center py-16 px-5 md:px-10">
           <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
         </svg>
       </div>
-      <h3 class="text-lg font-medium text-ink mb-2">AIが添削してくれる</h3>
-      <p class="text-base text-ink-muted leading-relaxed">
+      <h3 class="text-lg font-medium text-base-content mb-2">AIが添削してくれる</h3>
+      <p class="text-base text-base-content-muted leading-relaxed">
         書いた英文をAIが添削。<br>
         間違いの指摘と自然な言い回しをやさしく教えてくれます。
       </p>
     </div>
 
     <%# 特徴3：記録が積み重なる %>
-    <div class="bg-white border border-cream-300 rounded-[20px] p-6  py-14 text-center">
-      <div class="w-12 h-12 rounded-full bg-forest-50 flex items-center
+    <div class="bg-base-100 border border-base-300 rounded-[20px] p-6  py-14 text-center">
+      <div class="w-12 h-12 rounded-full bg-primary flex items-center
                   justify-center mx-auto mb-4">
         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"
              stroke="#1D9E75" stroke-width="1.8"
@@ -127,8 +127,8 @@ flex items-center justify-center py-16 px-5 md:px-10">
           <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
         </svg>
       </div>
-      <h3 class="text-lg font-medium text-ink mb-2">記録が積み重なる</h3>
-      <p class="text-base text-ink-muted leading-relaxed">
+      <h3 class="text-lg font-medium text-base-content mb-2">記録が積み重なる</h3>
+      <p class="text-base text-base-content-muted leading-relaxed">
         自分の間違い傾向が把握できます。<br>
         日々の積み重ねで、確かな成長を感じられます。
       </p>
@@ -136,7 +136,7 @@ flex items-center justify-center py-16 px-5 md:px-10">
 
   </div>
 </section>
-<section class="py-16 px-10 bg-forest-500 bg-opacity-80 text-center">
+<section class="py-16 px-10 bg-primary bg-opacity-80 text-center">
 
   <h2 class="font-title text-2xl font-normal text-white mb-3">
     思ったことを、英語にしてみよう。
@@ -145,17 +145,17 @@ flex items-center justify-center py-16 px-5 md:px-10">
 
   <div class="flex flex-col items-center gap-3">
     <%= link_to "日記を書く →", new_user_registration_path,
-          class: "btn rounded-full bg-white text-sage-700 border-none
-                  hover:bg-cream-50 px-10 w-60" %>
+          class: "btn rounded-full bg-base-100 text-sage-700 border-none
+                  hover:bg-base-200 px-10 w-60" %>
 
     <%= link_to "ログインはこちら", new_user_session_path,
           class: "btn btn-ghost rounded-full text-sage-100
-                  border border-white/40 px-8 hover:bg-white/30 px-10 w-60" %>
+                  border border-white/40 px-8 hover:bg-base-100/30 px-10 w-60" %>
   </div>
 </section>
 
 <%# フッター %>
-<footer class="py-5 px-10 bg-cream-100 border-t border-cream-300 text-center">
+<footer class="py-5 px-10 bg-base-200 border border-base-300 text-center">
   <div class="flex items-center justify-center gap-4 mb-1">
   <%= link_to "利用規約", "#", 
      class: "link link-hover text-sm text-cream-400 hover:text-cream-600 transition-colors" %>

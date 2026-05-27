@@ -2,7 +2,7 @@
   <%# render 'shared/error_messages', object: f.object %>
   <div class="mb-3">
     <p class="text-sans text-base md:text-lg font-medium mb-2">今日の気分</p>
-    <div class="border border-gray-300 bg-white rounded-2xl py-3 px-3">
+    <div class="border border-gray-300 bg-base-100 rounded-2xl py-3 px-3">
     <div class="flex gap-2">
     <% Journal.moods.each do |key, value| %>
       <label for="mood_<%= key %>" class="flex flex-col items-center cursor-pointer gap-1 flex-1">
@@ -11,7 +11,7 @@
         <%= f.radio_button :mood, key, id: "mood_#{key}", class:"hidden peer" %>
         <%= image_tag "moods/#{key}.svg", 
             alt: I18n.t("enums.journal.mood.#{key}"),
-            class: 'mood-icon w-10 h-10 max-w-12 peer-checked:scale-125 transition-transform peer-checked:bg-forest-50' %>
+            class: 'mood-icon w-10 h-10 max-w-12 peer-checked:scale-125 transition-transform peer-checked:bg-primary' %>
 
         <span>
             <%= I18n.t("enums.journal.mood.#{key}") %>
@@ -28,7 +28,7 @@
 
     <button type="button"
             popovertarget="cally-popover1"
-            class="input input-bordered w-full text-left bg-white rounded-2xl border-gray-300"
+            class="input input-bordered w-full text-left bg-base-100 rounded-2xl border-gray-300"
             id="cally-trigger"
             style="anchor-name:--cally1">
       <span id="cally-text"><%= (@journal.posted_date || Date.current).strftime("%Y/%m/%d") %></span>
@@ -50,11 +50,11 @@
         document.getElementById('cally-text').innerText = this.value;
         document.getElementById('cally-popover1').hidePopover();
       ">
-      <svg aria-label="Previous" class="fill-current size-4 text-forest-500" slot="previous" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <svg aria-label="Previous" class="fill-current size-4 text-primary" slot="previous" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d="M15.75 19.5 8.25 12l7.5-7.5"></path>
       </svg>
 
-      <svg aria-label="Next" class="fill-current size-4 text-forest-500" slot="next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <svg aria-label="Next" class="fill-current size-4 text-primary" slot="next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
       </svg>
 
@@ -77,21 +77,21 @@
     <div class="flex gap-4">
       <label class="flex-1">
         <%= f.radio_button :"tone", "polite", class: "hidden peer" %>
-        <span class="btn btn-outline btn-primary w-full peer-checked:bg-forest-500 peer-checked:text-white md:text-lg">
+        <span class="btn btn-outline btn-primary w-full peer-checked:bg-primary peer-checked:text-white md:text-lg">
         丁寧
         </span>
       </label>
 
       <label class="flex-1">
         <%= f.radio_button :"tone", "standard", class: "hidden peer" %>
-        <span class="btn btn-outline btn-primary w-full peer-checked:bg-forest-500 peer-checked:text-white md:text-lg">
+        <span class="btn btn-outline btn-primary w-full peer-checked:bg-primary peer-checked:text-white md:text-lg">
         スタンダード
         </span>
       </label>
 
       <label class="flex-1">
         <%= f.radio_button :"tone", "casual", class:"hidden peer" %>
-        <span class="btn btn-outline btn-primary w-full peer-checked:bg-forest-500 peer-checked:text-white md:text-lg">
+        <span class="btn btn-outline btn-primary w-full peer-checked:bg-primary peer-checked:text-white md:text-lg">
         カジュアル
         </span>
       </label>

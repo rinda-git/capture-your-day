@@ -11,7 +11,7 @@
         <%# 1件ずつ枠で囲む %>
         <% @journal_corrections.each do |journal_correction| %>
           <%= link_to journal_correction_path(journal_correction),
-            class:"block border border-cream-300 bg-white rounded-lg px-2 py-1 sm:px-4 py-3" do %>
+            class:"block border border-base-300 bg-base-100 rounded-lg px-2 py-1 sm:px-4 py-3" do %>
           <%# 日付 %>
             <div class="font-bold text-cream-500 flex items-center gap-3 mb-2">
               <span>
@@ -26,12 +26,12 @@
         <div class="mb-2">
           <% journal_correction.mistakes.first(2).each do |mistake| %>
             <p class="font-semibold text-base md:text-lg"><%= mistake.learning_points["pattern"] %></p>
-            <p class="text-gray-500">【意味】<%= mistake.learning_points["meaning"] %></p>
+            <p class="text-base-content">【意味】<%= mistake.learning_points["meaning"] %></p>
           
             <!--<% if mistake.learning_points["related_phrases"].present? %>
               <% mistake.learning_points["related_phrases"].each do |phrase| %> 
                 <p><%= phrase["phrase"] %></p>
-                <p class="text-gray-500">【意味】<%= phrase["meaning"] %></p>
+                <p class="text-base-content">【意味】<%= phrase["meaning"] %></p>
               <% end %>
             <% end %>-->
           <% end %>
