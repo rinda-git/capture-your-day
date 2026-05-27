@@ -36,7 +36,7 @@
               class:"group block min-h-12 sm:min-h-20 md:min-h-32 rounded bg-primary/80 px-1 py-1 sm:py-2 sm:px-2 md:px-3 md:py-3 rounded text-left hover:bg-primary" do %>
           <div class="font-semibold hover:bg-primary group-hover:text-primary-content" >
           <%= day.day %>
-          <span class="text-xs sm:text-sm md:text-md">(<%= journals.size %>件)</span>
+          <span class="block sm:inline text-xs sm:text-sm md:text-md">(<%= journals.size %>件)</span>
           </div>
           <% end %>
 
@@ -46,7 +46,7 @@
               class:"group block min-h-12 sm:min-h-20 md:min-h-32 rounded bg-primary/80 px-1 py-1 sm:py-2 sm:px-2 md:px-3 md:py-3 text-left hover:bg-primary" do %>
             <div class="font-semibold  group-hover:text-primary-content hover:bg-primary">
             <%= day.day %>
-            <span class="text-xs sm:text-sm md:text-md">(<%= journals.size %>件)</span>
+            <span class="block sm:inline text-xs sm:text-sm md:text-md">(<%= journals.size %>件)</span>
             </div>
           <% end %>
         <% else %>
