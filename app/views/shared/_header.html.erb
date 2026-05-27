@@ -1,26 +1,66 @@
 <%# ログイン後のヘッダー %>
-<header class="navbar bg-white border-b border-sage-100 fixed top-0 left-0 right-0 z-50 px-4 h-16">
+<header class="navbar bg-base-100 border-b border-sage-100 fixed top-0 left-0 right-0 z-50 px-4 h-16">
   <div class="navbar-start">
-    <%= link_to "Capture Your Day", (user_signed_in? ? authenticated_root_path : unauthenticated_root_path), class:"font-title text-lg sm:text-xl md:text-2xl font-bold text-ink leading-tight"%>
+    <%= link_to "Capture Your Day", (user_signed_in? ? authenticated_root_path : unauthenticated_root_path), class:"font-title text-lg sm:text-xl md:text-2xl font-bold text-base-content leading-tight"%>
     <%# link_to "Home", root_path, class: "btn btn-ghost normal-case text-xl" %>
   </div>
 
 <%# PC用 #%>
 <div class="navbar-center hidden md:flex">
   <% if user_signed_in? %>
-  <span>
+  <div class="flex items-center gap-1 flex-nowrap">
     <%= link_to "ホーム", authenticated_root_path, class: "btn btn-ghost normal-case text-sm md:text-lg" %>
     <%= link_to "日記を書く", new_journal_path, class: "btn btn-ghost normal-case text-sm md:text-lg" %>
     <%= link_to "ジャーナル一覧", journals_path, class: "btn btn-ghost normal-case text-sm md:text-lg" %>
     <%= link_to "カレンダー", calendar_journals_path, class: "btn btn-ghost normal-case text-sm md:text-lg" %>
     <%= link_to "表現一覧", journal_corrections_path, class: "btn btn-ghost normal-case text-sm md:text-lg" %>
     <%= link_to "マイページ", mypage_path, class: "btn btn-ghost normal-case text-md md:text-lg" %>
-  </span>
+
+    <div data-controller="theme" class="flex items-center">
+      <label class="swap swap-rotate btn btn-ghost btn-sm btn-circle"
+             aria-label="テーマを切り替える"
+             title="ダークモード">
+        <input type="checkbox" data-theme-target="toggle" data-action="change->theme#toggle">
+
+        <svg class="swap-off h-5 w-5"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 24 24" 
+             fill="none" 
+             stroke="currentColor" 
+             stroke-width="2" 
+             stroke-linecap="round" 
+             stroke-linejoin="round" 
+             class="lucide lucide-sun-icon lucide-sun">
+             <circle cx="12" cy="12" r="4"/>
+             <path d="M12 2v2"/>
+             <path d="M12 20v2"/>
+             <path d="m4.93 4.93 1.41 1.41"/>
+             <path d="m17.66 17.66 1.41 1.41"/>
+             <path d="M2 12h2"/>
+             <path d="M20 12h2"/>
+             <path d="m6.34 17.66-1.41 1.41"/>
+             <path d="m19.07 4.93-1.41 1.41"/>
+        </svg>
+        <svg class="swap-on h-5 w-5"
+             xmlns="http://www.w3.org/2000/svg"  
+             viewBox="0 0 24 24" 
+             fill="none" 
+             stroke="currentColor" 
+             stroke-width="2" 
+             stroke-linecap="round" 
+             stroke-linejoin="round">
+             <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/>
+        </svg>
+        <!--<span class="swap-off text-xl">🌞</span>
+        <span class="swap-on text-xl">🌙</span> -->
+      </label>
+    </div>
+  </div>
   <% else %>
     <%# 未ログイン時は何も表示しない %>
   <% end %>
-      <!-- <span class="font-english text-xl text-ink">Capture Your Day</span> -->
-      <!--<h1 class="font-cormorant text-2xl font-bold text-ink">Capture Your Day</h1> -->
+      <!-- <span class="font-english text-xl text-base-content">Capture Your Day</span> -->
+      <!--<h1 class="font-cormorant text-2xl font-bold text-base-content">Capture Your Day</h1> -->
 </div>
       <!-- navbar-end -->
 <%# 右側：ボタン・スマホメニュー %>
@@ -48,7 +88,7 @@
                 d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
     </label>
-    <ul tabindex="0" class="dropdown-content menu p-2 bg-white rounded-box w-52 mt-2 border border-cream-300">
+    <ul tabindex="0" class="dropdown-content menu p-2 bg-base-100 rounded-box w-52 mt-2 border border-base-300">
       <% if user_signed_in? %>
         <li><%= link_to "ホーム", authenticated_root_path %></li>
         <li><%= link_to "日記を書く", new_journal_path %></li>
@@ -56,6 +96,50 @@
         <li><%= link_to "カレンダー", calendar_journals_path %></li>
         <li><%= link_to "表現一覧", journal_corrections_path %></li>
         <li><%= link_to "マイページ", mypages_show_path %></li>
+
+        <li>
+        <div data-controller="theme">
+          <label class="flex items-center gap-2 cursor-pointer">
+          <span>ダークモード</span>
+          <span class="swap swap-rotate btn btn-ghost btn-sm btn-circle" 
+                 aria-label="テーマを切り替える" 
+                 title="テーマを切り替える">
+            <input type="checkbox" data-theme-target="toggle" data-action="change->theme#toggle">
+            <svg class="swap-off h-5 w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="lucide lucide-sun-icon lucide-sun">
+                  <circle cx="12" cy="12" r="4"/>
+                  <path d="M12 2v2"/>
+                  <path d="M12 20v2"/>
+                  <path d="m4.93 4.93 1.41 1.41"/>
+                  <path d="m17.66 17.66 1.41 1.41"/>
+                  <path d="M2 12h2"/>
+                  <path d="M20 12h2"/>
+                  <path d="m6.34 17.66-1.41 1.41"/>
+                  <path d="m19.07 4.93-1.41 1.41"/>
+              </svg>
+              <svg class="swap-on h-5 w-5"
+                  xmlns="http://www.w3.org/2000/svg"  
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" >
+                  <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/>
+              </svg>
+              <!--<span class="swap off text-xl">🌞</span>
+              <span class="swap-on text-xl">🌙</span>-->
+          </span>
+          </label>
+        </div>
+        </li>
         <li>
           <%= link_to t('.logout'), destroy_user_session_path,
               data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" } %>

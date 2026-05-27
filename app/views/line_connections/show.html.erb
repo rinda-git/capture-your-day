@@ -5,11 +5,11 @@
       <%= t('.title') %>
     </h1>
 
-  <p class="mb-6 text-gray-600 text-center">
+  <p class="mb-6 text-base-content text-center">
     LINEアカウントを連携すると、週ごとの振り返りレポートや学習のヒントをLINEで受け取れます。
   </p>
 
-    <div class="card bg-base-200 shadow mb-6 p-5">
+    <div class="card bg-base-100 shadow mb-6 p-5">
       <% if current_user.line_user_id.present? %>
         <div class="alert alert-success mb-4">LINEアカウント連携しました!</div>
         <%= link_to "LINEアカウントを連携する",
@@ -20,7 +20,7 @@
         <%= link_to "LINEアカウントを連携する",
                   line_login_path,
                   class: "btn w-full bg-[#06C755] text-white border-[#06C755] mb-5" %>
-        <p class="text-sm text-gray-600">
+        <p class="text-sm text-base-content">
         LINEアカウント連携完了しています。<br>LINE通知を受け取るには、公式LINEを友だち追加し、ブロックしている場合は解除してください。
         </p>
           <%= link_to "もう一度LINE連携を確認する", line_login_path, class: "btn w-full bg-[#06C755] text-white" %>

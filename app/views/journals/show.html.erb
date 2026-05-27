@@ -9,11 +9,11 @@
 
   <div class="flex justify-between">
   <% if @previous_journal.present? %>
-    <%= link_to "前の日記", @previous_journal, class:"btn btn-sm border-forest-500 text-forest-500 hover:bg-forest-500 hover:text-white" %>
+    <%= link_to "前の日記", @previous_journal, class:"btn btn-sm border-forest-500 text-primary hover:bg-primary hover:text-white" %>
   <% end %>
 
   <% if @next_journal.present? %>
-    <%= link_to "次の日記", @next_journal, class:"btn btn-sm border-forest-500 text-forest-500 hover:bg-forest-500 hover:text-white" %>
+    <%= link_to "次の日記", @next_journal, class:"btn btn-sm border-forest-500 text-primary hover:bg-primary hover:text-white" %>
   <% end %>
   </div>
   <%# 元の文章（日本語でもそのまま表示） %>
@@ -21,7 +21,7 @@
     <div class="font-semibold mb-2 text-base md:text-lg">
       <%= @journal.posted_date.strftime("%Y/%m/%d") %>
     </div>
-      <div class="md:hidden collapse collapse-arrow border border-gray-200 bg-white rounded-2xl overflow-hidden mb-4">
+      <div class="md:hidden collapse collapse-arrow border border-base-300 bg-base-100 rounded-2xl overflow-hidden mb-4">
         <input type="checkbox" />
           <h2 class="collapse-title font-semibold pr-10 bg-red-50 text-red-500">元の文章を表示</h2>
 
@@ -32,7 +32,7 @@
 
   <%# md以上：通常表示 %>
        <%# 枠開始 %>
-      <div class="hidden md:block border border-gray-200 bg-white rounded-2xl overflow-hidden mb-4">
+      <div class="hidden md:block border border-base-300 bg-base-100 rounded-2xl overflow-hidden mb-4">
         <div class="bg-red-50 border-b border-red-100 px-4">
           <h2 class="font-semibold text-base md:text-lg text-red-500 py-2">元の文章 </h2>
         </div>  
@@ -44,13 +44,13 @@
     <% end %>
 
     <%# 添削後の英文(全文) %>
-    <!--<div class="border border-cream-300 bg-forest-100 rounded-2xl p-4 mb-4">
+    <!--<div class="border border-base-300 bg-forest-100 rounded-2xl p-4 mb-4">
       <div class="flex items-center gap-2">
         <h2 class="font-semibold mb-3">添削後の文章</h2>
         <span class="badge badge-soft badge-success text-white mb-3 p-3">
         添削トーン：<%= t("activerecord.attributes.journal.tones.#{@journal.tone}") %></span>
       </div>
-        <div class="border border-cream-300 bg-white rounded-2xl p-4 mb-2">
+        <div class="border border-base-300 bg-base-100 rounded-2xl p-4 mb-2">
           <p>  
           <%= @journal_correction&.rewritten_text %>
           </p>
@@ -59,10 +59,10 @@
 
     <%# 個別の指摘リストを表示 %>
     <% if @mistakes.present? %>
-      <div class="border border-cream-300 bg-forest-100 rounded-2xl p-4 mb-4">
+      <div class="border border-base-300 bg-forest-100 rounded-2xl p-4 mb-4">
           <h2 class="font-semibold mb-3">今回の学び（<%= @mistakes.size %>件）</h2>
 
-          <div class="border border-gray-300 bg-white rounded-2xl p-4 mb-2">
+          <div class="border border-gray-300 bg-base-100 rounded-2xl p-4 mb-2">
             <ol class="list-decimal list-inside">
             <% @mistakes.each do |mistake| %>
               <li class="mb-4">
@@ -70,7 +70,7 @@
               <%= mistake_type_label(mistake.mistake_type) %></span>
               <p class="text-base font-normal">  【元の文章】: <%= mistake.original_text %></p>
               <p class="text-base font-normal">  【添削後】: <%= mistake.corrected_text %></p>
-              <p class="text-sm text-gray-600 font-normal">  ポイント: <%= mistake.explanation %></p>
+              <p class="text-sm text-base-content font-normal">  ポイント: <%= mistake.explanation %></p>
 
               </li>
           <% end %>
@@ -87,11 +87,11 @@
     <% if @journal_correction&.strengths.present? %>
 
       <%# 外側のカード %>
-      <div class="border border-cream-300 bg-forest-100 rounded-2xl p-4 mb-4">
+      <div class="border border-base-300 bg-forest-100 rounded-2xl p-4 mb-4">
         <h3 class="font-semibold text-base mb-2">英文の傾向</h3>
         
   
-        <div class="border border-gray-300 bg-white rounded-2xl p-4 mb-2">
+        <div class="border border-gray-300 bg-base-100 rounded-2xl p-4 mb-2">
           <div class="mb-2">  
             <p class="font-semibold">良い点</p>
               <% (@journal_correction.strengths || []).each do |strength|  %>

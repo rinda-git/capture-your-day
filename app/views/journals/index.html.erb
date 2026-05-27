@@ -22,13 +22,13 @@
             %>
           </div>-->
 
-          <div class="border border-cream-300 bg-white rounded-lg py-3 mb-2 px-4">
+          <div class="border border-base-300 bg-base-100 rounded-lg py-3 mb-2 px-4">
 
             <div class="flex items-center gap-3">
               <span class="font-bold text-cream-500 mb-2">
                 <%= journal.posted_date.strftime("%Y/%m/%d") %>
               </span>
-              <span class="inline-flex items-center bg-forest-50 text-forest-500 text-sm md:text-md rounded-full px-2 py-1">
+              <span class="inline-flex items-center bg-secondary text-primary text-sm md:text-md rounded-full px-2 py-1">
                 添削トーン：<%= t("enums.journal.tone.#{journal.tone}") %>
               </span>
               <span class="ml-auto">
@@ -36,7 +36,7 @@
                   journal_path(journal),
                   method: :delete,
                   form: {data: {turbo_confirm:"このジャーナルを削除しますか？"}},
-                  class: "btn btn-sm text-sm text-center bg-gray-200 hover:opacity-70"
+                  class: "btn btn-sm text-sm text-center bg-base-300 hover:opacity-70"
               %>
             </span>
             </div>
