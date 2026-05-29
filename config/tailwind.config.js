@@ -89,23 +89,23 @@ module.exports = {
           "error":            "#f87272",
         },
         // ダークモード
-          "color-dark": {
-          "primary":          "#5DCAA5",  
-          "primary-content":  "#1A3D2E",
-          "secondary":        "#2C5F45",  
-          "secondary-content":"#D6EDE3",
-          "accent":           "#7DB89E",
-          "accent-content":   "#1A3D2E",
-          "neutral":          "#D6EDE3",
-          "neutral-content":  "#2A3D34",
-          "base-100":         "#334D3F",   // カード背景（明るめに）
-          "base-200":         "#2A3D34",   // ページ背景
-          "base-300":         "#3D5C48",   // ボーダー
-          "base-content":     "#D6EDE3",
-          "info":             "#3abff8",
-          "success":          "#5DCAA5",
-          "warning":          "#fbbd23",
-          "error":            "#f87272",
+          "color-dark": { 
+            "primary":          "#34D399",
+            "primary-content":  "#052E2B",
+            "secondary":        "#1F2937",
+            "secondary-content":"#D1FAE5",
+            "accent":           "#6EE7B7",
+            "accent-content":   "#052E2B",
+            "neutral":          "#E5E7EB",
+            "neutral-content":   "#111827",
+            "base-100":          "#1F2937",     // カード背景
+            "base-200":          "#111827",     // ページ背景
+            "base-300":          "#374151",     // ボーダー
+            "base-content":      "#F9FAFB",
+            "info":             "#38BDF8",
+            "success":          "#34D399",
+            "warning":          "#FBBF24",
+            "error":            "#F87171",
         },
       },
     ],

@@ -13,7 +13,7 @@
           <%= link_to journal_correction_path(journal_correction),
             class:"block border border-base-300 bg-base-100 rounded-lg px-2 py-1 sm:px-4 py-3" do %>
           <%# 日付 %>
-            <div class="font-bold text-cream-500 flex items-center gap-3 mb-2">
+            <div class="font-bold text-base-content/70 flex items-center gap-3 mb-2">
               <span>
                 <%= journal_correction.journal.posted_date.strftime("%Y/%m/%d") %>の日記
               </span>

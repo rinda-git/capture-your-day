@@ -2,7 +2,7 @@
   <%# render 'shared/error_messages', object: f.object %>
   <div class="mb-3">
     <p class="text-sans text-base md:text-lg font-medium mb-2">今日の気分</p>
-    <div class="border border-gray-300 bg-base-100 rounded-2xl py-3 px-3">
+    <div class="border border-base-300 bg-base-100 rounded-2xl py-3 px-3">
     <div class="flex gap-2">
     <% Journal.moods.each do |key, value| %>
       <label for="mood_<%= key %>" class="flex flex-col items-center cursor-pointer gap-1 flex-1">
@@ -28,7 +28,7 @@
 
     <button type="button"
             popovertarget="cally-popover1"
-            class="input input-bordered w-full text-left bg-base-100 rounded-2xl border-gray-300"
+            class="input input-bordered w-full text-left bg-base-100 rounded-2xl border-base-300"
             id="cally-trigger"
             style="anchor-name:--cally1">
       <span id="cally-text"><%= (@journal.posted_date || Date.current).strftime("%Y/%m/%d") %></span>
@@ -62,10 +62,6 @@
     </calendar-date>
   </div>
 
-  <!--<div class="mb-3">
-    <%= f.label :title, class: "label label-text text-base" %>
-    <%= f.text_field :title, class:"input input-bordered w-full" %>
-  </div> -->
   <div class="mb-3 md:text-lg">
     <%= f.label :body, class:"label label-text text-base font-medium" %>
     <%= f.text_area :body, class: "textarea textarea-bordered w-full text-base md:text-lg", rows: "10", 
@@ -95,8 +91,6 @@
         カジュアル
         </span>
       </label>
-      <%# f.submit "スタンダード", name:"tone",value: "standard", class:"btn btn-outline btn-primary flex-1" %>
-      <%# f.submit "カジュアル", name:"tone",value: "casual", class:"btn btn-outline btn-primary flex-1" %>
     </div>
   </div>
   <%= f.submit "添削する",

@@ -33,7 +33,7 @@ class JournalsController < ApplicationController
         if @journal.errors[:tone].present?
           "添削トーンを選択してください"
         else
-          "ジャーナルの作成に失敗しました。入力内容を確認してください"
+          "日記の作成に失敗しました。入力内容を確認してください"
         end
       render :new, status: :unprocessable_entity
       return
@@ -114,7 +114,7 @@ class JournalsController < ApplicationController
         redirect_to @journal, notice: "添削が完了しました！"
       else
         # DB保存に失敗したとき
-        flash.now[:alert] = "ジャーナルの作成に失敗しました。"
+        flash.now[:alert] = "日記の作成に失敗しました。"
         render :new, status: :unprocessable_entity
       end
       # AI添削処理の途中で例外が起きたとき(OpenAI/AI/API/予期しない処理エラー)
@@ -132,9 +132,9 @@ class JournalsController < ApplicationController
   def update
     @journal = current_user.journals.find(params[:id])
     if @journal.update(journal_params)
-      redirect_to journal_path(@journal), success: "ジャーナルが更新されました。"
+      redirect_to journal_path(@journal), success: "日記が更新されました。"
     else
-      flash.now[:alert] = "ジャーナルの更新に失敗しました。"
+      flash.now[:alert] = "日記の更新に失敗しました。"
       render :edit, status: :unprocessable_entity
     end
   end
@@ -142,7 +142,7 @@ class JournalsController < ApplicationController
   def destroy
     @journal = current_user.journals.find(params[:id])
     @journal.destroy
-    redirect_to journals_path, success: "ジャーナルが削除されました。", status: :see_other
+    redirect_to journals_path, success: "日記が削除されました。", status: :see_other
   end
 
   def calendar

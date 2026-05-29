@@ -45,7 +45,7 @@
              <%= link_to journal_path(journal) do %>
             <div class="border border-base-300 bg-base-100 rounded-2xl p-4 mb-3">
             
-            <p class="font-medium mb-2 items-center text-cream-500 text-base sm:text-lg flex gap-2">
+            <p class="font-medium mb-2 items-center text-base-content/70 text-base sm:text-lg flex gap-2">
               <%= journal.posted_date.strftime("%Y/%m/%d") %>
               <span class="inline-flex items-center bg-secondary text-primary text-sm md:text-md  rounded-full px-2 py-1">添削トーン：<%= t("enums.journal.tone.#{journal.tone}") %></span>
             </p>
@@ -54,7 +54,7 @@
               <%= journal.journal_correction&.rewritten_text || journal.body %>
             </p>
           
-            <!-- <%# link_to journal_path(journal), class: "btn btn-sm border border-forest-500 text-primary hover:bg-primary hover:bg-primary hover:opacity-80 hover:text-white text-base md:text-lg" do %>
+            <!-- <%# link_to journal_path(journal), class: "btn btn-sm border border-primary text-primary hover:bg-primary hover:bg-primary hover:opacity-80 hover:text-white text-base md:text-lg" do %>
             この日記を見る
             <%# end %> -->
             <% end %>
