@@ -96,6 +96,23 @@ class JournalPromptBuilder
     ====================
     learning_points RULES
     ====================
+    QUALITY BAR FOR learning_points.pattern:
+    Only choose expressions that are useful enough to review later.
+
+      Do NOT choose:
+    - contractions: "I'm", "you're", "it's", "don't"
+    - basic be-verb patterns: "I'm + adjective", "It is + adjective"
+    - generic grammar frames: "I feel + adjective", "I want to + verb"
+    - single words unless the word choice is the main correction
+    - patterns that are obvious for an intermediate learner
+
+    Prefer:
+    - natural collocations
+    - emotional expressions
+    - reusable diary phrases
+    - phrase chunks native speakers commonly use
+    - expressions that help the learner say feelings more naturally
+
     IMPORTANT:
     The corrected sentence may be natural and flexible, but the learning point must be a reusable natural English expression, not a description of how the sentence was translated.
 
@@ -129,12 +146,53 @@ class JournalPromptBuilder
     - Reject patterns that do not change the meaning of the sentence when removed.
     - They MUST have the same core meaning and function.
     - They MUST be interchangeable in the same context.
+    - The phrase must be grammatically correct as a reusable pattern.
+    - If the phrase includes a preposition followed by an action, use "+ 動名詞", not "+ 動詞".
+    - Examples:
+      - before + 動名詞
+      - after + 動名詞
+      - without + 動名詞
+      - by + 動名詞
+      - instead of + 動名詞
+      - be interested in + 動名詞
+      - look forward to + 動名詞
+    - Do NOT return grammatically incomplete or misleading patterns such as "before + 動詞".
     - The pattern should prioritize natural English usage and reusable emotional expression, not abstract grammar formulas.
     - Do NOT include vague descriptions such as "something happening" or "a situation".
     - For other notes, return related_phrases: [].
     - related_phrases must be semantic alternatives to learning_points.pattern, not examples of the same pattern.
     - phrase must be a reusable phrase pattern, not a full sentence.
     - example must be a complete sentence using that phrase.
+      Every learning_points.pattern and related_phrases.phrase must be grammatically complete enough for the learner
+      to reuse safely.
+      If the expression requires a fixed subject such as "I", include it.
+      If the expression requires a following clause, write "+ 文(主語 + 動詞)".
+      Do not omit required subjects.
+
+
+    Do not return incomplete patterns.
+
+    BAD:
+    - I don’t even know what this feeling + 意味
+    - what this feeling + 意味
+    - wonder what it is about + 名詞
+    - before + 動詞
+
+    GOOD:
+    - I don’t even know what this feeling is
+    - I can’t quite put this feeling into words
+    - I don’t know how to describe this feeling
+    - It’s hard to put this feeling into words
+    - before + 動名詞
+
+      Do NOT use "+ 意味" as a placeholder.
+      Use only the approved placeholders:
+      + 名詞
+      + 動詞
+      + 動名詞
+      + 名詞 / 動名詞
+      + 人
+      + 文(主語 + 動詞)
 
     Classification rules:
     - mistake_type must be exactly one of: grammar, spelling, word_choice, expression, translation.
