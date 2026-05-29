@@ -9,9 +9,9 @@
         <span class="text-primary text-sm sm:text-base md:text-2xl">(<%= @year %>年 <%= @month %>月)</span>
       </h1>
       <div class="flex items-center gap-2 flex-wrap text-xs sm:text-sm">
-        <%= link_to "前月", calendar_journals_path(year: @prev_year, month: @prev_month), class:"px-4 py-2 rounded-xl border border-forest-200 bg-forest-100 text-primary font-semibold hover:bg-forest-200" %>
-        <%= link_to "今月", calendar_journals_path(year: @today.year, month: @today.month), class:"px-4 py-2 rounded-xl border border-forest-500 bg-primary text-white font-semibold hover:bg-forest-600" %>
-        <%= link_to "翌月", calendar_journals_path(year:@next_year, month:@next_month), class:"px-4 py-2 rounded-xl border border-forest-200 bg-forest-100 text-primary font-semibold hover:bg-forest-200" %>
+        <%= link_to "前月", calendar_journals_path(year: @prev_year, month: @prev_month), class:"px-4 py-2 rounded-xl border border-forest-200 bg-secondary text-primary font-semibold hover:bg-forest-200" %>
+        <%= link_to "今月", calendar_journals_path(year: @today.year, month: @today.month), class:"px-4 py-2 rounded-xl border border-primary bg-primary text-white font-semibold hover:bg-forest-600" %>
+        <%= link_to "翌月", calendar_journals_path(year:@next_year, month:@next_month), class:"px-4 py-2 rounded-xl border border-forest-200 bg-secondary text-primary font-semibold hover:bg-forest-200" %>
       </div>
     </div>
 

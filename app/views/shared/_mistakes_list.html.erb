@@ -11,7 +11,7 @@
     <% if @journal_correction.mistakes.present? %>
       <div class="flex justify-between items-center mb-3">
         <h2 class="text-lg md:text-2xl font-semibold">今回の学び(<%= @journal_correction.mistakes.size %>件)</h2>
-          <%= link_to "表現を復習する", @journal_correction, class: "btn btn-sm border-forest-500  bg-secondary text-primary hover:bg-primary hover:text-white text-base md:text-lg" %>
+          <%= link_to "表現を復習する", @journal_correction, class: "btn btn-sm border-primary  bg-secondary text-primary hover:bg-primary hover:text-white text-base md:text-lg" %>
       </div>
 
           <% @journal_correction.mistakes.each do |mistake| %>

@@ -12,11 +12,11 @@
         <%= @journal_correction.journal.posted_date.strftime("%Y/%m/%d") %>
       </div>
       <div class="flex gap-2 mb-2"><% if @previous_journal_correction.present? %>
-        <%= link_to "← 前の学び", @previous_journal_correction, class:"btn btn-sm border-forest-500 text-primary hover:bg-primary hover:text-white" %>
+        <%= link_to "← 前の学び", @previous_journal_correction, class:"btn btn-sm border-primary text-primary hover:bg-primary hover:text-white" %>
       <% end %>
 
       <% if @next_journal_correction.present? %>
-        <%= link_to "次の学び →", @next_journal_correction, class:"btn btn-sm border-forest-500 text-primary hover:bg-primary hover:text-white" %>
+        <%= link_to "次の学び →", @next_journal_correction, class:"btn btn-sm border-primary text-primary hover:bg-primary hover:text-white" %>
       <% end %>
       </div>
     </div>
@@ -67,11 +67,11 @@
         <%# 内側の白部分 %>
            <div class="mb-2">
               <% @journal_correction.mistakes.each do |mistake| %>
-              <div class="border border-forest-500 bg-base-100 rounded-2xl overflow-hidden mb-3">
+              <div class="border border-primary bg-base-100 rounded-2xl overflow-hidden mb-3">
                 
                 <%# 学んだ表現 %>
                 <div class="bg-secondary p-3 mb-1">
-                  <p class="text-lg md:text-2xl font-bold text-forest-700">
+                  <p class="text-lg md:text-2xl font-bold text-primary">
                     <%= mistake.learning_points["pattern"] %>
                   </p>
                   <p class="text-primary">
@@ -87,7 +87,7 @@
                 <div class="mx-3 bg-secondary rounded-xl px-2 py-2">
                   <p class=" text-primary font-semibold text-base md:text-lg">添削後：<%= mistake.corrected_text %></p> 
                 </div>
-                <hr class="border-forest-500 mb-2 mt-2">
+                <hr class="border-primary mb-2 mt-2">
 
               <%# ほかの表現・言い回し %>
               <p class="mx-3 text-base-content mb-2 text-base md:text-lg">似た表現・言い回し</p>
@@ -101,7 +101,7 @@
               <% end %>
                 <%= link_to "この日記を見る", 
                     @journal_correction.journal,
-                    class:"text-base md:text-lg mx-3 flex items-center justify-center btn btn-sm border-forest-500 text-primary hover:bg-primary hover:text-white mb-2" %>                     
+                    class:"text-base md:text-lg mx-3 flex items-center justify-center btn btn-sm border-primary text-primary hover:bg-primary hover:text-white mb-2" %>                     
                 </div>
             <% end %>  
           </div>
@@ -110,11 +110,11 @@
     <% end %> 
     <div class="flex justify-end gap-2 mb-1">
       <% if @previous_journal_correction.present? %>
-        <%= link_to "← 前の学び", @previous_journal_correction, class:"btn btn-sm border-forest-500 text-primary hover:bg-primary hover:text-white" %>
+        <%= link_to "← 前の学び", @previous_journal_correction, class:"btn btn-sm border-primary text-primary hover:bg-primary hover:text-white" %>
       <% end %>
 
       <% if @next_journal_correction.present? %>
-        <%= link_to "次の学び →", @next_journal_correction, class:"btn btn-sm border-forest-500 text-primary hover:bg-primary hover:text-white" %>
+        <%= link_to "次の学び →", @next_journal_correction, class:"btn btn-sm border-primary text-primary hover:bg-primary hover:text-white" %>
       <% end %>
   
     </div>
