@@ -35,16 +35,16 @@
                 
                 <%# ボディ %>
                 <div class="px-4 py-3">
-                  <p class="text-gray-600 mb-1 text-base md:text-lg">今回の添削</p>
-                  <p class="mx-2 text-base md:text-lg bg-red-50 px-3 py-2 text-red-500 mb-2 rounded-xl">  
+                  <p class="text-base-content/70 mb-1 text-base md:text-lg">今回の添削</p>
+                  <p class="mx-2 text-base md:text-lg bg-error/10 px-3 py-2 text-error mb-2 rounded-xl">  
                   <%= mistake.original_text %></p>
                   <p class="mx-2 text-base md:text-lg  bg-base-200  text-primary font-semibold border-forest-200 rounded-xl px-3 py-2">
                   <%= mistake.corrected_text %></p>
 
                 <%# ポイント %>
                 <% if mistake.explanation.present? %>
-                  <p class="text-gray-600 mt-2 text-base md:text-lg">ポイント</p>
-                  <div class="mx-2 bg-gray-50 rounded-xl px-3 py-2 text-base-content">
+                  <p class="text-base-content/70 mt-2 text-base md:text-lg">ポイント</p>
+                  <div class="mx-2 bg-base-200 rounded-xl px-3 py-2 text-base-content">
                     <%= mistake.explanation %>
                   </div>
                 <% end %>

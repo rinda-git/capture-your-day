@@ -9,7 +9,7 @@ setup do
   @user = users(:one)
   # ② そのユーザーでログインする
   sign_in @user
-  # ③ テスト用のジャーナルをfixturesから取得する
+  # ③ テスト用の日記をfixturesから取得する
   @journal = journals(:one)
 end
 

@@ -22,11 +22,11 @@ ja:
     new:
   journals:
     new:
-      title: ジャーナリング作成
+      title: 日記を作成
     show:
-      title: ジャーナル添削結果
+      title: 日記添削結果
     index:
-      title: ジャーナリング一覧
+      title: 日記一覧
     calendar:
       title: カレンダー
   journal_corrections:
@@ -44,7 +44,7 @@ ja:
       title: マイページ
   line_connections:
     show:
-      title: LINEアカウント連携
+      title: LINE通知設定
   views:
     pagination:
       first: "最初"

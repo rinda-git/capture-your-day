@@ -11,7 +11,7 @@
   <div class="flex items-center gap-1 flex-nowrap">
     <%= link_to "ホーム", authenticated_root_path, class: "btn btn-ghost normal-case text-sm md:text-lg" %>
     <%= link_to "日記を書く", new_journal_path, class: "btn btn-ghost normal-case text-sm md:text-lg" %>
-    <%= link_to "ジャーナル一覧", journals_path, class: "btn btn-ghost normal-case text-sm md:text-lg" %>
+    <%= link_to "日記一覧", journals_path, class: "btn btn-ghost normal-case text-sm md:text-lg" %>
     <%= link_to "カレンダー", calendar_journals_path, class: "btn btn-ghost normal-case text-sm md:text-lg" %>
     <%= link_to "表現一覧", journal_corrections_path, class: "btn btn-ghost normal-case text-sm md:text-lg" %>
     <%= link_to "マイページ", mypage_path, class: "btn btn-ghost normal-case text-md md:text-lg" %>
@@ -92,7 +92,7 @@
       <% if user_signed_in? %>
         <li><%= link_to "ホーム", authenticated_root_path %></li>
         <li><%= link_to "日記を書く", new_journal_path %></li>
-        <li><%= link_to "ジャーナル一覧", journals_path %></li>
+        <li><%= link_to "日記一覧", journals_path %></li>
         <li><%= link_to "カレンダー", calendar_journals_path %></li>
         <li><%= link_to "表現一覧", journal_corrections_path %></li>
         <li><%= link_to "マイページ", mypages_show_path %></li>
