@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   # Devise のデフォルトで用意されているカラム（email, password など）以外に、独自のカラム（例：username）を追加したい場合に必要になる設定
   before_action :configure_permitted_parameters, if: :devise_controller?
-
+  add_flash_types :success, :warning
   # 500エラー確認用（終わったら削除！）
   # skip_before_action :authenticate_user!, only: [:test500]
   # def test500

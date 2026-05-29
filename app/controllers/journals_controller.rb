@@ -29,16 +29,20 @@ class JournalsController < ApplicationController
   def create
     @journal = current_user.journals.new(journal_params)
     if @journal.invalid?
-      flash.now[:alert] = "ジャーナルの作成に失敗しました"
+      flash.now[:alert] =
+        if @journal.errors[:tone].present?
+          "添削トーンを選択してください"
+        else
+          "ジャーナルの作成に失敗しました。入力内容を確認してください"
+        end
       render :new, status: :unprocessable_entity
       return
     end
 
+    begin
       # 1 フォームから本文の文字列を受け取る
       body = params[:journal][:body]
       tone = params[:journal][:tone]
-
-      raise "tone is nil!" if tone.blank?
 
       # 2 AIへの指示(プロンプト)を作成する(journal_prompt_builder.rbに移動)
       prompt = JournalPromptBuilder.new(body: body, tone: tone).build
@@ -60,7 +64,6 @@ class JournalsController < ApplicationController
       raw_response = response.dig("choices", 0, "message", "content")
       result = JSON.parse(raw_response)
       Rails.logger.debug "=== result: #{result.inspect}"
-      Rails.logger.debug "=== english_feedback: #{result['english_feedback'].inspect}"
 
       # 6 DBに保存する
       # @journal = current_user.journals.build(
@@ -110,7 +113,14 @@ class JournalsController < ApplicationController
 
         redirect_to @journal, notice: "添削が完了しました！"
       else
+        # DB保存に失敗したとき
         flash.now[:alert] = "ジャーナルの作成に失敗しました。"
+        render :new, status: :unprocessable_entity
+      end
+      # AI添削処理の途中で例外が起きたとき(OpenAI/AI/API/予期しない処理エラー)
+      rescue => e
+        Rails.logger.error("[AI Correction Error] #{e.class}: #{e.message}")
+        flash.now[:alert] = "AI添削に失敗しました。時間をおいてもう一度お試しください。"
         render :new, status: :unprocessable_entity
       end
     end
