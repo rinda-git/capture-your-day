@@ -29,7 +29,7 @@ class JournalsController < ApplicationController
   def create
     @journal = current_user.journals.new(journal_params)
     if @journal.invalid?
-      flash.now[:alert] = 
+      flash.now[:alert] =
         if @journal.errors[:tone].present?
           "添削トーンを選択してください"
         else
