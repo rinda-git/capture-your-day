@@ -16,7 +16,7 @@
     </div>
 
     <!-- 曜日 -->
-    <div class="mt-4 grid grid-cols-7 gap-2 text-center text-sm sm:text-base md:text-lg">
+    <div class="mt-4 grid grid-cols-7 gap-2 text-center text-sm sm:text-lg md:text-xl">
       <% [ "月", "火", "水", "木", "金", "土", "日"].each do |day| %>
         <div class="px-2 py-1 text-center font-medium text-primary">
           <%= day %>
@@ -25,7 +25,7 @@
     </div>
 
     <!-- カレンダー本体 -->
-    <div class="mt-1 grid grid-cols-7 gap-2">
+    <div class="mt-1 grid grid-cols-7 gap-2 text-base sm:text-lg md:text-xl">
       <% day = @calendar_start %>
       <% while day <= @calendar_end %>
         <% journals = @journals_by_date[day] || [] %>
@@ -36,7 +36,7 @@
               class:"group block min-h-12 sm:min-h-20 md:min-h-32 rounded bg-primary/80 px-1 py-1 sm:py-2 sm:px-2 md:px-3 md:py-3 rounded text-left hover:bg-primary" do %>
           <div class="font-semibold hover:bg-primary group-hover:text-primary-content" >
           <%= day.day %>
-          <span class="block sm:inline text-xs sm:text-sm md:text-md">(<%= journals.size %>件)</span>
+          <span class="block sm:inline text-sm sm:text-md md:text-lg">(<%= journals.size %>件)</span>
           </div>
           <% end %>
 
@@ -46,7 +46,7 @@
               class:"group block min-h-12 sm:min-h-20 md:min-h-32 rounded bg-primary/80 px-1 py-1 sm:py-2 sm:px-2 md:px-3 md:py-3 text-left hover:bg-primary" do %>
             <div class="font-semibold  group-hover:text-primary-content hover:bg-primary">
             <%= day.day %>
-            <span class="block sm:inline text-xs sm:text-sm md:text-md">(<%= journals.size %>件)</span>
+            <span class="block sm:inline text-sm sm:text-md md:text-lg">(<%= journals.size %>件)</span>
             </div>
           <% end %>
         <% else %>
