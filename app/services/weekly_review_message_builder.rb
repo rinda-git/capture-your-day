@@ -1,5 +1,4 @@
 class WeeklyReviewMessageBuilder
-
   def initialize(user:, result:)
     @user = user
     @total_count = result[:total_count]
@@ -17,7 +16,7 @@ class WeeklyReviewMessageBuilder
 
     items.each.with_index(1) do |item, index|
       lines << "#{index}. #{item[:pattern]}"
-      lines << "【意味】#{item[:meaning].to_s}" if item[:meaning].present?
+      lines << "【意味】#{item[:meaning]}" if item[:meaning].present?
       lines << "【添削後】"
       lines << item[:corrected_text].to_s
       lines << "【ポイント】"

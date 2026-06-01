@@ -30,4 +30,4 @@ class LineMessageSender
       ]
     )
     end
-  end
+end

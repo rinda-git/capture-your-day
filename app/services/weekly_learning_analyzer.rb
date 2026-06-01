@@ -1,25 +1,25 @@
 class WeeklyLearningAnalyzer
   MAX_CANDIDATES = 50
-  # 直近1週間の日記を対象に、ユーザーが学んだ表現を抽出するサービスクラス   
+  # 直近1週間の日記を対象に、ユーザーが学んだ表現を抽出するサービスクラス
   def initialize(user:, from: 7.days.ago.to_date, to: Date.current)
     @user = user
     @from = from
     @to = to
   end
 
-#   def call
-#     mistakes.map do |mistake|
-#       {
-#         date: mistake.journal.posted_date,
-#         original_text: mistake.original_text,
-#         corrected_text: mistake.corrected_text,
-#         explanation: mistake.explanation,
-#         pattern: mistake.learning_points["pattern"],
-#         meaning: mistake.learning_points["meaning"],
-#         review_tag: mistake.learning_points["review_tag"],
-#         related_phrases: mistake.learning_points["related_phrases"]
-#       }
-#     end
+  #   def call
+  #     mistakes.map do |mistake|
+  #       {
+  #         date: mistake.journal.posted_date,
+  #         original_text: mistake.original_text,
+  #         corrected_text: mistake.corrected_text,
+  #         explanation: mistake.explanation,
+  #         pattern: mistake.learning_points["pattern"],
+  #         meaning: mistake.learning_points["meaning"],
+  #         review_tag: mistake.learning_points["review_tag"],
+  #         related_phrases: mistake.learning_points["related_phrases"]
+  #       }
+  #     end
   def call
     candidates = learning_items.first(MAX_CANDIDATES)
     return { total_count: 0, items: [] } if candidates.blank?
@@ -31,8 +31,8 @@ class WeeklyLearningAnalyzer
   rescue => e
     Rails.logger.error("[WeeklyLearningAnalyzer] #{e.class}: #{e.message}")
     {
-      total_count: candidates&.size || 0, 
-      items: candidates.to_a.first(3)  
+      total_count: candidates&.size || 0,
+      items: candidates.to_a.first(3)
     }
   end
 
@@ -79,10 +79,9 @@ class WeeklyLearningAnalyzer
         pattern: item["pattern"],
         meaning: item["meaning"],
         corrected_text: item["corrected_text"],
-        grammar_point: item["grammar_point"],
+        grammar_point: item["grammar_point"]
       }
     end
-
   end
 
   def prompt(candidates)
@@ -153,7 +152,7 @@ class WeeklyLearningAnalyzer
       - meaning は候補の meaning をそのまま使ってください
       - corrected_text は候補の corrected_text を基本的に使ってください
       - grammar_point はLINE向けに短く、具体的にしてください
-        
+    #{'    '}
         出力形式:
         {
           "items": [
