@@ -15,7 +15,7 @@ class WeeklyReviewBroadcaster
   attr_reader :date
 
   def target_users
-    User.where.not(line_user_id: [nil, ""])
+    User.where.not(line_user_id: [ nil, "" ])
   end
 
   def deliver_to(user)
@@ -27,7 +27,7 @@ class WeeklyReviewBroadcaster
       from: from,
       to: to
     ).call
-    
+
     message = WeeklyReviewMessageBuilder.new(
       user: user,
       result: result
