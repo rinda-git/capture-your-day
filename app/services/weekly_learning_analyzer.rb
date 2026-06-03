@@ -1,3 +1,4 @@
+# 1週間分の学習候補からAIで最大3つ選ぶ
 class WeeklyLearningAnalyzer
   MAX_CANDIDATES = 50
   # 直近1週間の日記を対象に、ユーザーが学んだ表現を抽出するサービスクラス
@@ -7,19 +8,6 @@ class WeeklyLearningAnalyzer
     @to = to
   end
 
-  #   def call
-  #     mistakes.map do |mistake|
-  #       {
-  #         date: mistake.journal.posted_date,
-  #         original_text: mistake.original_text,
-  #         corrected_text: mistake.corrected_text,
-  #         explanation: mistake.explanation,
-  #         pattern: mistake.learning_points["pattern"],
-  #         meaning: mistake.learning_points["meaning"],
-  #         review_tag: mistake.learning_points["review_tag"],
-  #         related_phrases: mistake.learning_points["related_phrases"]
-  #       }
-  #     end
   def call
     candidates = learning_items.first(MAX_CANDIDATES)
     return { total_count: 0, items: [] } if candidates.blank?
@@ -111,30 +99,29 @@ class WeeklyLearningAnalyzer
       - コロケーション
 
       優先度を下げる候補:
-      - ただの便利フレーズ紹介になりやすいもの
       - original_text と corrected_text の違いが分かりにくいもの
       - 「自然な表現です」以上の説明がしにくいもの
       - その日記でしか使いにくい個人的すぎる内容
       - 長すぎる文
 
 
-    grammar_point の書き方:
-    - grammar_point は「次に自分で使うための文法・ニュアンスメモ」として書いてください
-    - 以下のうち、候補に合うものを1〜2文で説明してください
-        1. その表現の意味・ニュアンス
-        2. 形のルール
-        3. 同じルールで使える代表例を1〜3個
-    - original_text と corrected_text の違いが明確な場合は、どこをどう直したかも説明してください
-    - 「自然な表現です」「便利です」だけの説明は禁止です
+      grammar_point の書き方:
+      - grammar_point は「次に自分で使うための文法・ニュアンスメモ」として書いてください
+      - 以下のうち、候補に合うものを1〜2文で説明してください
+          1. その表現の意味・ニュアンス
+          2. 形のルール
+          3. 同じルールで使える代表例を1〜3個
+      - original_text と corrected_text の違いが明確な場合は、どこをどう直したかも説明してください
+      - 「自然な表現です」「便利です」だけの説明は禁止です
 
-    良い grammar_point の例:
-    - have been thinking about は、ある時点から今まで考え続けている状態を表します。about など前置詞の後ろに動詞を置くとき
-    は、going / studying のように動名詞にします。
-    - enjoy の後ろに動詞を置くときは、to do ではなく doing を使います。同じように動名詞が続きやすい動詞には finish /
-    avoid / consider などがあります。
-    - look forward to の to は前置詞なので、後ろは see ではなく seeing のように動名詞にします。同じ形で be used to + 動名
-    詞 も使えます。
-    - I wonder if は「〜かなと思う」とやわらかく言いたいときに使います。if の後ろには主語 + 動詞の文を続けます
+      良い grammar_point の例:
+      - have been thinking about は、ある時点から今まで考え続けている状態を表します。about など前置詞の後ろに動詞を置くとき
+      は、going / studying のように動名詞にします。
+      - enjoy の後ろに動詞を置くときは、to do ではなく doing を使います。同じように動名詞が続きやすい動詞には finish /
+      avoid / consider などがあります。
+      - look forward to の to は前置詞なので、後ろは see ではなく seeing のように動名詞にします。同じ形で be used to + 動名
+      詞 も使えます。
+      - I wonder if は「〜かなと思う」とやわらかく言いたいときに使います。if の後ろには主語 + 動詞の文を続けます
 
       悪い grammar_point:
       - 自然な表現です
