@@ -8,15 +8,15 @@
 
     <div class="flex justify-center gap-2 mb-4">
       <div class=" bg-secondary rounded-2xl p-3 text-center flex-1">
-        <p class="text-xl sm:text-2xl md:text-3xl font-semibold text-primary"><%= @total_count %><span class="text-xs sm:text-lg font-medium"> 件</span></p>
+        <p class="text-xl sm:text-2xl md:text-3xl font-semibold text-primary"><%= @total_count %><span class="text-xs sm:text-md font-medium"> 件</span></p>
         <p class="text-sm sm:text-md md:text-lg text-base-content-muted ">総投稿数</p>
       </div>
       <div class="bg-secondary rounded-2xl p-3 text-center flex-1">
-        <p class="text-xl sm:text-2xl md:text-3xl font-semibold text-primary"><%= @total_learning_count %><span class="text-xs sm:text-lg font-medium"> フレーズ</span></p>
+        <p class="text-xl sm:text-2xl md:text-3xl font-semibold text-primary"><%= @total_learning_count %><span class="text-xs sm:text-md font-medium"> フレーズ</span></p>
         <p class="text-sm text-base-content-muted sm:text-md md:text-lg">学んだ表現</p>
       </div>
       <div class="bg-secondary rounded-2xl p-3 text-center flex-1">
-        <p class="text-xl sm:text-2xl md:text-3xl font-semibold text-primary"><%= @streak_count %><span class="text-xs sm:text-lg font-medium"> 日</span></p>
+        <p class="text-xl sm:text-2xl md:text-3xl font-semibold text-primary"><%= @streak_count %><span class="text-xs sm:text-md font-medium"> 日</span></p>
         <p class="text-sm sm:text-md md:text-lg text-base-content-muted">連続投稿日数</p>
       </div>
     </div>
@@ -37,14 +37,14 @@
     </div>
     <div class="bg-secondary rounded-2xl p-5 mb-4">
       <%# 今日の気持ちを英語にしてみよう %>
-      <p class="font-bold font-sans text-base text-center text-success sm:text-lg md:text-2xl mb-1">
+      <p class="font-bold font-sans text-base text-center text-success sm:text-md md:text-2xl mb-1">
         今日、心が動いたことは？
       </p>
-      <p class="text-center text-base sm:text-lg md:text-xl text-primary mb-2">
+      <p class="text-center text-base sm:text-md md:text-lg text-primary mb-2">
         日本語でも英語でも、気持ちを書き残してみよう
       </p>
       <div class="flex justify-center">
-        <%= link_to "日記を書いてみる", new_journal_path, class:"btn btn-primary w-64 text-base sm:text-lg md:text-xl" %>
+        <%= link_to "日記を書いてみる", new_journal_path, class:"btn btn-primary w-64 text-base sm:text-md md:text-lg" %>
       </div>
     </div>
   
@@ -59,12 +59,12 @@
              <%= link_to journal_path(journal) do %>
             <div class="border border-base-300 bg-base-100 rounded-2xl p-4 mb-3">
             
-            <p class="font-medium mb-2 items-center text-base-content/70 text-base sm:text-lg flex gap-2">
+            <p class="font-medium mb-2 items-center text-base-content/70 text-base sm:text-md flex gap-2">
               <%= journal.posted_date.strftime("%Y/%m/%d") %>
               <span class="inline-flex items-center bg-secondary text-primary text-sm md:text-md rounded-full px-2 py-1">添削トーン：<%= t("enums.journal.tone.#{journal.tone}") %></span>
             </p>
     
-            <p class="text-base-content mb-3 line-clamp-2 text-base sm:text-lg md:text-xl">
+            <p class="text-base-content mb-3 line-clamp-2 text-base sm:text-md md:text-lg">
               <%= journal.journal_correction&.rewritten_text || journal.body %>
             </p>
           

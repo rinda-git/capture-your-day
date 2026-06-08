@@ -42,7 +42,7 @@
             </div>
             <%# 本文 %>
             <%= link_to journal_path(journal) do %>
-            <p class="text-base sm:text-lg md:text-xl mb-3 line-clamp-2">
+            <p class="text-base sm:text-md md:text-lg mb-3 line-clamp-2">
               <%= journal.journal_correction&.rewritten_text || journal.body %>
             </p>
             <% end %>

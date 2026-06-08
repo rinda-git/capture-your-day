@@ -16,7 +16,7 @@
     </div>
 
     <!-- 曜日 -->
-    <div class="mt-4 grid grid-cols-7 gap-2 text-center text-sm sm:text-lg md:text-xl">
+    <div class="mt-4 grid grid-cols-7 gap-2 text-center text-sm sm:text-md md:text-lg">
       <% [ "月", "火", "水", "木", "金", "土", "日"].each do |day| %>
         <div class="px-2 py-1 text-center font-medium text-primary">
           <%= day %>
@@ -25,7 +25,7 @@
     </div>
 
     <!-- カレンダー本体 -->
-    <div class="mt-1 grid grid-cols-7 gap-2 text-base sm:text-lg md:text-xl">
+    <div class="mt-1 grid grid-cols-7 gap-2 text-base sm:text-md md:text-lg">
       <% day = @calendar_start %>
       <% while day <= @calendar_end %>
         <% journals = @journals_by_date[day] || [] %>
