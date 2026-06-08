@@ -13,7 +13,7 @@
           <%= link_to journal_correction_path(journal_correction),
             class:"block border border-base-300 bg-base-100 rounded-lg px-2 py-1 sm:px-4 py-3" do %>
           <%# 日付 %>
-            <div class="font-bold text-base-content/70 flex items-center gap-3 mb-2 sm:text-lg">
+            <div class="font-bold text-base-content/70 flex items-center gap-3 mb-2 sm:text-md">
               <span>
                 <%= journal_correction.journal.posted_date.strftime("%Y/%m/%d") %>の日記
               </span>
@@ -25,7 +25,7 @@
 
         <div class="mb-2">
           <% journal_correction.mistakes.first(2).each do |mistake| %>
-            <p class="font-semibold text-base sm:text-lg md:text-xl"><%= mistake.learning_points["pattern"] %></p>
+            <p class="font-semibold text-base sm:text-md md:text-lg"><%= mistake.learning_points["pattern"] %></p>
             <p class="text-base-content sm:text-md md:text-lg">【意味】<%= mistake.learning_points["meaning"] %></p>
           
             <!--<% if mistake.learning_points["related_phrases"].present? %>

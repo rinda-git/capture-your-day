@@ -5,7 +5,7 @@
         添削トーン：<%= t("enums.journal.tone.#{journal.tone}") %>
         </span>
       </div>
-          <p class="text-base sm:text-lg md:text-xl px-5 p-4 whitespace-pre-line"><%= @journal_correction.rewritten_text %></p>
+          <p class="text-base sm:text-md md:text-lg px-5 p-4 whitespace-pre-line"><%= @journal_correction.rewritten_text %></p>
     </div>
 
     <% if @journal_correction.mistakes.present? %>
