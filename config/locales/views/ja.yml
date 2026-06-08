@@ -52,6 +52,9 @@ ja:
       next: "次へ"
       last: "最後"
       truncate: "..."
+  pages:
+    privacy:
+      title: "プライバシーポリシー"
   
 
 
