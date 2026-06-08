@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get "mypages/show"
   get "home/index"
   devise_for :users
+  get "privacy", to: "pages#privacy"
+  get "terms", to: "pages#terms"
   # これで以下のようなルーティングが自動生成される
   # /users/sign_up（新規登録）
   # /users/sign_in（ログイン）
@@ -29,8 +31,7 @@ Rails.application.routes.draw do
   resources :journal_corrections, only: [ :index, :show ]
   resource :mypage, only: [ :show ]
   resource :line_connection, only: [ :show, :create, :destroy ]
-  get "privacy", to: "pages#privacy"
-  get "terms", to: "pages#terms"
+
 
   # テスト用ルーティング　あとで削除する
   # get '/test500', to: 'application#test500'

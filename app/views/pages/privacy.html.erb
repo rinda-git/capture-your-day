@@ -1,30 +1,30 @@
 <%= content_for(:title, t('.title', default: APP_NAME)) %>
 <div class="flex-grow px-2 sm:px-6 md:px-10">
   <div class="max-w-4xl mx-auto pt-2 pb-6 sm:pt-6 md:px-0">
-    <h1 class="font-sans font-semibold text-center text-lg md:text-4xl sm:text-2xl mb-6">
+    <h1 class="font-sans font-semibold text-center text-lg md:text-3xlxl sm:text-2xl mb-6">
       <%= t('.title') %>
     </h1>
 
       <div class="card bg-base-100 shadow mb-4 p-4 sm:p-5 md:p-6">
-        <div class="text-md sm:text-md md:text-lg">
-          <p class="leading-8 pb-3">Capture Your Day（以下「本アプリ」）は、ユーザーの個人情報の取り扱いについて、以下の方針に基づき取り扱います。</p>
+        <div class="text-sm sm:text-base">
+          <p class="leading-7 pb-3">Capture Your Day（以下「本アプリ」といいます。）は、ユーザーの個人情報の取り扱うことを重要な責務と考え、以下の方針に基づき個人情報を取り扱います。</p>
         
           <section class="space-y-3 border-t border-b border-base-300 py-6">
-            <h2 class="font-semibold text-xl ">1. 取得する情報</h2>
-            <p class="leading-8">本アプリの利用に際しては、お客様から以下の情報を取得します。</p>
-            <ul class="list-disc pl-6 leading-8" >
+            <h2 class="font-semibold text-base sm:text-xl ">1. 取得する情報</h2>
+            <p class="leading-7">本アプリの利用に際して、ユーザーに関する以下の情報を取得します。</p>
+            <ul class="list-disc pl-6 leading-7" >
                 <li>氏名（ニックネームやペンネームを含む）</li>
                 <li>メールアドレス</li>
                 <li>投稿された日記・添削結果・保存された表現</li>
-                <li>「LINEアカウント連携」を利用した場合に取得するユーザー識別子（ユーザーID）、表示名、プロフィール画像などのプロフィール情報</li>
+                <li>「LINE通知機能」を利用する場合に取得するユーザー識別子（ユーザーID）、表示名、プロフィール画像などのプロフィール情報</li>
                 <li>ユーザーが本アプリ公式LINEアカウントへ送信したメッセージ内容（LINE連携手続きやお問い合わせ対応に必要な範囲で確認します）</li>
                 <li>利用者が本サービス上に入力・保存または送信する文章そのほかのデータ</li>
                 <li>Cookieそのほかの類似技術により取得される識別情報</li>
             </ul>
           </section>
           <section class="space-y-3 border-b border-base-300 py-6">
-            <h2 class="font-semibold text-xl ">2. 利用目的</h2>
-            <p class="leading-8">本アプリは、取得した情報を以下の目的で利用します。</p>
+            <h2 class="font-semibold text-base sm:text-xl ">2. 利用目的</h2>
+            <p class="leading-7">本アプリは、取得した情報を以下の目的で利用します。</p>
             <ul class="list-disc pl-6">
               <li>本アプリへの登録、本人確認および認証のため</li>
               <li>本アプリの機能、サービス提供および改善のため</li>
@@ -37,13 +37,13 @@
           </section>
 
           <section class="space-y-3 border-b border-base-300 py-6">
-            <h2 class="font-semibold text-xl ">3. 外部サービスの利用</h2>
-            <p class="leading-8">本アプリは、サービス提供のために以下の外部サービスを利用する場合があります。</p>
+            <h2 class="font-semibold text-base sm:text-xl ">3. 外部サービスの利用</h2>
+            <p class="leading-7">本アプリは、サービス提供のために以下の外部サービスを利用する場合があります。</p>
             <ul class="list-disc pl-6">
               <li>OpenAI</li>
-              <li>Line Messaging API</li>
+              <li>LINE Messaging API</li>
             </ul>
-            <p class="leading-8">
+            <p class="leading-7">
             本アプリは、AI添削機能やLINE通知機能を提供するため、サービス提供に必要な範囲で、ユーザーが入力・送信した情報の一部をOpenAIやLINE
             Messaging API等の外部サービスに送信する場合があります。
             送信された情報は、各外部サービスの利用規約およびプライバシーポリシーに従って取り扱われます。
@@ -51,29 +51,29 @@
           </section>
 
           <section class="space-y-3 border-b border-base-300 py-6">
-            <h2 class="font-semibold text-xl ">4. 第三者提供および外部委託</h2>
-            <p class="leading-8">
+            <h2 class="font-semibold text-base sm:text-xl ">4. 第三者提供および外部委託</h2>
+            <p class="leading-7">
             個人情報は法令に基づく場合を除き、本人の同意なく第三者に提供することはありません。
-            ただし、サービス提供に必要な範囲で、外部サービス提供事業者に情報を送信または取り扱いを委託する場合があります。
+            ただし、本アプリのサービス提供に必要な範囲で、外部サービス提供事業者に情報を送信または取り扱いを委託する場合があります。
             </p>
           </section>
 
           <section class="space-y-3 border-b border-base-300 py-6">
-            <h2 class="font-semibold text-xl ">5. 安全管理</h2>
-            <p class="leading-8">本アプリは、取得した個人情報について、不正アクセス、紛失、漏えい等の防止、そのほかの安全管理のために、合理的な措置を講じます</p>
+            <h2 class="font-semibold text-base sm:text-xl ">5. 安全管理</h2>
+            <p class="leading-7">本アプリは、取得した個人情報について、不正アクセス、紛失、漏えい等の防止、そのほかの安全管理のために、合理的な措置を講じます。</p>
           </section>
 
           <section class="space-y-3 border-b border-base-300 py-6">
-            <h2 class="font-semibold text-xl ">6. 個人情報の開示・訂正・削除等</h2>
-            <p class="leading-8">
-            ユーザーは本アプリが保有する自己の個人情報について、開示、訂正、削除、利用停止を求めることができます。
+            <h2 class="font-semibold text-base sm:text-xl">6. 個人情報の開示・訂正・削除等</h2>
+            <p class="leading-7">
+            ユーザーはご自身の個人情報について、開示、訂正、削除、利用停止を求めることができます。
             ご希望の場合は、お問い合わせ先までご連絡ください。
             </p>
           </section>
 
           <section class="space-y-3 border-b border-base-300 py-6">
-            <h2 class="font-semibold text-xl ">7. プライバシーポリシーの変更</h2>
-            <p class="leading-8">
+            <h2 class="font-semibold text-base sm:text-xl">7. プライバシーポリシーの変更</h2>
+            <p class="leading-7">
             本アプリは、必要に応じて本プライバシーポリシーを変更することがあります。
             最新の内容は、こちらのページでご確認ください。
             </p>
@@ -81,8 +81,8 @@
 
           <section class="space-y-3 border-b border-base-300 py-6">
             <h2 class="font-semibold text-xl ">8. お問い合わせ</h2>
-            <p class="leading-8">
-            質問や不明点がございましたら、以下までご連絡ください<br>
+            <p class="leading-7">
+            質問や不明点がございましたら、以下までご連絡ください。<br>
             メールアドレス：capture.your.day24@gmail.com
             </p>
           </section>
