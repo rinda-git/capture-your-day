@@ -1,17 +1,17 @@
     <div class="border border-base-300 bg-base-100 rounded-2xl mb-4">
       <div class="flex items-center gap-2 bg-secondary border-b border-forest-200 px-4 ">
-        <h2 class="font-semibold text-base md:text-lg py-2 text-primary">添削後の文章</h2>
+        <h2 class="font-semibold text-sm sm:text-base py-2 text-primary">添削後の文章</h2>
         <span class="badge badge-soft badge-success text-white px-5 py-4">
         添削トーン：<%= t("enums.journal.tone.#{journal.tone}") %>
         </span>
       </div>
-          <p class="text-base sm:text-md md:text-lg px-5 p-4 whitespace-pre-line"><%= @journal_correction.rewritten_text %></p>
+          <p class="text-sm sm:text-base px-5 p-4 whitespace-pre-line"><%= @journal_correction.rewritten_text %></p>
     </div>
 
     <% if @journal_correction.mistakes.present? %>
       <div class="flex justify-between items-center mb-3">
-        <h2 class="text-lg md:text-2xl font-semibold">今回の学び(<%= @journal_correction.mistakes.size %>件)</h2>
-          <%= link_to "表現を復習する", @journal_correction, class: "btn btn-sm border-primary  bg-secondary text-primary hover:bg-primary hover:text-white text-base md:text-lg" %>
+        <h2 class="text-lg md:text-xl font-semibold">今回の学び(<%= @journal_correction.mistakes.size %>件)</h2>
+          <%= link_to "表現を復習する", @journal_correction, class: "btn btn-sm border-primary  bg-secondary text-primary hover:bg-primary hover:text-white text-sm sm:text-base" %>
       </div>
 
           <% @journal_correction.mistakes.each do |mistake| %>
@@ -22,12 +22,12 @@
                   <%= mistake_type_label(mistake.mistake_type) %>
                 </span>
                 <% if mistake.learning_points["pattern"].present? %>
-                  <p class="text-lg md:text-2xl font-semibold mb-1 text-primary">
+                  <p class="text-lg md:text-xl font-semibold mb-1 text-primary">
                     <%= mistake.learning_points["pattern"] %>
                   </p>
                 <% end %>
                 <% if mistake.learning_points["meaning"].present? %>
-                  <p class="text-base md:text-lg text-primary">
+                  <p class="text-sm sm:text-base text-primary">
                     <%= mistake.learning_points["meaning"] %> 
                   </p>
                 <% end %>
@@ -35,16 +35,16 @@
                 
                 <%# ボディ %>
                 <div class="px-4 py-3">
-                  <p class="text-base-content/70 mb-1 text-base md:text-lg">今回の添削</p>
-                  <p class="mx-2 text-base md:text-lg bg-error/10 px-3 py-2 text-error mb-2 rounded-xl">  
+                  <p class="text-base-content/70 mb-1 text-sm sm:text-base">今回の添削</p>
+                  <p class="mx-2 text-sm sm:text-base bg-error/10 px-3 py-2 text-error mb-2 rounded-xl">  
                   <%= mistake.original_text %></p>
-                  <p class="mx-2 text-base md:text-lg  bg-base-200  text-primary font-semibold border-forest-200 rounded-xl px-3 py-2">
+                  <p class="mx-2 text-sm sm:text-base  bg-base-200  text-primary font-semibold border-forest-200 rounded-xl px-3 py-2">
                   <%= mistake.corrected_text %></p>
 
                 <%# ポイント %>
                 <% if mistake.explanation.present? %>
-                  <p class="text-base-content/70 mt-2 text-base md:text-lg">ポイント</p>
-                  <div class="mx-2 bg-base-200 rounded-xl px-3 py-2 text-base-content sm:text-md md:text-lg">
+                  <p class="text-base-content/70 mt-2 text-sm sm:text-base">ポイント</p>
+                  <div class="mx-2 bg-base-200 rounded-xl px-3 py-2 text-base-content sm:text-base">
                     <%= mistake.explanation %>
                   </div>
                 <% end %>

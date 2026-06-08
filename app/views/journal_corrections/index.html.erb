@@ -25,8 +25,8 @@
 
         <div class="mb-2">
           <% journal_correction.mistakes.first(2).each do |mistake| %>
-            <p class="font-semibold text-base sm:text-md md:text-lg"><%= mistake.learning_points["pattern"] %></p>
-            <p class="text-base-content sm:text-md md:text-lg">【意味】<%= mistake.learning_points["meaning"] %></p>
+            <p class="font-semibold text-sm sm:text-base"><%= mistake.learning_points["pattern"] %></p>
+            <p class="text-base-content sm:text-base">【意味】<%= mistake.learning_points["meaning"] %></p>
           
             <!--<% if mistake.learning_points["related_phrases"].present? %>
               <% mistake.learning_points["related_phrases"].each do |phrase| %> 
