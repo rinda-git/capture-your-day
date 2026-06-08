@@ -2,11 +2,25 @@ class JournalsController < ApplicationController
   helper MistakesHelper
   before_action :authenticate_user!
   def index
-    # @journals =current_user.journals.order(created_at: :desc)
+    @year = params[:year]&.to_i || Date.current.year
+    @month = params[:month]&.to_i || Date.current.month
+    @current_month = Date.new(@year, @month, 1)
+
+    prev_month = @current_month.prev_month
+    next_month = @current_month.next_month
+
+    @prev_year = prev_month.year
+    @prev_month = prev_month.month
+    @next_year = next_month.year
+    @next_month = next_month.month
+
     @journals =current_user.journals.includes(:journal_correction)
       if params[:posted_date].present?
         @journals = @journals.where(posted_date: params[:posted_date])
+      else
+        @journals = @journals.where(posted_date: @current_month.all_month)
       end
+
     @journals = @journals.order(posted_date: :desc, id: :desc).page(params[:page]).per(10)
   end
 
