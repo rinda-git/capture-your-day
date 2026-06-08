@@ -33,7 +33,7 @@
         <!-- 日記が1件の場合 -->
         <% if journals.size == 1 %>
           <%= link_to journal_path(journals.first), 
-              class:"group block min-h-12 sm:min-h-20 md:min-h-32 rounded bg-primary/80 px-1 py-1 sm:py-2 sm:px-2 md:px-3 md:py-3 rounded text-left hover:bg-primary" do %>
+              class:"group block min-h-12 sm:min-h-20 md:min-h-28 rounded bg-primary/80 px-1 py-1 sm:py-2 sm:px-2 md:px-3 md:py-3 rounded text-left hover:bg-primary" do %>
           <div class="font-semibold hover:bg-primary group-hover:text-primary-content" >
           <%= day.day %>
           <span class="block sm:inline text-sm sm:text-md md:text-lg">(<%= journals.size %>件)</span>
@@ -43,7 +43,7 @@
         <!-- 日記が2件以上の場合-->
         <% elsif journals.size > 1 %>
           <%= link_to journals_path(posted_date: day), 
-              class:"group block min-h-12 sm:min-h-20 md:min-h-32 rounded bg-primary/80 px-1 py-1 sm:py-2 sm:px-2 md:px-3 md:py-3 text-left hover:bg-primary" do %>
+              class:"group block min-h-12 sm:min-h-20 md:min-h-28 rounded bg-primary/80 px-1 py-1 sm:py-2 sm:px-2 md:px-3 md:py-3 text-left hover:bg-primary" do %>
             <div class="font-semibold  group-hover:text-primary-content hover:bg-primary">
             <%= day.day %>
             <span class="block sm:inline text-sm sm:text-md md:text-lg">(<%= journals.size %>件)</span>
@@ -53,7 +53,7 @@
 
           <!-- 日記がない日 -->
           <%= link_to new_journal_path(posted_date: day), 
-              class:"group block min-h-12 sm:min-h-20 md:min-h-36 rounded bg-base-300 px-1 py-1 sm:px-2 sm:py-2 md:px-3 md:py-3 text-left text-base-content hover:bg-base-200" do %>
+              class:"group block min-h-12 sm:min-h-20 md:min-h-28 rounded bg-base-300 px-1 py-1 sm:px-2 sm:py-2 md:px-3 md:py-3 text-left text-base-content hover:bg-base-200" do %>
             <div class="font-semibold group-hover:text-base-content">
             <%= day.day %>
             </div>
