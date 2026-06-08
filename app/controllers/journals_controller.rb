@@ -20,7 +20,7 @@ class JournalsController < ApplicationController
       else
         @journals = @journals.where(posted_date: @current_month.all_month)
       end
-      
+
     @journals = @journals.order(posted_date: :desc, id: :desc).page(params[:page]).per(10)
   end
 
