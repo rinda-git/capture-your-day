@@ -1,13 +1,13 @@
 <div class="flex items-center justify-end gap-2 mb-4">
   <%= link_to "前月",
       path.call(year: prev_year, month: prev_month),
-      class: "btn btn-sm border-forest-200 bg-secondary hover:bg-forest-200" %>
+      class: "btn btn-sm border-forest-200 bg-secondary text-primary hover:bg-forest-200" %>
   
   <div class="text-center">
     <% unless current_month == Date.current.beginning_of_month %>
       <%= link_to "今月",
           path.call(year: Date.current.year, month: Date.current.month),
-          class: "btn btn-sm border-primary bg-primary hover:bg-forest-200" %>
+          class: "btn btn-sm border-primary bg-primary text-white hover:bg-forest-200" %>
     <% end %>
   </div>
   
@@ -15,6 +15,6 @@
   <% if current_month < Date.current.beginning_of_month %>
     <%= link_to "翌月",
         path.call(year: next_year, month: next_month),
-        class: "btn btn-sm border-forest-200 bg-secondary hover:bg-forest-200" %>
+        class: "btn btn-sm border-forest-200 bg-secondary text-primary hover:bg-forest-200" %>
   <% end %>
 </div>
