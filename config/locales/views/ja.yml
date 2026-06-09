@@ -42,6 +42,9 @@ ja:
   mypages:
     show:
       title: マイページ
+  users:
+    edit:
+      title: プロフィール編集
   line_connections:
     show:
       title: LINE通知設定

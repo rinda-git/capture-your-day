@@ -6,10 +6,15 @@
     </h1>
       <div class="card bg-base-100 shadow mb-4 p-3">
         <h2 class="card-title">プロフィール</h2>
-        <div class="flex flex-col gap-2 text-md sm:text-md md:text-lg">
+        <div class="flex flex-col gap-2 text-sm sm:text-base mt-2">
           <p>名前：<%= current_user.name %></p>
+          <div class="flex items-center justify-between gap-3">
           <p>メールアドレス：<%= current_user.email %></p>
+           <%= link_to "編集", edit_user_path, class:"btn btn-sm btn-secondary px-6 mr-4 hover:bg-base-300 hover:text-base-400" %>
+          </div>
         </div>
+
+
       </div>
 
       <%= link_to line_connection_path, class:"card bg-base-100 shadow mb-4 p-3 hover:bg-base-300 transition" do %>
