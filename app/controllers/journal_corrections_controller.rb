@@ -2,12 +2,26 @@ class JournalCorrectionsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @year = params[:year]&.to_i || Date.current.year
+    @month = params[:month]&.to_i || Date.current.month
+    @current_month = Date.new(@year, @month, 1)
+
+    previous_month = @current_month.prev_month
+    next_month = @current_month.next_month
+
+    @prev_year = previous_month.year
+    @prev_month = previous_month.month
+    @next_year = next_month.year
+    @next_month = next_month.month
+
     @journal_corrections = current_user
                            .journal_corrections
                            .includes(:journal, :mistakes)
                            .joins(:journal)
-                           .where(journals: { posted_date: Date.current.all_month })
-                           .order("journals.posted_date DESC, journal_corrections.journal_id DESC").page(params[:page]).per(10)
+                           .where(journals: { posted_date: @current_month.all_month })
+                           .order("journals.posted_date DESC, journal_corrections.journal_id DESC")
+                           .page(params[:page])
+                           .per(10)
   end
 
   def show
