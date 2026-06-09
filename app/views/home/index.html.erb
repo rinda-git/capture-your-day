@@ -40,11 +40,11 @@
       <p class="font-bold font-sans text-base text-center text-success sm:text-md md:text-2xl mb-1">
         今日、心が動いたことは？
       </p>
-      <p class="text-center text-base sm:text-md md:text-lg text-primary mb-2">
+      <p class="text-center text-base sm:text-md text-primary mb-2">
         日本語でも英語でも、気持ちを書いてみましょう
       </p>
       <div class="flex justify-center">
-        <%= link_to "日記を書いてみる", new_journal_path, class:"btn btn-primary w-64 text-base sm:text-md md:text-lg" %>
+        <%= link_to "日記を書いてみる", new_journal_path, class:"btn btn-primary w-64 text-base sm:text-md" %>
       </div>
     </div>
   
@@ -61,10 +61,10 @@
             
             <p class="font-medium mb-2 items-center text-base-content/70 text-base sm:text-md flex gap-2">
               <%= journal.posted_date.strftime("%Y/%m/%d") %>
-              <span class="inline-flex items-center bg-secondary text-primary text-sm md:text-md rounded-full px-2 py-1">添削トーン：<%= t("enums.journal.tone.#{journal.tone}") %></span>
+              <span class="inline-flex items-center bg-secondary text-primary text-sm rounded-full px-2 py-1">添削トーン：<%= t("enums.journal.tone.#{journal.tone}") %></span>
             </p>
     
-            <p class="text-base-content mb-3 line-clamp-2 text-base sm:text-md md:text-lg">
+            <p class="text-base-content mb-3 line-clamp-2 text-sm sm:text-base">
               <%= journal.journal_correction&.rewritten_text || journal.body %>
             </p>
           
@@ -77,7 +77,7 @@
           <% end %>
           <% else %>
             <div class="bg-base-100 border border-base-300 rounded-2xl p-8 text-center">
-              <p class="font-sans text-base-content-muted text-xl">最初の1ページです🌱</p>
+              <p class="font-sans text-base-content-muted text-lg">最初の1ページです🌱</p>
             </div>
         <% end %>
         

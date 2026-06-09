@@ -6,11 +6,11 @@ class JournalsController < ApplicationController
     @month = params[:month]&.to_i || Date.current.month
     @current_month = Date.new(@year, @month, 1)
 
-    prev_month = @current_month.prev_month
+    previous_month = @current_month.prev_month
     next_month = @current_month.next_month
 
-    @prev_year = prev_month.year
-    @prev_month = prev_month.month
+    @prev_year = previous_month.year
+    @prev_month = previous_month.month
     @next_year = next_month.year
     @next_month = next_month.month
 

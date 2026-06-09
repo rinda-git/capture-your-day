@@ -5,7 +5,7 @@
   
   <div class="text-center">
     <% unless current_month == Date.current.beginning_of_month %>
-      <%= link_to "当月",
+      <%= link_to "今月",
           path.call(year: Date.current.year, month: Date.current.month),
           class: "btn btn-sm border-primary bg-primary hover:bg-forest-200" %>
     <% end %>
@@ -16,7 +16,5 @@
     <%= link_to "翌月",
         path.call(year: next_year, month: next_month),
         class: "btn btn-sm border-forest-200 bg-secondary hover:bg-forest-200" %>
-  <% else %>
-    <span class="w-20"></span>
   <% end %>
 </div>
