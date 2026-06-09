@@ -20,17 +20,20 @@
         <h2 class="card-title">リマインダー通知設定</h2>
       </div>
 
-      <%= link_to terms_path, class:"card bg-base-100 shadow mb-4 p-3" do %>
+      <%= link_to terms_path, class:"card bg-base-100 shadow mb-4 p-3 hover:bg-base-300 transition" do %>
         <h2 class="card-title">利用規約</h2>
       <% end %>
 
-      <%= link_to privacy_path, class:"card bg-base-100 shadow mb-4 p-3" do %>
+      <%= link_to privacy_path, class:"card bg-base-100 shadow mb-4 p-3 hover:bg-base-300 transition" do %>
         <h2 class="card-title">プライバシーポリシー</h2>
       <% end %>
 
-      <div class="card bg-base-100 shadow mb-4 p-3">
+      <%= link_to "https://forms.gle/7sn6QhgAaWt6FtnK7", 
+          target: "_blank",
+          rel: "noopener",
+          class:"card bg-base-100 shadow mb-4 p-3 hover:bg-base-300 transition" do %>
         <h2 class="card-title">お問い合わせ</h2>
-      </div>
+      <% end %>
       
   </div>
 </div>
