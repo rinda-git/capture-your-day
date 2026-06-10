@@ -6,3 +6,16 @@
 Rails.application.config.filter_parameters += [
   :passw, :email, :secret, :token, :_key, :crypt, :salt, :certificate, :otp, :ssn
 ]
+
+if Rails.env.production?
+  Rails.application.config.filter_parameters += [
+    :userId,
+    :destination,
+    :text,
+    :displayName,
+    :pictureUrl,
+    :replyToken,
+    :quoteToken,
+    :markAsReadToken
+  ]
+end
