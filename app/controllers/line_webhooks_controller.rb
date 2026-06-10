@@ -10,7 +10,11 @@ class LineWebhooksController < ApplicationController
     # Rails.logger.info event["message"]["text"]
 
     body = request.body.read
-    Rails.logger.info body
+    if Rails.env.development?
+      Rails.logger.debug body
+    else
+      Rails.logger.info "LINE webhook received"
+    end
 
     # LINEの署名確認
     signature = request.env["HTTP_X_LINE_SIGNATURE"]
@@ -32,8 +36,10 @@ class LineWebhooksController < ApplicationController
       # LINEのuser_id
       line_user_id = event.source.user_id
 
-      Rails.logger.info "message_text: #{message_text}"
-      Rails.logger.info "line_user_id: #{line_user_id}"
+      if Rails.env.development?
+        Rails.logger.debug "message_text: #{message_text}"
+        Rails.logger.debug "line_user_id: #{line_user_id}"
+      end
 
       # line_link_code一致ユーザー検索
       user = User.find_by(
