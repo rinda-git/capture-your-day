@@ -2,7 +2,6 @@
 <header class="navbar bg-base-100 border-b border-base-300 fixed top-0 left-0 right-0 z-50 px-4 h-16">
   <div class="navbar-start">
     <%= link_to "Capture Your Day", (user_signed_in? ? authenticated_root_path : unauthenticated_root_path), class:"font-title text-md sm:text-lg md:text-xl font-bold text-base-content leading-tight"%>
-    <%# link_to "Home", root_path, class: "btn btn-ghost normal-case text-xl" %>
   </div>
 
 <%# PC用 #%>
@@ -14,9 +13,18 @@
     <%= link_to "日記一覧", journals_path, class: "btn btn-ghost normal-case text-sm md:text-md" %>
     <%= link_to "カレンダー", calendar_journals_path, class: "btn btn-ghost normal-case text-sm md:text-md" %>
     <%= link_to "表現一覧", journal_corrections_path, class: "btn btn-ghost normal-case text-sm md:text-md" %>
-    <%= link_to "マイページ", mypage_path, class: "btn btn-ghost normal-case text-md md:text-md" %>
-
-    <div data-controller="theme" class="flex items-center">
+    <%# link_to "マイページ", mypage_path, class: "btn btn-ghost normal-case text-md md:text-md" %>
+  <% else %>
+    <%# 未ログイン時は何も表示しない %>
+  <% end %>
+  </div>
+</div>
+      <!-- navbar-end -->
+<%# 右側：ボタン・スマホメニュー %>
+<div class="navbar-end gap-2">
+  <div class="hidden md:flex gap-2">
+      <% if user_signed_in? %>
+   <div data-controller="theme" class="flex items-center">
       <label class="swap swap-rotate btn btn-ghost btn-sm btn-circle"
              aria-label="テーマを切り替える"
              title="ダークモード">
@@ -55,18 +63,17 @@
         <span class="swap-on text-xl">🌙</span> -->
       </label>
     </div>
-  </div>
-  <% else %>
-    <%# 未ログイン時は何も表示しない %>
-  <% end %>
-      <!-- <span class="font-english text-xl text-base-content">Capture Your Day</span> -->
-      <!--<h1 class="font-cormorant text-2xl font-bold text-base-content">Capture Your Day</h1> -->
-</div>
-      <!-- navbar-end -->
-<%# 右側：ボタン・スマホメニュー %>
-<div class="navbar-end gap-2">
-  <div class="hidden md:flex gap-2">
-      <% if user_signed_in? %>
+
+      <!-- プロフィール画像表示-->
+        <%= link_to mypage_path, class:"btn btn-ghost btn-circle" do %>
+          <% if current_user.profile_image.attached? %>
+            <%= image_tag current_user.profile_image, class:"w-9 h-9 rounded-full object-cover" %>
+          <% else %>
+            <div class="w-9 h-9 rounded-full bg-base-300 flex items-center justify-center text-sm font-semibold">
+              <%= current_user.name.to_s.first.presence || "?" %>
+            </div>
+          <% end %>
+        <% end %>
         <%= link_to t('.logout'), destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" }, class: "btn btn-primary font-bold text-white hover:opacity-70 text-base md:text-md" %>
       <% else %>
         <div class = "flex gap-4">
@@ -90,12 +97,25 @@
     </label>
     <ul tabindex="0" class="dropdown-content menu p-2 bg-base-100 rounded-box w-52 mt-2 border border-base-300">
       <% if user_signed_in? %>
+        <li>
+        <%= link_to mypage_path, class:"flex items-center gap-3" do %>
+          <% if current_user.profile_image.attached? %>
+            <%= image_tag current_user.profile_image, class: "w-9 h-9 rounded-full object-cover" %>
+          <% else %>
+          <div class="w-9 h-9 rounded-full bg-base-300 flex items-center justify-center text-sm font-semibold">
+            <%= current_user.name.to_s.first.presence || "?" %>
+          </div>  
+          <% end %>
+          <span>マイページ</span>
+        <% end %>
+        </li>
+
         <li><%= link_to "ホーム", authenticated_root_path %></li>
         <li><%= link_to "日記を書く", new_journal_path %></li>
         <li><%= link_to "日記一覧", journals_path %></li>
         <li><%= link_to "カレンダー", calendar_journals_path %></li>
         <li><%= link_to "表現一覧", journal_corrections_path %></li>
-        <li><%= link_to "マイページ", mypages_show_path %></li>
+        <!-- <li><%# link_to "マイページ", mypages_show_path %></li> -->
 
         <li>
         <div data-controller="theme">

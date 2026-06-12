@@ -7,6 +7,13 @@
       <div class="card bg-base-100 shadow mb-4 p-3">
         <h2 class="card-title">プロフィール</h2>
         <div class="flex flex-col gap-2 text-sm sm:text-base mt-2">
+          <% if current_user.profile_image.attached? %>
+            <%= image_tag current_user.profile_image, class: "w-16 h-16 rounded-full object-cover" %> 
+          <% else %>
+            <div class="w-16 h-16 rounded-full bg-base-300 flex items-center justify-center font-semibold">
+            <%= current_user.name.to_s.first || "?"  %>
+            </div>
+          <% end %>
           <p>名前：<%= current_user.name %></p>
           <div class="flex items-center justify-between gap-3">
           <p>メールアドレス：<%= current_user.email %></p>
