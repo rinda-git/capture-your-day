@@ -7,8 +7,17 @@
 
       <div class="card bg-base-100 shadow mb-4 p-5">
         <%= form_with model: @user, url: user_path, method: :patch do |f| %>
-          <div class="mb-4 flex items-center gap-4">
-            <%= f.label :name, "名前", class: "w-24 font-medium"  %>
+          <div class="mb-4">
+            <%= f.label :profile_image, "プロフィール画像", class:"block font-medium mb-2" %>
+           
+            <% if current_user.profile_image.attached? %>
+              <%= image_tag current_user.profile_image, class:"w-16 h-16 rounded-full object-cover mb-3" %>
+            <% end %>
+
+            <%= f.file_field :profile_image, accept: "image/png,image/jpeg", class: "file-input file-input-bordered file-input-primary w-full" %>
+          </div>
+          <div class="mb-4">  
+            <%= f.label :name, "名前", class: "block font-medium mb-2"  %>
             <%= f.text_field :name, class: "input input-bordered w-full" %>
           </div>
 
