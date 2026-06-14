@@ -98,6 +98,14 @@ class JournalPromptBuilder
     ====================
     QUALITY BAR FOR learning_points.pattern:
     Only choose expressions that are useful enough to review later.
+    Do not extract general grammar patterns that merely appear in the corrected sentence.
+    Prefer the largest structure needed to explain the correction.
+    Always choose the learning point from the main corrected difference between original_text and corrected_text, not from
+    a grammar pattern that merely appears inside corrected_text.
+
+    Do not invent grammar explanations.
+    Before writing the explanation, identify the exact structure of the corrected phrase.
+    For comparison corrections, the learning point must explain the comparison structure, not a smaller phrase inside it.
 
       Do NOT choose:
     - contractions: "I'm", "you're", "it's", "don't"
@@ -105,6 +113,13 @@ class JournalPromptBuilder
     - generic grammar frames: "I feel + adjective", "I want to + verb"
     - single words unless the word choice is the main correction
     - patterns that are obvious for an intermediate learner
+      Never choose broad tense/aspect patterns as learning_points, including:
+    - I'm + 動詞ing
+    - be + 動詞ing
+    - I + 動詞
+    - be + 形容詞
+    - want to + 動詞
+    - going to + 動詞
 
     Prefer:
     - natural collocations
@@ -112,6 +127,48 @@ class JournalPromptBuilder
     - reusable diary phrases
     - phrase chunks native speakers commonly use
     - expressions that help the learner say feelings more naturally
+    When creating the pattern:
+    - Preserve the actual main verb if it is useful or corrected.
+    - Preserve key prepositions and collocations.
+    - Replace only the variable part with a Japanese placeholder.
+    - Keep enough surrounding words so the learner can reuse the phrase naturally.
+      Use placeholders only for replaceable objects, people, places, times, nouns, or clauses.
+      Do not use placeholders for the main verb, auxiliary verb, or key preposition unless the learning point is specifically about grammar structure.
+
+    Bad:
+    - I'm + 動詞ing
+    - be + 動詞ing
+    - 動詞 + 前置詞
+    - 名詞 + that + 動詞
+    - I'm + 動詞ing + 場所
+    - I'm + 動詞ing to + 場所
+    - 動詞 to + 場所
+    - It's pretty + 形容詞
+    - It feels + 形容詞
+    - receive + 名詞
+    - to + 動詞
+    - more than + to + 動詞
+
+    Good:
+    - I'm flying to + 場所
+    - My flight leaves at + 時刻
+    - arrive at + 場所 by + 時刻
+    - the bus that leaves at + 時刻
+    - be excited about + 名詞 / 動名詞
+    - I'm flying to + 場所
+    - I'm going to + 場所
+    - I'm heading to + 場所
+    - I'm taking + 交通手段
+    - It feels pretty early.
+    - It feels a little awkward.
+    - I'm really looking forward to + 名詞 / 動名詞
+    - to + 動詞 more than to + 動詞, 動名詞 more than 動名詞,  名詞 more than 名詞
+
+    Good learning point:
+    pattern: to + 動詞 more than to + 動詞
+    meaning: 〜することより、〜すること
+    explanation: more than で2つの行動を比べるときは、前後の文法の形をそろえると自然です。to + 動詞 と比べるなら、more
+    than の後ろも to + 動詞 にします。動名詞と比べるなら、more than の後ろも動名詞にします。
 
     IMPORTANT:
     The corrected sentence may be natural and flexible, but the learning point must be a reusable natural English expression, not a description of how the sentence was translated.
