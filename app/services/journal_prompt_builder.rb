@@ -102,7 +102,7 @@ class JournalPromptBuilder
     Prefer the largest structure needed to explain the correction.
     Always choose the learning point from the main corrected difference between original_text and corrected_text, not from
     a grammar pattern that merely appears inside corrected_text.
-   
+
     Do not invent grammar explanations.
     Before writing the explanation, identify the exact structure of the corrected phrase.
     For comparison corrections, the learning point must explain the comparison structure, not a smaller phrase inside it.
