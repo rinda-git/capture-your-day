@@ -127,6 +127,7 @@ class JournalPromptBuilder
     - reusable diary phrases
     - phrase chunks native speakers commonly use
     - expressions that help the learner say feelings more naturally
+
     When creating the pattern:
     - Preserve the actual main verb if it is useful or corrected.
     - Preserve key prepositions and collocations.
@@ -150,7 +151,6 @@ class JournalPromptBuilder
     - more than + to + 動詞
 
     Good:
-    - I'm flying to + 場所
     - My flight leaves at + 時刻
     - arrive at + 場所 by + 時刻
     - the bus that leaves at + 時刻
@@ -167,8 +167,7 @@ class JournalPromptBuilder
     Good learning point:
     pattern: to + 動詞 more than to + 動詞
     meaning: 〜することより、〜すること
-    explanation: more than で2つの行動を比べるときは、前後の文法の形をそろえると自然です。to + 動詞 と比べるなら、more
-    than の後ろも to + 動詞 にします。動名詞と比べるなら、more than の後ろも動名詞にします。
+    explanation: more than で2つの行動を比べるときは、前後の文法の形をそろえると自然です。to + 動詞 と比べるなら、more than の後ろも to + 動詞 にします。動名詞と比べるなら、more than の後ろも動名詞にします。
 
     IMPORTANT:
     The corrected sentence may be natural and flexible, but the learning point must be a reusable natural English expression, not a description of how the sentence was translated.
@@ -226,7 +225,6 @@ class JournalPromptBuilder
       If the expression requires a following clause, write "+ 文(主語 + 動詞)".
       Do not omit required subjects.
 
-
     Do not return incomplete patterns.
 
     BAD:
@@ -250,10 +248,6 @@ class JournalPromptBuilder
       + 名詞 / 動名詞
       + 人
       + 文(主語 + 動詞)
-
-    Classification rules:
-    - mistake_type must be exactly one of: grammar, spelling, word_choice, expression, translation.
-    - Use detailed categories such as tense, preposition, article, word_order, collocation, infinitive, gerund only in learning_points.review_tag.
 
     Only create a note when it teaches a useful reusable point for the learner.
 
