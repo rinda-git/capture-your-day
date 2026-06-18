@@ -19,7 +19,7 @@
         <%# 1件ずつ枠で囲む %>
         <% @journal_corrections.each do |journal_correction| %>
           <%= link_to journal_correction_path(journal_correction),
-            class:"block border border-base-300 bg-base-100 rounded-lg px-2 py-3 sm:px-4" do %>
+            class:"group block border border-base-300 bg-base-100 rounded-lg px-2 py-3 sm:px-4 hover:bg-base-300" do %>
           <%# 日付 %>
           <div class="mb-2">
             <div class="font-bold text-base-content/70 flex items-center gap-3 sm:text-md">
@@ -38,6 +38,19 @@
             <p class="text-base-content sm:text-base">【意味】<%= mistake.learning_points["meaning"] %></p>
           <% end %>
         </div>
+
+        <div class="flex justify-end items-center gap-1">
+          <span class="text-sm font-semibold text-primary group-hover:text-primary-focus transition-colors">
+            詳細を見る
+          </span>
+          <svg xmlns="http://www.w3.org/2000/svg"
+              class="w-4 h-4 text-primary group-hover:translate-x-1 transition-transform"
+              fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+
           <% end %>
         <% end %>
       </div>
