@@ -1,7 +1,7 @@
 <%= content_for(:title, t('.title', default: APP_NAME)) %>
-<div class="flex-grow px-2 sm:px-6 md:px-10">
-  <div class="max-w-4xl mx-auto pt-2 pb-6 sm:pt-6 md:px-0">
-    <h1 class="font-semibold font-sans text-lg md:text-3xl sm:text-2xl text-center mb-6">
+<div class="flex-grow px-4 sm:px-6 md:px-10">
+  <div class="max-w-4xl mx-auto pt-4 pb-6 sm:pt-6 md:px-0">
+    <h1 class="font-semibold font-sans text-lg md:text-3xl sm:text-2xl text-center mb-4 sm:mb-6">
      <%= t('.title') %>
     </h1>
 
@@ -14,14 +14,16 @@
         path: ->(params) { journal_corrections_path(params) } %>
 
     <% if @journal_corrections.any? %>
-      <div class="space-y-2 mb-2">
+      <div class="space-y-3 mb-2">
       <%# journal_correctionsをループ %>
         <%# 1件ずつ枠で囲む %>
         <% @journal_corrections.each do |journal_correction| %>
           <%= link_to journal_correction_path(journal_correction),
-            class:"block border border-base-300 bg-base-100 rounded-lg px-2 py-1 sm:px-4 py-3" do %>
+            class:"block border border-base-300 bg-base-100 rounded-lg px-2 py-3 sm:px-4" do %>
           <%# 日付 %>
-            <div class="font-bold text-base-content/70 flex items-center gap-3 mb-2 sm:text-md">
+          <div class="mb-2">
+            <div class="font-bold text-base-content/70 flex items-center gap-3 sm:text-md">
+  
               <span>
                 <%= journal_correction.journal.posted_date.strftime("%Y/%m/%d") %>の日記
               </span>
@@ -29,19 +31,11 @@
                   <%= journal_correction.mistakes.count { |mistake| mistake.learning_points["pattern"].present? } %>つの学び
               </div>
            </div>
-      
-
+          </div>
         <div class="mb-2">
           <% journal_correction.mistakes.first(2).each do |mistake| %>
             <p class="font-semibold text-sm sm:text-base"><%= mistake.learning_points["pattern"] %></p>
             <p class="text-base-content sm:text-base">【意味】<%= mistake.learning_points["meaning"] %></p>
-          
-            <!--<% if mistake.learning_points["related_phrases"].present? %>
-              <% mistake.learning_points["related_phrases"].each do |phrase| %> 
-                <p><%= phrase["phrase"] %></p>
-                <p class="text-base-content">【意味】<%= phrase["meaning"] %></p>
-              <% end %>
-            <% end %>-->
           <% end %>
         </div>
           <% end %>
@@ -52,7 +46,7 @@
       <div role="alert" class="alert alert-info">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-6 w-6 shrink-0 stroke-current">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-        </svg>最初の1ページです🌱今日の気持ちを書いてみましょう
+        </svg>この月の学びはまだありません。今日の気持ちを書いてみましょう
         <span></span>
       </div>
     <% end %>
