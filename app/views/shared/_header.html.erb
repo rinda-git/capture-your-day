@@ -8,7 +8,7 @@
 <div class="navbar-center hidden md:flex">
   <% if user_signed_in? %>
   <div class="flex items-center gap-1 flex-nowrap">
-    <%= link_to "ホーム", authenticated_root_path, class: "btn btn-ghost normal-case text-sm md:text-md" %>
+    <%# link_to "ホーム", authenticated_root_path, class: "btn btn-ghost normal-case text-sm md:text-md" %>
     <%= link_to "日記を書く", new_journal_path, class: "btn btn-ghost normal-case text-sm md:text-md" %>
     <%= link_to "日記一覧", journals_path, class: "btn btn-ghost normal-case text-sm md:text-md" %>
     <%= link_to "カレンダー", calendar_journals_path, class: "btn btn-ghost normal-case text-sm md:text-md" %>
@@ -110,7 +110,7 @@
         <% end %>
         </li>
 
-        <li><%= link_to "ホーム", authenticated_root_path %></li>
+        <!-- <li><%# link_to "ホーム", authenticated_root_path %></li> -->
         <li><%= link_to "日記を書く", new_journal_path %></li>
         <li><%= link_to "日記一覧", journals_path %></li>
         <li><%= link_to "カレンダー", calendar_journals_path %></li>
