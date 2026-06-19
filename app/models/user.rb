@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :mistakes, dependent: :destroy
   has_one :notification_setting, dependent: :destroy
   has_many :journal_corrections, dependent: :destroy
-  has_one_attached :profile_image
+  has_one_attached :profile_image, dependent: :destroy
 
   devise :database_authenticatable,
          :registerable,

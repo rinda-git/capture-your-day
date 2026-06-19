@@ -1,27 +1,30 @@
 <%= content_for(:title, t('.title', default: APP_NAME)) %>
 <div class="flex-grow px-4 sm:px-6 md:px-10">
-  <div class="max-w-4xl mx-auto pt-2 pb-8 sm:pt-6 md:px-0">
+  <div class="max-w-3xl mx-auto pt-2 pb-8 sm:pt-6 md:px-0">
     <h1 class="font-sans font-semibold text-lg md:text-3xl sm:text-2xl text-center mb-4 sm:mb-6">
       <%= t('.title') %>
     </h1>
       <div class="card bg-base-100 shadow mb-4 p-3">
         <h2 class="card-title">プロフィール</h2>
-        <div class="flex flex-col gap-2 text-sm sm:text-base mt-2">
-          <% if current_user.profile_image.attached? %>
-            <%= image_tag current_user.profile_image, class: "w-16 h-16 rounded-full object-cover" %> 
-          <% else %>
-            <div class="w-16 h-16 rounded-full bg-base-300 flex items-center justify-center font-semibold">
-            <%= current_user.name.to_s.first || "?"  %>
+        
+        <div class="flex items-center justify-between gap-4 text-sm sm:text-base mt-2">
+
+          <div class="flex items-center gap-4 min-w-0">
+            <% if current_user.profile_image.attached? %>
+              <%= image_tag current_user.profile_image, class: "w-16 h-16 rounded-full object-cover" %> 
+            <% else %>
+              <div class="w-16 h-16 rounded-full bg-base-300 flex items-center justify-center font-semibold">
+              <%= current_user.name.to_s.first || "?"  %>
+              </div>
+            <% end %>
+          
+            <div class="min-w-0">
+              <p>名前：<%= current_user.name %></p>
+              <p>メールアドレス：<%= current_user.email %></p>
             </div>
-          <% end %>
-          <p>名前：<%= current_user.name %></p>
-          <div class="flex items-center justify-between gap-3">
-          <p>メールアドレス：<%= current_user.email %></p>
-           <%= link_to "編集", edit_user_path, class:"btn btn-sm btn-secondary px-6 mr-4 hover:bg-base-300 hover:text-base-400" %>
-          </div>
+          </div> 
+            <%= link_to "編集", edit_user_path, class:"btn btn-sm btn-secondary px-6 mr-6 hover:bg-base-300 hover:text-base-400" %>
         </div>
-
-
       </div>
 
       <%= link_to line_connection_path, class:"card bg-base-100 shadow mb-4 p-3 hover:bg-base-300 transition" do %>
@@ -47,6 +50,19 @@
         <h2 class="card-title">お問い合わせ</h2>
       <% end %>
       
+      <div class="card bg-base-100 shadow mb-4 p-3 border border-error/20">
+        <h2 class="card-title text-error">アカウント削除</h2>
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+        <p class="text-sm text-base-content/70">
+          アカウントを削除すると、日記や学習履歴も削除されます。
+        </p>
+    
+        <%= button_to "アカウントを削除する", user_path, method: :delete,
+            data: {turbo_confirm: "アカウントを本当に削除しますか？" },
+            class:"btn btn-error btn-sm w-full sm:w-auto sm:px-4 text-white"            
+         %>
+        </div>
+      </div>
   </div>
 </div>
 
