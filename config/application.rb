@@ -7,6 +7,8 @@ require "rails/all"
 Bundler.require(*Rails.groups)
 
 APP_NAME = "Capture Your Day"
+DEFAULT_META_DESCRIPTION = "Capture Your Dayは、英語で日記を書き、AI添削と間違い表現の振り返りを通して英語アウトプットを習慣化するアプリです。"
+
 module App
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

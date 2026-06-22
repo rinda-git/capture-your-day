@@ -1,6 +1,7 @@
 <!-- 新規会員登録画面 -->
-<%= content_for(:title, t('.title', default: APP_NAME)) %>
+<% content_for(:title, t('.title', default: APP_NAME)) %>
 <% content_for :hide_header, true %>
+<% content_for :noindex, true %>
 
 <%= render "devise/shared/auth_wrapper" do %>
 
