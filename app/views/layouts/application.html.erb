@@ -2,6 +2,16 @@
 <html lang="ja" data-theme="color">
   <head>
     <title><%= content_for?(:title) ? yield(:title) : APP_NAME %></title>
+    <meta name="description" content="<%= content_for?(:meta_description) ? yield(:meta_description) : DEFAULT_META_DESCRIPTION %>">
+    <% if user_signed_in? || content_for?(:noindex) %>
+      <meta name="robots" content="noindex, nofollow">
+    <% end %>
+    
+    <meta property="og:site_name" content="<%= APP_NAME %>">
+    <meta property="og:title" content="<%= content_for?(:title) ? yield(:title) : APP_NAME %>">
+    <meta property="og:description" content="<%= content_for?(:meta_description) ? yield(:meta_description) : DEFAULT_META_DESCRIPTION %>">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<%= request.original_url %>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
