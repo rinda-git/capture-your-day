@@ -14,7 +14,7 @@ RSpec.describe Mistake, type: :model do
     end
 
     it 'mistake_typeに設定できること' do
-        mistake = build(:mistake, mistake_type: 'grammar' )
+        mistake = build(:mistake, mistake_type: 'grammar')
         expect(mistake.grammar?).to be true
     end
   end
