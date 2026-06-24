@@ -4,7 +4,6 @@ FactoryBot.define do
     posted_date { Date.current }
     mood { :good }
     tone { :standard }
-    title { "My Journal" }
-    body { "Have a good day." }
+    sequence(:body) { |n| "本文#{n}" }
   end
 end

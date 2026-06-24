@@ -13,6 +13,8 @@ class User < ApplicationRecord
          :rememberable,
          :validatable
 
+  validates :name, presence: true
+
   def total_journal_count
     journals.distinct.count
   end
