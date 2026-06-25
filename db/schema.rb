@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_12_041555) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_25_050242) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -43,14 +43,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_12_041555) do
   end
 
   create_table "journal_corrections", force: :cascade do |t|
-    t.text "advice"
     t.datetime "created_at", null: false
     t.bigint "journal_id", null: false
-    t.json "mistake_patterns"
-    t.json "native_phrases"
     t.text "original_text", null: false
     t.text "rewritten_text", null: false
-    t.json "strengths"
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["journal_id"], name: "index_journal_corrections_on_journal_id"
