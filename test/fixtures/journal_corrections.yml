@@ -5,15 +5,9 @@ one:
   user: one
   original_text: MyText
   rewritten_text: MyText
-  strengths: 
-  mistake_patterns: 
-  advice: MyText
 
 two:
   journal: two
   user: two
   original_text: MyText
   rewritten_text: MyText
-  strengths: 
-  mistake_patterns: 
-  advice: MyText
