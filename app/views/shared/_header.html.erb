@@ -13,6 +13,7 @@
     <%= link_to "日記一覧", journals_path, class: "btn btn-ghost normal-case text-sm md:text-md" %>
     <%= link_to "カレンダー", calendar_journals_path, class: "btn btn-ghost normal-case text-sm md:text-md" %>
     <%= link_to "表現一覧", journal_corrections_path, class: "btn btn-ghost normal-case text-sm md:text-md" %>
+    <%= link_to "保存した表現", favorites_path, class: "btn btn-ghost normal-case text-sm md:text-md" %>
     <%# link_to "マイページ", mypage_path, class: "btn btn-ghost normal-case text-md md:text-md" %>
   <% else %>
     <%# 未ログイン時は何も表示しない %>
@@ -115,6 +116,7 @@
         <li><%= link_to "日記一覧", journals_path %></li>
         <li><%= link_to "カレンダー", calendar_journals_path %></li>
         <li><%= link_to "表現一覧", journal_corrections_path %></li>
+        <li><%= link_to "保存した表現", favorites_path  %></li>
         <!-- <li><%# link_to "マイページ", mypages_show_path %></li> -->
 
         <li>

@@ -1,0 +1,88 @@
+<% content_for(:title, t('.title', default: APP_NAME)) %>
+<div class="flex-grow px-4 sm:px-6 md:px-10">
+  <div class="max-w-4xl mx-auto pt-4 pb-6 sm:pt-6 md:px-0">
+
+    <h1 class="font-semibold font-sans text-center text-lg md:text-3xl sm:text-2xl mb-4 sm:mb-6">
+      <%= t('.title') %>
+    </h1>
+    
+    <%= render "shared/month_navigation",
+        current_month: @current_month,
+        prev_year: @prev_year,
+        prev_month: @prev_month,
+        next_year: @next_year,
+        next_month: @next_month,
+        path: ->(params) { favorites_path(params) } %>
+
+    <% if @mistakes.any? %>
+      <div class="mb-2">
+        <%# @mistakesをループ %>
+        <%# 1件ずつ枠で囲む %>
+        <% @mistakes.each do |mistake| %>
+        
+        <div class="border border-primary bg-base-100 rounded-2xl mb-3">
+        
+              <details class="collapse collapse-arrow bg-base-100 border border-base-300" name="my-accordion-det-1">
+                <summary class="collapse-title bg-secondary">
+                  <p class="font-base-content/70 text-sm">
+                  <%= mistake.journal.posted_date.strftime("%Y/%m/%d") %>の日記
+                  </p>
+                  <p class="font-semibold">
+                    <%= mistake.learning_points["pattern"] %>
+                  </p>
+                  <p class="text-sm sm:text-base">
+                    <%= mistake.learning_points["meaning"] %>
+                  </p>
+                </summary>
+                <div class="collapse-content text-sm">
+                  <p class="mb-1 mt-1">
+                  今回の添削
+                  </p>
+                  <p class="text-error mb-1">
+                    <%= mistake.original_text %>
+                  </p>
+                  <p class="text-primary mb-1">
+                    <%= mistake.corrected_text %>
+                  </p>
+                  <hr class="border-primary mb-2 mt-2">
+                  <p class="mb-1">
+                  似た表現・言い回し
+                  </p>
+                    <div>
+                    <% Array(mistake.learning_points["related_phrases"]).each do |phrase| %>
+                        <div class="bg-base-100 border border-base-300 rounded-2xl p-3 mb-2">
+                        <p class="font-semibold">
+                          <%= phrase["phrase"] %>
+                        </p>
+                        <p class="text-xs sm:text-sm">
+                          <%= phrase["meaning"] %>
+                        </p>
+                        <p class="text-primary font-semibold">
+                          <%= phrase["example"] %>
+                        </p>
+                        </div>
+                    <% end %>
+                    <%= link_to "この日記を見る",
+                                journal_path(mistake.journal),
+                                class: "btn btn-outline btn-sm border border-primary hover:bg-primary hover:text-white hover:border-primary" %>
+                    </div>
+              </details>
+            
+              </div>
+
+        <% end %>
+        </div>
+        
+      </div>
+   
+  </div>
+  <%= paginate @mistakes, window: 3 %>
+  <% else %>
+      <div role="alert" class="alert alert-info">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-5 w-5 shrink-0 stroke-current">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span>表現がまだ保存されていません。</span>
+      </div>
+   <% end %>
+</div>
