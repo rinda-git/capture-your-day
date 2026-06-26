@@ -1,0 +1,4 @@
+<!-- お気に入り登録後に、☆を★へ置き換える -->
+<%= turbo_stream.replace "favorite-button-for-mistake-#{@mistake.id}" do %>
+  <%= render 'mistakes/unfavorite', mistake: @mistake %>
+<% end %>

@@ -1,0 +1,8 @@
+<!-- ☆を出すか、★を出すか判断する親partial -->
+<div class="ms-auto">
+  <% if current_user.favorite?(mistake) %>
+    <%= render 'mistakes/unfavorite', { mistake: mistake } %>
+  <% else %>
+    <%= render 'mistakes/favorite', { mistake: mistake } %>
+  <% end %>
+</div>
