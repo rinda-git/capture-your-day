@@ -27,7 +27,7 @@
               <span>
                 <%= journal_correction.journal.posted_date.strftime("%Y/%m/%d") %>の日記
               </span>
-              <div class="badge badge-soft badge-success badge-md text-white">
+              <div class="badge badge-success badge-md text-white">
                   <%= journal_correction.mistakes.count { |mistake| mistake.learning_points["pattern"].present? } %>つの学び
               </div>
            </div>
@@ -41,7 +41,7 @@
 
         <div class="flex justify-end items-center gap-1">
           <span class="text-sm font-semibold text-primary group-hover:text-primary-focus transition-colors">
-            詳細を見る
+            表現の詳細・類似表現を見る
           </span>
           <svg xmlns="http://www.w3.org/2000/svg"
               class="w-4 h-4 text-primary group-hover:translate-x-1 transition-transform"

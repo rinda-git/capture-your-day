@@ -1,0 +1,8 @@
+<!-- 未お気に入り状態のボタン。☆を表示する これからお気に入りにする操作-->
+<%# ☆を押すと favorites#create にPOSTリクエストを送る %>
+<%= link_to favorites_path(mistake_id: mistake.id), 
+    id: "favorite-button-for-mistake-#{mistake.id}",
+    data: { turbo_method: :post },
+    class: "btn btn-ghost btn-sm text-primary border border-primary hover:bg-primary hover:text-white" do %>
+<span class="text-base">☆ 保存</span>
+<% end %>

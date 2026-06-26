@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_one :notification_setting, dependent: :destroy
   has_many :journal_corrections, dependent: :destroy
   has_one_attached :profile_image, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  # お気に入りしたmistakes一覧(user.favoritesを経由して、favoriteに紐づくmistake)
+  has_many :favorite_mistakes, through: :favorites, source: :mistake
 
   devise :database_authenticatable,
          :registerable,
@@ -51,5 +54,17 @@ class User < ApplicationRecord
       date -= 1.day
     end
     count
+  end
+
+  def favorite(mistake)
+    favorite_mistakes << mistake
+  end
+
+  def unfavorite(mistake)
+    favorite_mistakes.destroy(mistake)
+  end
+
+  def favorite?(mistake)
+    favorite_mistakes.exists?(mistake.id)
   end
 end

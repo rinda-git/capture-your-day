@@ -1,0 +1,7 @@
+<!-- お気に入り済み状態のボタン。★を表示する -->
+<%= link_to favorites_path(mistake_id: mistake.id), 
+    id:"unfavorite-button-for-mistake-#{mistake.id}", 
+    data: { turbo_method: :delete },
+    class: "btn btn-primary btn-sm text-white" do %>
+  <span class="text-base">保存済み</span>
+<% end %>

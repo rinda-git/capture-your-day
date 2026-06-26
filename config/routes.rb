@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "favorites/create"
+  get "favorites/destroy"
   get "line_connections/show"
   get "mypages/show"
   get "home/index"
@@ -31,7 +33,10 @@ Rails.application.routes.draw do
   resources :journal_corrections, only: [ :index, :show ]
   resource :mypage, only: [ :show ]
   resource :line_connection, only: [ :show, :create, :destroy ]
-
+  # mistake_idを渡して、current_userのお気に入りから探して消す
+  resources :favorites, only: [ :create ] do
+    delete :destroy, on: :collection
+  end
 
   # テスト用ルーティング　あとで削除する
   # get '/test500', to: 'application#test500'
