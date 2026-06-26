@@ -2,10 +2,6 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @mistakes = current_user.favorite_mistakes
-                .includes(:journal, :journal_correction)
-                .order(created_at: :desc).page(params[:page]).per(10)
-
     @year = params[:year]&.to_i || Date.current.year
     @month = params[:month]&.to_i || Date.current.month
     @current_month = Date.new(@year, @month, 1)
@@ -17,6 +13,13 @@ class FavoritesController < ApplicationController
     @prev_month = previous_month.month
     @next_year = next_month.year
     @next_month = next_month.month
+
+    @mistakes = current_user.favorite_mistakes
+                .includes(:journal, :journal_correction)
+                .where(journals: { posted_date: @current_month.all_month })
+                .order("journals.posted_date DESC, mistakes.id DESC")
+                .page(params[:page])
+                .per(10)
   end
 
   def create
