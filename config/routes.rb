@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   resource :mypage, only: [ :show ]
   resource :line_connection, only: [ :show, :create, :destroy ]
   # mistake_idを渡して、current_userのお気に入りから探して消す
-  resources :favorites, only: [ :create ] do
+  resources :favorites, only: [ :create, :index ] do
     delete :destroy, on: :collection
   end
 
