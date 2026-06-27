@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_25_070231) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_27_082904) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -40,6 +40,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_25_070231) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "ai_usage_logs", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "used_on"
+    t.bigint "user_id", null: false
+    t.index ["user_id", "used_on"], name: "index_ai_usage_logs_on_user_id_and_used_on"
+    t.index ["user_id"], name: "index_ai_usage_logs_on_user_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -121,6 +130,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_25_070231) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "ai_usage_logs", "users"
   add_foreign_key "favorites", "mistakes"
   add_foreign_key "favorites", "users"
   add_foreign_key "journal_corrections", "journals"

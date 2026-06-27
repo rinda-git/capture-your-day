@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  DAILY_AI_LIMIT = 5
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :journals, dependent: :destroy
@@ -9,6 +10,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   # お気に入りしたmistakes一覧(user.favoritesを経由して、favoriteに紐づくmistake)
   has_many :favorite_mistakes, through: :favorites, source: :mistake
+  has_many :ai_usage_logs, dependent: :destroy
 
   devise :database_authenticatable,
          :registerable,
@@ -66,5 +68,19 @@ class User < ApplicationRecord
 
   def favorite?(mistake)
     favorite_mistakes.exists?(mistake.id)
+  end
+
+
+
+  def ai_usage_count_today
+    ai_usage_logs.where(used_on: Date.current).count
+  end
+
+  def ai_usage_limit_reached?
+    ai_usage_count_today >= DAILY_AI_LIMIT
+  end
+  # AIの利用履歴を記録
+  def record_ai_usage!
+    ai_usage_logs.create!(used_on: Date.current)
   end
 end

@@ -41,6 +41,11 @@ class JournalsController < ApplicationController
   end
 
   def create
+    if current_user.ai_usage_limit_reached?
+      redirect_to journals_path, alert: "本日のAI利用上限に達しました。明日またご利用ください。"
+      return
+    end
+
     @journal = current_user.journals.new(journal_params)
     if @journal.invalid?
       flash.now[:alert] =
@@ -125,6 +130,8 @@ class JournalsController < ApplicationController
         #   )
         # end
 
+        # AIの利用履歴を記録
+        current_user.record_ai_usage!
         redirect_to @journal, notice: "添削が完了しました！"
       else
         # DB保存に失敗したとき
