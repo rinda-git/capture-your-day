@@ -71,12 +71,17 @@ class User < ApplicationRecord
   end
 
 
+  def ai_usage_limit_exempt?
+    ENV.fetch("AI_LIMIT_EXEMPT_EMAILS", "")
+    .split(",")
+  end
 
   def ai_usage_count_today
     ai_usage_logs.where(used_on: Date.current).count
   end
 
   def ai_usage_limit_reached?
+    return false if ai_usage_limit_exempt?
     ai_usage_count_today >= DAILY_AI_LIMIT
   end
   # AIの利用履歴を記録
