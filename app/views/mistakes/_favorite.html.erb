@@ -3,6 +3,6 @@
 <%= link_to favorites_path(mistake_id: mistake.id), 
     id: "favorite-button-for-mistake-#{mistake.id}",
     data: { turbo_method: :post },
-    class: "btn btn-ghost btn-sm text-primary border border-primary hover:bg-primary hover:text-white" do %>
-<span class="text-base">☆ 保存</span>
+    class: "btn btn-ghost btn-sm text-primary border border-primary hover:bg-primary hover:text-white shrink-0 whitespace-nowrap self-end sm:self-start" do %>
+<span class="text-base ">☆ 保存</span>
 <% end %>
