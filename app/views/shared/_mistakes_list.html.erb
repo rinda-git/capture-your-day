@@ -5,7 +5,32 @@
         添削トーン：<%= t("enums.journal.tone.#{journal.tone}") %>
         </span>
       </div>
-          <p class="text-sm sm:text-base px-5 p-4 whitespace-pre-line"><%= @journal_correction.rewritten_text %></p>
+        <!-- 音声読み上げ -->
+        <div data-controller="speech">
+          <p data-speech-target="text"
+             class="text-sm sm:text-base px-5 py-2 whitespace-pre-line">
+             <%= @journal_correction.rewritten_text %>
+          </p>
+          <div class="px-5 pb-3 flex items-center gap-2">
+            <select data-speech-target="rate" class="select select-bordered select-sm">
+              <option value="0.75">速度：ゆっくり</option>
+              <option value="1" selected>速度：標準</option>
+              <option value="1.25">速度：速め</option>
+            </select>
+            <button type="button"
+                    class="btn btn-sm border-primary text-primary hover:bg-primary hover:text-white"
+                    data-action="speech#speak">
+            🔊 英文を聞く
+            </button>
+
+            <button type="button"
+                    class="btn btn-sm border-primary text-primary hover:bg-primary hover:text-white"
+                    data-action="speech#stop">
+            停止
+
+            </button>
+          </div>
+        </div>
     </div>
     <% if @journal_correction.mistakes.present? %>
       <div class="flex justify-between items-center mb-3">
