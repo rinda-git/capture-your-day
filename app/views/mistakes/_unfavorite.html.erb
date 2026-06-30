@@ -2,6 +2,6 @@
 <%= link_to favorites_path(mistake_id: mistake.id), 
     id:"unfavorite-button-for-mistake-#{mistake.id}", 
     data: { turbo_method: :delete },
-    class: "btn btn-primary btn-sm text-white" do %>
+    class: "btn btn-primary btn-sm text-white shrink-0 whitespace-nowrap self-end sm:self-start" do %>
   <span class="text-base">保存済み</span>
 <% end %>
