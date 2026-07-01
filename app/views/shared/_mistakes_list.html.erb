@@ -1,30 +1,32 @@
-    <div data-controller="speech" class="border border-base-300 bg-base-100 rounded-2xl mb-4">
-      <div class="flex items-center gap-2 bg-secondary border-b border-forest-200 px-4 ">
-        <h2 class="font-semibold text-sm sm:text-base py-2 text-primary">添削後の文章</h2>
+    <div data-controller="speech" class="border border-base-300 bg-base-100 rounded-2xl overflow-hidden mb-4">
+      <div class="bg-secondary border-b border-forest-200 px-4 ">
+        <div class="flex flex-wrap items-center gap-2">
+          <h2 class="font-semibold text-sm sm:text-base py-2 text-primary">添削後の文章</h2>
         
-        <span class="badge badge-success text-white px-3 py-3">
-        添削トーン：<%= t("enums.journal.tone.#{journal.tone}") %>
-        </span>
+          <span class="badge badge-success text-white px-3 py-3">
+            添削トーン：<%= t("enums.journal.tone.#{journal.tone}") %>
+          </span>
         
-        <div class="ml-auto flex items-center gap-2">
-          <select data-speech-target="rate" class="select select-bordered select-sm">
-            <option value="0.75">速度：ゆっくり</option>
-            <option value="1" selected>速度：標準</option>
-            <option value="1.25">速度：速め</option>
-          </select>
+          <div class="w-full sm:ml-auto sm:w-auto flex items-center sm:justify-end gap-2 pb-1 sm:pb-0">
+            <select data-speech-target="rate" class="select select-bordered select-sm">
+              <option value="0.75">速度：ゆっくり</option>
+              <option value="1" selected>速度：標準</option>
+              <option value="1.25">速度：速め</option>
+            </select>
 
-          <button type="button"
-                  class="btn btn-sm btn-circle hover:bg-primary/50 hover:text-white"
-                  data-speech-target="playButton"
-                  data-action="speech#speak">
-            <%= image_tag "icons/play.svg", alt:"", class: "w-5 h-5" %>
-          </button>
-          <button type="button"
-                  class="btn btn-sm btn-circle hover:bg-primary/50 hover:text-white"
-                  data-speech-target="stopButton"
-                  data-action="speech#stop">
-            <%= image_tag "icons/stop.svg", alt:"", class: "w-5 h-5" %>
-          </button>
+            <button type="button"
+                    class="btn btn-sm btn-circle hover:bg-primary/50 hover:text-white"
+                    data-speech-target="playButton"
+                    data-action="speech#speak">
+              <%= image_tag "icons/play.svg", alt:"", class: "w-5 h-5" %>
+            </button>
+            <button type="button"
+                    class="btn btn-sm btn-circle hidden hover:bg-primary/50 hover:text-white"
+                    data-speech-target="stopButton"
+                    data-action="speech#stop">
+              <%= image_tag "icons/stop.svg", alt:"", class: "w-5 h-5" %>
+            </button>
+        </div>
         </div>
       </div>
         <!-- 音声読み上げ -->
