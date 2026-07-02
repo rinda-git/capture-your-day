@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   resources :journal_corrections, only: [ :index, :show ]
   resource :mypage, only: [ :show ]
   resource :line_connection, only: [ :show, :create, :destroy ]
+  resource :notification_setting, only: [ :show, :update ]
   # mistake_idを渡して、current_userのお気に入りから探して消す
   resources :favorites, only: [ :create, :index ] do
     delete :destroy, on: :collection

@@ -31,9 +31,9 @@
         <h2 class="card-title">LINE通知設定</h2>
       <% end %>
 
-      <div class="card bg-base-100 shadow mb-4 p-3">
+      <%= link_to notification_setting_path, class:"card bg-base-100 shadow mb-4 p-3 hover:bg-base-300 transition" do%>
         <h2 class="card-title">リマインダー通知設定</h2>
-      </div>
+      <% end %>
 
       <%= link_to terms_path, class:"card bg-base-100 shadow mb-4 p-3 hover:bg-base-300 transition" do %>
         <h2 class="card-title">利用規約</h2>

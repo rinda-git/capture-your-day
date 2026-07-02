@@ -63,6 +63,8 @@ ja:
       title: "プライバシーポリシー"
     terms:
       title: "利用規約"
-  
+  notification_settings:
+    show:
+      title: "リマインダー通知設定"
 
 
