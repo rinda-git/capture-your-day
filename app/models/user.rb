@@ -11,6 +11,7 @@ class User < ApplicationRecord
   # お気に入りしたmistakes一覧(user.favoritesを経由して、favoriteに紐づくmistake)
   has_many :favorite_mistakes, through: :favorites, source: :mistake
   has_many :ai_usage_logs, dependent: :destroy
+  has_many :web_push_subscriptions, dependent: :destroy
 
   devise :database_authenticatable,
          :registerable,

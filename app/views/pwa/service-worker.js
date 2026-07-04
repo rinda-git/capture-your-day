@@ -24,3 +24,10 @@
 //     })
 //   )
 // })
+self.addEventListener("push", async (event) => {
+  const data = event.data ? await event.data.json() : { title: "通知", options: {} } 
+
+  event.waitUntil(
+    self.ServiceWorkerRegistration.showNotification(data.title, data.options || {})
+  )
+})

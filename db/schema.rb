@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_27_082904) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_04_094008) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -128,6 +128,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_27_082904) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "web_push_subscriptions", force: :cascade do |t|
+    t.string "auth", null: false
+    t.datetime "created_at", null: false
+    t.text "endpoint", null: false
+    t.string "p256dh", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["endpoint"], name: "index_web_push_subscriptions_on_endpoint", unique: true
+    t.index ["user_id"], name: "index_web_push_subscriptions_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "ai_usage_logs", "users"
@@ -140,4 +151,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_27_082904) do
   add_foreign_key "mistakes", "journals"
   add_foreign_key "mistakes", "users"
   add_foreign_key "notification_settings", "users"
+  add_foreign_key "web_push_subscriptions", "users"
 end
