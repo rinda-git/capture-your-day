@@ -55,7 +55,7 @@
           </div>
         </div>
     </div> -->
-        <p data-speech-target="text" class="text-sm sm:text-base px-5 py-4 whitespace-pre-line" ><%= @journal_correction.rewritten_text %></p>
+        <p data-speech-target="text" class="px-5 py-4 whitespace-pre-line" ><%= @journal_correction.rewritten_text %></p>
     </div>
     <% if @journal_correction.mistakes.present? %>
       <div class="flex justify-between items-center mb-3">
@@ -92,15 +92,15 @@
                 <%# ボディ %>
                 <div class="px-4 py-3">
                   <p class="text-base-content/70 mb-1 text-sm sm:text-base">今回の添削</p>
-                  <p class="mx-2 text-sm sm:text-base bg-error/10 px-3 py-2 text-error mb-2 rounded-xl">  
+                  <p class="mx-2 bg-error/10 px-3 py-2 text-error mb-2 rounded-xl">  
                   <%= mistake.original_text %></p>
-                  <p class="mx-2 text-sm sm:text-base  bg-base-200  text-primary font-semibold border-forest-200 rounded-xl px-3 py-2">
+                  <p class="mx-2 bg-base-200 text-primary font-semibold border-forest-200 rounded-xl px-3 py-2">
                   <%= mistake.corrected_text %></p>
 
                 <%# ポイント %>
                 <% if mistake.explanation.present? %>
                   <p class="text-base-content/70 mt-2 text-sm sm:text-base">ポイント</p>
-                  <div class="mx-2 bg-base-200 rounded-xl px-3 py-2 text-base-content sm:text-base">
+                  <div class="mx-2 bg-base-200 rounded-xl px-3 py-2 text-base-content text-sm sm:text-base">
                     <%= mistake.explanation %>
                   </div>
                 <% end %>
