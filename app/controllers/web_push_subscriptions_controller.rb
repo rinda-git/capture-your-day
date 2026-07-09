@@ -1,3 +1,5 @@
+
+# ブラウザから送られた購読情報をDBに保存する
 class WebPushSubscriptionsController < ApplicationController
   before_action :authenticate_user!
   def create
