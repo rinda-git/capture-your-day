@@ -24,10 +24,11 @@
 //     })
 //   )
 // })
+// Push通知を受け取り、ブラウザ通知として表示する
 self.addEventListener("push", async (event) => {
   const data = event.data ? await event.data.json() : { title: "通知", options: {} } 
 
   event.waitUntil(
-    self.ServiceWorkerRegistration.showNotification(data.title, data.options || {})
+    self.registration.showNotification(data.title, data.options || {})
   )
 })

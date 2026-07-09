@@ -12,7 +12,8 @@
       <div class="mt-6 border-base-300 mb-3"
            data-controller="push-notification"
            data-push-notification-vapid-public-key-value="<%= Rails.application.credentials.dig(:webpush, :vapid_public_key) %>" >
-
+      <!--ユーザーが「通知を有効にする」ボタンを押す 
+      push_notification_controllerのsubscribeメソッドを呼び出す-->
       <button type="button"
               class="btn btn-secondary w-full"
               data-action="click->push-notification#subscribe">
