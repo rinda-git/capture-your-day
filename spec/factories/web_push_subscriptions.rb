@@ -1,8 +1,10 @@
 FactoryBot.define do
   factory :web_push_subscription do
-    user { nil }
-    endpoint { "MyText" }
-    p256dh { "MyString" }
-    auth { "MyString" }
+    user
+    endpoint do
+      "https://example.com/push/#{SecureRandom.hex(8)}"
+    end
+    p256dh { "dummy_p256dh" }
+    auth { "dummy_auth" }
   end
 end

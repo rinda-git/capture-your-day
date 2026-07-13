@@ -29,7 +29,9 @@
 
         <div class="flex items-center gap-3 mb-4 bg-base-200 px-4 py-3">
           <%= f.label :notification_time, "通知時間", class:"font-medium" %>
-          <%= f.time_field :notification_time, class: "input input-bordered" %>
+          <%= f.time_select :notification_time,
+              { minute_step: 30, ignore_date: true },
+              { class: "select select-bordered" } %>
         </div>
 
         <div class="flex justify-end gap-2 mt-6 mb-3">
