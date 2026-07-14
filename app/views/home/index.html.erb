@@ -57,11 +57,11 @@
           <% @journals.each do |journal| %>
             <%# 1件ずつ枠で囲む %>
              <%= link_to journal_path(journal) do %>
-            <div class="border border-base-300 bg-base-100 rounded-2xl p-4 mb-4">
+            <div class="group border border-base-300 bg-base-100 rounded-2xl p-4 mb-4 hover:bg-base-300">
             
             <p class="font-medium mb-2 items-center text-base-content/70 text-base sm:text-md flex gap-2">
               <%= journal.posted_date.strftime("%Y/%m/%d") %>
-              <span class="inline-flex items-center bg-secondary text-primary text-xs sm:text-sm rounded-full px-2 py-1">添削トーン：<%= t("enums.journal.tone.#{journal.tone}") %></span>
+              <span class="inline-flex items-center bg-secondary text-primary text-xs sm:text-sm rounded-full px-2 py-1 group-hover:bg-forest-500 group-hover:text-white">添削トーン：<%= t("enums.journal.tone.#{journal.tone}") %></span>
             </p>
     
             <p class="text-base-content mb-3 line-clamp-2 text-sm sm:text-base">
