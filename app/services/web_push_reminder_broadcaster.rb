@@ -19,7 +19,7 @@ class WebPushReminderBroadcaster
       .includes(user: :web_push_subscriptions)
       .where(reminder_enabled: true)
       .where(notification_time: target_time)
-      .where("last_web_push_reminded_on IS NULL OR last_web_push_reminded_on != ?", today)
+    #   .where("last_web_push_reminded_on IS NULL OR last_web_push_reminded_on != ?", today)
   end
 
   def deliver_to(setting)
