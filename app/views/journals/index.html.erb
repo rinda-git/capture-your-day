@@ -16,13 +16,13 @@
       <% if@journals.any? %>
         <%# 日記一覧をループ %>
         <% @journals.each do |journal| %>
-          <div class="border border-base-300 bg-base-100 rounded-lg py-3 mb-3 px-4">
+          <div class="group border border-base-300 bg-base-100 rounded-lg py-3 mb-3 px-4 hover:bg-base-300">
 
             <div class="flex items-center gap-3">
               <span class="font-bold text-base-content/70">
                 <%= journal.posted_date.strftime("%Y/%m/%d") %>
               </span>
-              <span class="inline-flex items-center bg-secondary text-primary text-xs sm:text-sm rounded-full px-2 py-1">
+              <span class="inline-flex items-center bg-secondary text-primary text-xs sm:text-sm rounded-full px-2 py-1 group-hover:bg-forest-500 group-hover:text-white">
                 添削トーン：<%= t("enums.journal.tone.#{journal.tone}") %>
               </span>
               <span class="ml-auto">
