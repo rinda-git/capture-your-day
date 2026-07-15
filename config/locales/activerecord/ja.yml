@@ -10,7 +10,6 @@ ja:
         # email: メールアドレス
       journal:
         posted_date: 投稿日
-        title: タイトル
         body: 本文
         mood: 気分
         tones:
