@@ -273,6 +273,7 @@ AI APIの使用回数が増えるとコストが高くなる可能性があり�
 ---
 # 画面遷移図
 https://www.figma.com/design/TjLw7rU7eSfo8SfXsBOaIG/capture-ur-day%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3-%E5%8E%9F%E6%9C%AC---%E6%8F%90%E5%87%BA-?node-id=4-3&t=wfZBgZqFxPJJ9ble-1
+
 ---
 # ER図
-<img width="1285" height="697" alt="image" src="https://github.com/user-attachments/assets/028c16dc-5b6c-44d3-8f06-378ffcd52b79" />
+<img width="1285" height="697" alt="image" src="docs/images/image.png" />

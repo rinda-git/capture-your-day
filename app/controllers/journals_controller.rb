@@ -190,6 +190,6 @@ class JournalsController < ApplicationController
 
   private
   def journal_params
-    params.require(:journal).permit(:title, :posted_date, :mood, :body, :tone)
+    params.require(:journal).permit(:posted_date, :mood, :body, :tone)
   end
 end

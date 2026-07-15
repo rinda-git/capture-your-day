@@ -4,12 +4,10 @@ one:
   user: one
   posted_date: 2026-04-07 18:08:15
   mood: 1
-  title: MyString
   body: MyText
 
 two:
   user: two
   posted_date: 2026-04-07 18:08:15
   mood: 1
-  title: MyString
   body: MyText

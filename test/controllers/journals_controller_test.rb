@@ -65,7 +65,6 @@ end
           tone:        "standard",
           mood:        "good",
           posted_date: Date.today,
-          title:       "Test title"
         }
       }
     end
@@ -91,7 +90,6 @@ end
           journal: {
             posted_date: @journal.posted_date,
             mood: @journal.mood,
-            title: "updated",
             body: @journal.body,
             tone: "standard"
             } }
