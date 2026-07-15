@@ -64,7 +64,7 @@ end
           body:        "Test body",
           tone:        "standard",
           mood:        "good",
-          posted_date: Date.today,
+          posted_date: Date.today
         }
       }
     end
