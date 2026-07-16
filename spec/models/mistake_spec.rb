@@ -13,6 +13,24 @@ RSpec.describe Mistake, type: :model do
       expect(mistake.errors[:original_text]).to include('を入力してください')
     end
 
+    it 'correcte_textが空白の場合は無効' do
+      mistake = build(:mistake, corrected_text: nil)
+      expect(mistake).to be_invalid
+      expect(mistake.errors[:corrected_text]).to include('を入力してください')
+    end
+
+    it 'explanationが空白の場合は無効' do
+      mistake = build(:mistake, explanation: nil)
+      expect(mistake).to be_invalid
+      expect(mistake.errors[:explanation]).to include('を入力してください')
+    end
+
+    it 'mistake_typeが空白の場合は無効' do
+      mistake = build(:mistake, mistake_type: nil)
+      expect(mistake).to be_invalid
+      expect(mistake.errors[:mistake_type]).to include('を入力してください')
+    end
+
     it 'mistake_typeに設定できること' do
         mistake = build(:mistake, mistake_type: 'grammar')
         expect(mistake.grammar?).to be true

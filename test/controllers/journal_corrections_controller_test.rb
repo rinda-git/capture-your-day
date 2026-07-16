@@ -31,6 +31,7 @@ class JournalCorrectionsControllerTest < ActionDispatch::IntegrationTest
       user: @user,
       original_text: "I went school",
       corrected_text: "I went to school",
+      mistake_type: "grammar",
       explanation: "場所へ行く場合は go to + 場所を使います",
       learning_points: {
         "pattern" => "go to + 場所",
