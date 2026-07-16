@@ -276,4 +276,6 @@ https://www.figma.com/design/TjLw7rU7eSfo8SfXsBOaIG/capture-ur-day%E7%94%BB%E9%9
 
 ---
 # ER図
-<img width="1285" height="697" alt="image" src="docs/images/image.png" />
+<a href="docs/images/image.png">
+  <img src="docs/images/image.png" alt="Capture Your DayのER図" width="100%">
+</a>
