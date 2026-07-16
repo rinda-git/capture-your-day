@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  DAILY_AI_LIMIT = 5
+  DAILY_AI_LIMIT = 3
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :journals, dependent: :destroy
@@ -75,6 +75,8 @@ class User < ApplicationRecord
   def ai_usage_limit_exempt?
     ENV.fetch("AI_LIMIT_EXEMPT_EMAILS", "")
     .split(",")
+    .map(&:strip)
+    .include?(email)
   end
 
   def ai_usage_count_today

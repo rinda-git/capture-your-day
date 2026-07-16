@@ -38,4 +38,38 @@ RSpec.describe User, type: :model do
       expect(user.journals).to include(journal)
     end
   end
+
+  describe 'AI利用回数の制限条件' do
+    let(:user) { build(:user, email: 'user@example.com') }
+
+    context 'ユーザーのメールアドレスが除外リストに含まれる場合' do
+      it 'trueを返すこと' do
+        allow(ENV).to receive(:fetch)
+          .with('AI_LIMIT_EXEMPT_EMAILS','')
+          .and_return('admin@example.com, user@example.com')
+
+        expect(user.ai_usage_limit_exempt?).to be true
+      end
+    end
+
+    context '環境変数が設定されていない場合' do
+      it 'falseを返すこと' do
+        allow(ENV).to receive(:fetch)
+          .with('AI_LIMIT_EXEMPT_EMAILS', '')
+          .and_return('')
+
+        expect(user.ai_usage_limit_exempt?).to be false
+      end
+    end
+
+    context 'ユーザーのメールアドレスが除外リストに含まれていない場合' do
+      it 'falseを返すこと' do
+        allow(ENV).to receive(:fetch)
+          .with('AI_LIMIT_EXEMPT_EMAILS', '')
+          .and_return('admin@example.com, tester@example.com')
+
+        expect(user.ai_usage_limit_exempt?).to be false
+      end
+    end
+  end
 end
