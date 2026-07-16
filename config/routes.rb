@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get "favorites/create"
-  get "favorites/destroy"
   get "line_connections/show"
   get "mypages/show"
   get "home/index"
