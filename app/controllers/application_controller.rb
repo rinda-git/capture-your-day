@@ -24,6 +24,4 @@ class ApplicationController < ActionController::Base
   #   # アカウント更新（編集）時に :username カラムを許可する場合
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:username])
   # end
-
-  
 end
