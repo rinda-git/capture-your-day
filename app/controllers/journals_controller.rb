@@ -89,7 +89,8 @@ class JournalsController < ApplicationController
       #   **journal_params  # title, posted_date, mood, body, tone が全部入る
       # )
 
-      if @journal.save
+      ActiveRecord::Base.transaction do
+      @journal.save!
 
         # 7.添削後の全文をjournal_correctionsに保存する
         # mistakesにデータを保存する
@@ -111,39 +112,22 @@ class JournalsController < ApplicationController
           )
         end
 
-        # 7. 添削後の全文と各指摘をmistakesに保存する
-        # @journal.mistakes.create!(
-        #   user_id: current_user.id,
-        #   original_text: body,
-        #   corrected_text: result["rewritten_text"],
-        #   mistake_type: :overall
-        #   )
-
-        # 8 個別の指摘をmistakesに1件ずつ保存する
-        #   (result["notes"] || []).each do |note|
-        #     @journal.mistakes.create!(
-        #       user_id: current_user.id,
-        #       original_text: note["original_text"],
-        #       corrected_text: note["corrected_text"],
-        #       mistake_type: note["mistake_type"],
-        #       explanation: note["explanation"]
-        #   )
-        # end
-
         # AIの利用履歴を記録
         current_user.record_ai_usage!
+      end
         redirect_to @journal, notice: "添削が完了しました！"
-      else
+    rescue => e
         # DB保存に失敗したとき
-        flash.now[:alert] = "日記の作成に失敗しました。"
+        Rails.logger.error("[AI COrrection Error] #{e.class}: #{e.message}")
+        flash.now[:alert] = "日記の作成に失敗しました。もう一度お試しください。"
         render :new, status: :unprocessable_entity
       end
       # AI添削処理の途中で例外が起きたとき(OpenAI/AI/API/予期しない処理エラー)
-      rescue => e
-        Rails.logger.error("[AI Correction Error] #{e.class}: #{e.message}")
-        flash.now[:alert] = "AI添削に失敗しました。時間をおいてもう一度お試しください。"
-        render :new, status: :unprocessable_entity
-      end
+      # rescue => e
+      #   Rails.logger.error("[AI Correction Error] #{e.class}: #{e.message}")
+      #   flash.now[:alert] = "AI添削に失敗しました。時間をおいてもう一度お試しください。"
+      #   render :new, status: :unprocessable_entity
+      # end
     end
 
   def edit
