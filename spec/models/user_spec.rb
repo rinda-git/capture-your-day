@@ -45,7 +45,7 @@ RSpec.describe User, type: :model do
     context 'ユーザーのメールアドレスが除外リストに含まれる場合' do
       it 'trueを返すこと' do
         allow(ENV).to receive(:fetch)
-          .with('AI_LIMIT_EXEMPT_EMAILS','')
+          .with('AI_LIMIT_EXEMPT_EMAILS', '')
           .and_return('admin@example.com, user@example.com')
 
         expect(user.ai_usage_limit_exempt?).to be true
