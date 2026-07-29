@@ -27,11 +27,15 @@ class WebPushReminderBroadcaster
     return if subscriptions.empty?
 
     subscriptions.find_each do |subscription|
-      WebPushNotificationSender.new(subscription).call(
-        title: "英語ジャーナリングの時間です",
-        body: "今日の出来事を書いてみましょう",
-        path: "/journals/new"
-      )
+      begin
+        WebPushNotificationSender.new(subscription).call(
+          title: "英語ジャーナリングの時間です",
+          body: "今日の出来事を書いてみましょう",
+          path: "/journals/new"
+        )
+      rescue WebPush::ExpiredSubscription
+        subscription.destroy!
+      end
     end
 
     setting.update!(last_web_push_reminded_on: today)
