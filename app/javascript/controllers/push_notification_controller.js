@@ -21,10 +21,10 @@ export default class extends Controller {
 
     let subscription = await this.service.getSubscription()
     // まだ購読していない場合、新しく購読を作る
-    if (!subscription) {
-      subscription = await this.service.createSubscription()
-    }
-      
-      await this.service.saveSubscription(subscription)
+  if (!subscription) {
+    subscription = await this.service.createSubscription()
+  }
+
+  await this.service.saveSubscription(subscription)
   }
 }
