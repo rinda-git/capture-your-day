@@ -15,7 +15,7 @@ export default class extends Controller {
     if (!("serviceWorker" in navigator)) return
     if (!("PushManager" in window)) return
     if (!("Notification" in window)) return
-  // ブラウザの通知許可ダイアログが出る。が「許可」した場合だけ、次の処理に進む
+    // ブラウザの通知許可ダイアログが出る。が「許可」した場合だけ、次の処理に進む
     const permission = await Notification.requestPermission()
     if (permission !== "granted") return
 
@@ -24,7 +24,7 @@ export default class extends Controller {
     if (!subscription) {
       subscription = await this.service.createSubscription()
     }
-
-    await this.service.saveSubscription(subscription)
+      
+      await this.service.saveSubscription(subscription)
   }
 }
