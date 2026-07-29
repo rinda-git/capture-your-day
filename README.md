@@ -2,7 +2,7 @@
 #### AI添削で学んだ英語表現を蓄積・復習し、アウトプットを習慣化する英語ジャーナリングアプリ
 
 <p align="center">
-<img src="docs/images/CaptureYourDay_Image.png" width=65%>
+<img src="docs/images/CaptureYourDay_Image.png" width="750">
 </p>
 
 ---
@@ -33,34 +33,34 @@ https://capture-your-day.onrender.com/
 # 主な機能
  | 新規登録画面 | 
  | :---: |  
- | <img src="docs/images/user_create_page.png" width=65%> |
+ | <img src="docs/images/user_create_page.png" width="750"> |
  |<div align="left">名前、メールアドレス、パスワード、確認用パスワードを入力してユーザー登録を行います。</div>|
 
  | ログイン画面 | 
  | :---: |             
- | <img src="docs/images/login_page.png" width=65%> | 
+ | <img src="docs/images/login_page.png" width="750"> | 
  |<div align="left">登録したメールアドレスとパスワードでログインできます。</div>|
 
  | ホーム画面 | 
  | :---: |             
- | <img src="docs/images/home_page.png" width=65%> | 
- |<div align="left">これまでに書いた日記の数、学んだ表現数などの学習成果を確認・振り返れます。日々積み重ねてきたアウトプットを数値で振り返ることで、学習の継続やモチベーションの維持につなげます。</div>|
+ | <img src="docs/images/home_page.png" width="750"> | 
+ |<div align="left">これまでに書いた日記の数、学んだ表現数などの学習成果を確認・振り返れます。<br>日々積み重ねてきたアウトプットを数値で振り返ることで、学習の継続やモチベーションの維持につなげます。</div>|
 
  | ジャーナリング作成画面 | 
  | :---: |             
- | <img src="docs/images/journal_form.png" width=65%> | 
- |<div align="left">英文を添削する際に「丁寧」「スタンダード」「カジュアル」の3つのトーンを選択できます。選択したトーンに合わせて、AIがより自然な英文を提案します。</div>|
+ | <img src="docs/images/journal_form.gif" width="750"> | 
+ |<div align="left">英文を添削する際に「丁寧」「スタンダード」「カジュアル」の3つのトーンを選択できます。<br>選択したトーンに合わせて、AIがより自然な英文に添削します。</div>|
 
  | AI添削結果画面 | 
  | :---: |   
- | <img src="docs/images/journal_correction.png" width="65%"> |
- |<div align="left">英語または日本語で日記を入力すると、入力内容のニュアンスを保ちながら、AIがより自然な英文を提案します。元の表現と添削後の表現を比較することで、自分が書いた内容に関連する実践的な英語表現を学べます。<br>AIが添削した表現の中から、覚えたい表現を選んで保存できます。添削結果を確認するだけで終わらせず、自分が実際に使いたい英語表現を学習記録として蓄積できます。
+ | <img src="docs/images/journal_correction.png" width="750"> |
+ |<div align="left">元の表現と添削後の表現を比較することで、自分が伝えたい内容に合った実践的な英語表現を学べます。<br>また、添削された表現の中から覚えたい表現を保存し、自分の英語表現として蓄積して繰り返し復習できます。
   </div>|
 
  | 保存した表現画面 | 
  | :---: |   
- | <img src="docs/images/mistakes_show.png" width="65%"> |
- |<div align="left">保存した表現に対して、その表現に似た言い回しを2つ提案します。1つの英語表現だけを覚えるだけではなく、複数の言い回しを関連付けて学ぶことで、英語表現の選択肢を広げられます。</div>|
+ | <img src="docs/images/mistakes_show.png" width="750"> |
+ |<div align="left">保存した表現に対して、その表現に似た言い回しを2つ提案します。<br>1つの英語表現だけを覚えるだけではなく、複数の言い回しを関連付けて学ぶことで、英語表現の幅を広げられます。</div>|
 
 ---
 
@@ -91,10 +91,11 @@ https://capture-your-day.onrender.com/
 
   ### 3. 学んだ表現を蓄積して復習できる
 
-  覚えたい表現を保存し、アプリ内やLINE通知から繰り返し復習できます。添削を一度きりで終わらせず、自分だけの英語表現として蓄積できます。
+  覚えたい表現を保存し、アプリ内やLINE通知から繰り返し復習できます。添削を一度きりで終わらせず、自分の英語表現として蓄積できます。
 
-  ### 4. 日本語で書いてもOK
-  英語で書くことが難しい場合は、日本語で日記を作成できるようにし、アウトプット開始時の負担を下げています。
+  ### 4. 日本語でも書ける
+  英語で表現することが難しい場合は、日本語で日記を書くこともできます。<br>
+  AIが日本語のニュアンスを保ちながら英文添削するため、英語が思い浮かばないときも無理なく続けられます。
 
 ---
 # 画面遷移図
