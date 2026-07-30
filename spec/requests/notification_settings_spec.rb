@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "NotificationSettings", type: :request do
   let(:user) { create(:user) }
@@ -14,8 +14,8 @@ RSpec.describe "NotificationSettings", type: :request do
     end
   end
 
-  describe 'PATCH/notification_setting' do
-    it '通知をOFFに更新できる' do
+  describe "PATCH / notification_setting" do
+    it "通知をOFFに更新できる" do
       setting = create(
         :notification_setting,
         user: user,
@@ -25,20 +25,20 @@ RSpec.describe "NotificationSettings", type: :request do
 
       expect {
         patch "/notification_setting",
-             params: {
-               notification_setting: {
-                 reminder_enabled: "0",
-                 notification_time: "21:00"
-               }
+              params: {
+                notification_setting: {
+                  reminder_enabled: "0",
+                  notification_time: "21:00"
+                }
               }
-            }.to change {
-                setting.reload.reminder_enabled
-            }.from(true).to(false)
+      }.to change {
+        setting.reload.reminder_enabled
+      }.from(true).to(false)
 
-        expect(response).to redirect_to(notification_setting_path)
+      expect(response).to redirect_to(notification_setting_path)
     end
 
-    it '通知ONで時刻が空の場合は更新できない' do
+    it "通知ONで時刻が空の場合は更新できない" do
       setting = create(
         :notification_setting,
         user: user,
@@ -47,16 +47,16 @@ RSpec.describe "NotificationSettings", type: :request do
       )
 
       patch "/notification_setting",
-           params: {
-             notification_setting: {
-               reminder_enabled: "1",
-               notification_time: ""
-             }
-           }
+            params: {
+              notification_setting: {
+                reminder_enabled: "1",
+                notification_time: ""
+              }
+            }
 
-    expect(response).to have_http_status(:unprocessable_entity)
-    expect(setting.reload.reminder_enabled).to be(false)
-    expect(setting.notification_time).to be_nil
+      expect(response).to have_http_status(:unprocessable_entity)
+      expect(setting.reload.reminder_enabled).to be(false)
+      expect(setting.notification_time).to be_nil
     end
   end
 end
