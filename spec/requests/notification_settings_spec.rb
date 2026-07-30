@@ -15,7 +15,6 @@ RSpec.describe "NotificationSettings", type: :request do
   end
 
   describe 'PATCH/notification_setting' do
-
     it '通知をOFFに更新できる' do
       setting = create(
         :notification_setting,
@@ -54,7 +53,7 @@ RSpec.describe "NotificationSettings", type: :request do
                notification_time: ""
              }
            }
-    
+
     expect(response).to have_http_status(:unprocessable_entity)
     expect(setting.reload.reminder_enabled).to be(false)
     expect(setting.notification_time).to be_nil
