@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe WebPushSubscription, type: :model do
-
   it '正常な場合は有効' do
     subscription = build(:web_push_subscription)
 
