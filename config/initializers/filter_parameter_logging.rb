@@ -17,11 +17,11 @@ if Rails.env.production?
     :replyToken,
     :quoteToken,
     :markAsReadToken,
-    :body, 
-    :original_text, 
-    :rewritten_text, 
-    :corrected_text, 
-    :explanation, 
+    :body,
+    :original_text,
+    :rewritten_text,
+    :corrected_text,
+    :explanation,
     :learning_points
   ]
 end
