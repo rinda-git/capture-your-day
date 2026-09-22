@@ -16,6 +16,12 @@ if Rails.env.production?
     :pictureUrl,
     :replyToken,
     :quoteToken,
-    :markAsReadToken
+    :markAsReadToken,
+    :body,
+    :original_text,
+    :rewritten_text,
+    :corrected_text,
+    :explanation,
+    :learning_points
   ]
 end
