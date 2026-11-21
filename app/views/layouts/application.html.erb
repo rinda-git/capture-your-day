@@ -65,6 +65,7 @@
       <%= render "shared/flash_message" %>
       <%= yield %>
     </main>
+      <%#特定のページでは非表示にする%>
      <%= render "shared/footer" unless content_for?(:hide_footer) %>
   </body>
 </html>
